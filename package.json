@@ -11,14 +11,15 @@
   },
   "devDependencies": {
     "axios": "^0.16.2",
-    "laravel-mix": "^1.0",
+    "cross-env": "^3.2.4",
+    "element-ui": "^1.1.6",
+    "font-awesome": "^4.7.0",
+    "laravel-mix": "0.*",
     "lodash": "^4.17.4",
+    "nprogress": "0.2.0",
     "vue": "^2.1.10",
     "vue-loader": "^11.0.0",
     "vue-router": "^2.1.1",
-    "vuex": "^2.2.1",
-    "nprogress": "0.2.0",
-    "element-ui": "^1.1.6",
-    "font-awesome": "^4.7.0"
+    "vuex": "^2.2.1"
   }
 }

@@ -1,5 +1,4 @@
-let mix = require('laravel-mix');
-
+const { mix } = require('laravel-mix');
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,5 +10,15 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+
+
+/*
+ * 后台
+ */
+ mix.styles([
+    'node_modules/element-ui/lib/theme-default/index.css', 
+    'node_modules/font-awesome/css/font-awesome.min.css'
+], 'public/css/backend/vendor.css').version();
+
+mix.sass('resources/assets/sass/app.scss', 'public/css/backend/app.css').version();
+mix.js('resources/assets/js/app.js', 'public/js/backend').version();
