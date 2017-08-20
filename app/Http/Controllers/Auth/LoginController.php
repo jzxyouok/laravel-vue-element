@@ -1,14 +1,16 @@
 <?php
-namespace App\Http\Controllers\Backend;
+
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\ClerkRepository;
 use App\Repositorys\Backend\LoginRepository;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class LoginController extends BaseController
+class LoginController extends Controller
 {
-
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -41,14 +43,32 @@ class LoginController extends BaseController
         // $this->beforeFilter('csrf', array('on' => 'post'));
     }
 
-    /**
-     * 登录方法
-     * @return json
-     */
+    // 登录界面
+    public function index()
+    {
+        return view('login');
+    }
+
+    // 登录
     public function login(Request $request)
     {
         $input  = $request->input('data');
         $result = LoginRepository::getInstance()->login($input);
         return response()->json($result);
+    }
+
+    // 注销
+    public function logout()
+    {
+        if (Auth::check()) {
+            Auth::logout();
+        }
+        return;
+    }
+
+    public function reset(Request $request)
+    {
+        $result = ClerkRepository::reset($request->input('data'));
+        return response($result['data'], $result['status']);
     }
 }

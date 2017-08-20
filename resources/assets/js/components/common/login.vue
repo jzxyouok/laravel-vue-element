@@ -2,9 +2,9 @@
     <div class="login-container">
         <el-form autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px" class="card-box login-form">
             <h3 class="title">Quickzz后台管理</h3>
-            <el-form-item prop="account">
+            <el-form-item prop="username">
                 <span class="svg-container"><i class="fa fa-envelope-o fa-fw"></i></span>
-                <el-input name="account" type="text" v-model="loginForm.account" autoComplete="on" placeholder="用户名\邮箱"></el-input>
+                <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="用户名\邮箱"></el-input>
             </el-form-item>
             <el-form-item prop="password">
                 <span class="svg-container"><i class="fa fa-key fa-fw"></i></span>
@@ -80,11 +80,11 @@
     data() {
       return {
         loginForm: {
-          account: '',
+          username: '',
           password: ''
         },
         loginRules: {
-          account: [
+          username: [
             { required: true, message: '请输入登录账户', trigger: 'blur' },
           ],
           password: [
@@ -102,17 +102,17 @@
           if (valid) {
             _this.loginSubmitLoading = true;
             let params = {'data': _this.loginForm};
-            axios.post('/backend/login', params).then(function(res) {
+            axios.post('/login', params).then(function(res) {
               _this.loginSubmitLoading = false;
               let{status, data, message} = res.data;
-              if(!status) {
+              if (!status) {
                 _this.$message.error(message);
                 return false;
               }
               _this.$message.success(message);
-              sessionStorage.setItem('adminData', JSON.stringify(data.adminData));
+              sessionStorage.setItem('admin', JSON.stringify(data.admin));
               _this.$router.push({ path: '/index' });
-            }).catch(function(err){
+            }).catch(function(err) {
               _this.loginSubmitLoading = false;
               _this.$message.error('网络连接失败');
             });
