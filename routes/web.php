@@ -20,6 +20,6 @@ Auth::routes();
 Route::group(['namespace' => 'Backend', 'prefix' => 'backend'], function () {
     
     Route::get('/', 'IndexController@index');
-    //Route::post('login', 'LoginController@login');
-    
+    /*管理员*/
+    Route::resource('admins', 'AdminController');
 });

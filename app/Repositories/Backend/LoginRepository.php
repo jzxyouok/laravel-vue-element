@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositorys\Backend;
 
+use DB;
 use Illuminate\Support\Facades\Auth;
 
 class LoginRepository extends BaseRepository
@@ -9,11 +10,11 @@ class LoginRepository extends BaseRepository
     /**
      * 登录
      */
-    public function login($data)
+    public function login($data, $login_ip)
     {
         $loginData = [
             'username' => $data['username'],
-            'password' => $data['password']
+            'password' => $data['password'],
         ];
         if (!Auth('admin')->attempt($loginData)) {
             return [
@@ -29,15 +30,19 @@ class LoginRepository extends BaseRepository
                 'message' => '帐号被禁用',
             ];
         };
+        $result = DB::update('update admin set last_login_ip = ? , last_login_time = ? where id = ?', [
+            $login_ip, time(), $adminData->id,
+        ]);
+        $this->status        = isTrueOrFalse($result);
+        $this->data['admin'] = [
+            'username' => $adminData->username,
+            'email'    => $adminData->email,
+        ];
+        $this->message = isTrueOrFalse($result) ? '登录成功', '发生未知错误';
         return [
-            'status'  => 1,
-            'data'    => [
-                'admin' => [
-                    'username' => $adminData->username,
-                    'email'    => $adminData->email,
-                ],
-            ],
-            'message' => '登录成功',
+            'status'  => $this->status
+            'data'    => $this->data,
+            'message' => $this->message
         ];
     }
 

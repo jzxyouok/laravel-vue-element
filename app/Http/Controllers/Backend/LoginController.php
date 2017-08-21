@@ -48,7 +48,7 @@ class LoginController extends BaseController
     public function login(Request $request)
     {
         $input  = $request->input('data');
-        $result = LoginRepository::getInstance()->login($input);
+        $result = LoginRepository::getInstance()->login($input, $request->getClientIp());
         return response()->json($result);
     }
 }

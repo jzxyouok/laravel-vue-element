@@ -18,7 +18,10 @@ class CreateAdminsTable extends Migration
             $table->string('username', 20)->comment('用户名');
             $table->string('email', 30)->comment('邮箱');
             $table->string('password', 100)->comment('密码');
-            $table->tinyInteger('status')->default(1)->comment('是否禁用,0禁用，1启用');
+            $table->tinyInteger('permission_id')->comment('权限id');
+            $table->char('last_login_ip', 15)->default(0);
+            $table->timestamp('last_login_time')->nullable();
+            $table->tinyInteger('status')->default(1)->comment('状态,0禁用，10启用');
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
