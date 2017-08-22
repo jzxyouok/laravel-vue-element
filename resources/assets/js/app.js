@@ -13,18 +13,26 @@ import NProgress from 'nprogress'; // Progress 进度条
 import 'nprogress/nprogress.css'; // Progress 进度条 样式
 import Vuex from 'vuex';
 import plugins from './plugins.js';
+import * as filters from './filters.js';
 Vue.use(VueRouter);
 Vue.use(ElementUI);
 Vue.use(Vuex);
 Vue.use(plugins);
+//注册全局的过滤函数
+Object.keys(filters).forEach(key => {
+    Vue.filter(key, filters[key])
+});
+//vuex
 const store = new Vuex.Store({
     state: {
         submitLoading: false
     },
 });
+//vue-router
 const router = new VueRouter({
     routes
 });
+//vue-router拦截器
 router.beforeEach((to, from, next) => {
     NProgress.start(); // 开启Progress
     if (!sessionStorage.getItem('admin') && to.path != '/login') {
@@ -32,16 +40,17 @@ router.beforeEach((to, from, next) => {
             path: '/login'
         });
         NProgress.done();
-    } else {
-        if (to.path == '/login') {
-            sessionStorage.removeItem('adminData');
-        }
-        next();
+        return false;
     }
+    if (to.path == '/login') {
+        sessionStorage.removeItem('adminData');
+    }
+    next();
 });
 router.afterEach(() => {
     NProgress.done(); // 结束Progress
 });
+//axios拦截器
 axios.interceptors.request.use(function(config) {
     NProgress.start();
     return config;

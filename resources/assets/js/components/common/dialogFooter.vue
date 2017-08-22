@@ -7,8 +7,8 @@
 <script>
     export default {
         methods: {
-            submit() {
-                this.$emit('submit');
+            submit(formName) {
+                this.$emit('submit', formName);
             },
             close() {
                 this.$emit('close');

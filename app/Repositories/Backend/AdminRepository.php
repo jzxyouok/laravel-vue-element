@@ -16,10 +16,10 @@ class AdminRepository extends BaseRepository
         $this->data['permission'] = AdminPermission::all();
         $this->dicts     = Parent::getDicts(['status']);
         return [
-            'status'  => $this->status,
+            'status'  => Parent::SUCCESS_STATUS,
             'data'    => $this->data,
             'dicts' => $this->dicts,
-            'message' => $this->message,
+            'message' => '数据获取成功',
         ];
     }
 
@@ -31,17 +31,17 @@ class AdminRepository extends BaseRepository
         $usernameUniqueData = Admin::where('username', $input['username'])->first();
         if (!empty($usernameUniqueData)) {
             return [
-                'status'  => 0,
-                'data'    => '',
-                'message' => '管理员用户名已经存在',
+                'status'  => Parent::ERROR_STATUS,
+                'data'    => $this->data,
+                'message' => '管理员用户名已经存在'
             ];
-        }
+        } 
         $emailUniqueData = Admin::where('email', $input['email'])->first();
         if (!empty($emailUniqueData)) {
             return [
-                'status'  => 0,
-                'data'    => '',
-                'message' => '管理员邮箱已经存在',
+                'status'  => Parent::ERROR_STATUS,
+                'data'    => $this->data,
+                'message' => '管理员邮箱已经存在'
             ];
         }
         $insert = Admin::create([
@@ -49,48 +49,41 @@ class AdminRepository extends BaseRepository
             'email'         => $input['email'],
             'password'      => md5($input['password'] . env('APP_PASSWORD_ENCRYPT')),
             'permission_id' => $input['permission_id'],
-            'status'        => $input['status'],
+            'status'        => $input['status']
         ]);
-        if (!$insert) {
-            return [
-                'status'  => $this->errorStatus,
-                'data'    => '',
-                'message' => '未知错误，数据新增失败',
-            ];
-        }
         return [
-            'status'  => $this->successStatus,
-            'data'    => '',
-            'message' => '数据新增成功',
+            'status'  => $insert ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
+            'data'    => $this->data,
+            'message' => $insert ? '管理员新增成功' : '管理员新增失败'
         ];
     }
 
     /**
      * 编辑
      */
-    public function update($input)
+    public function update($input, $id)
     {
-        $adminData = Admin::where('id', $input['id'])->first();
+        $adminData = Admin::where('id', $id)->first();
         if (empty($adminData)) {
             return [
-                'status'  => 0,
-                'data'    => '',
+                'status'  => Parent::ERROR_STATUS,
+                'data'    => $this->data,
                 'message' => '管理员不存在',
             ];
         }
-        $usernameUniqueData = Admin::where('id', '!=', $input['id'])->where('username', $input['username'])->first();
+        $usernameUniqueData = Admin::where('id', '!=', $id)->where('username', $input['username'])->first();
         if (!empty($usernameUniqueData)) {
             return [
-                'status'  => 0,
-                'data'    => '',
+                'status'  => Parent::ERROR_STATUS,
+                'data'    => $this->data,
                 'message' => '管理员用户名已经存在',
             ];
         }
-        $emailUniqueData = Admin::where('id', '!=', $input['id'])->where('email', $input['email'])->first();
+        $emailUniqueData = Admin::where('id', '!=', $id)->where('email', $input['email'])->first();
         if (!empty($emailUniqueData)) {
             return [
-                'status'  => 0,
-                'data'    => '',
+                'status'  => Parent::ERROR_STATUS,
+                'data'    => $this->data,
                 'message' => '管理员邮箱已经存在',
             ];
         };
@@ -103,11 +96,11 @@ class AdminRepository extends BaseRepository
         if ($input['password']) {
             $updateData['password'] = md5($input['password'] . env('APP_PASSWORD_ENCRYPT'));
         };
-        $update = Admin::where('id', $input['id'])->update($updateData);
+        $update = Admin::where('id', $id)->update($updateData);
         return [
-            'status'  => $update ? 1 : 0,
-            'data'    => '',
-            'message' => $update ? '数据更新成功' : '数据更新失败',
+            'status'  => $update ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
+            'data'    => $this->data,
+            'message' => $update ? '管理员更新成功' : '管理员更新失败',
         ];
     }
 
@@ -118,9 +111,9 @@ class AdminRepository extends BaseRepository
     {
         $deleted = Admin::where('id', $id)->delete();
         return [
-            'status'  => $deleted ? 1 : 0,
-            'data'    => '',
-            'message' => $deleted ? '删除成功' : '删除失败',
+            'status'  => $deleted ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
+            'data'    => $this->data,
+            'message' => $deleted ? '管理员删除成功' : '管理员删除失败',
         ];
     }
 }

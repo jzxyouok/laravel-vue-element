@@ -53,7 +53,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $input  = $request->input('data');
-        $result = LoginRepository::getInstance()->login($input);
+        $result = LoginRepository::getInstance()->login($input, $request->getClientIp());
         return response()->json($result);
     }
 
@@ -68,7 +68,7 @@ class LoginController extends Controller
 
     public function reset(Request $request)
     {
-        $result = ClerkRepository::reset($request->input('data'));
-        return response($result['data'], $result['status']);
+        $result = LoginRepository::getInstance()->reset($request->input('data'));
+        return response()->json($result);
     }
 }

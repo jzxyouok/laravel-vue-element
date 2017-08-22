@@ -10,7 +10,11 @@
       <el-table :data="tableData" border style="width: 100%">
         <el-table-column prop="username" label="用户名" width="180"></el-table-column>
         <el-table-column prop="email" label="电子邮件" width="180"></el-table-column>
-        <el-table-column prop="permission_id" label="管理员等级" :formatter="formatPermission"></el-table-column>
+        <el-table-column label="管理员等级">
+          <template scope="scope">
+              {{scope.row.permission_id | formatByOptions(options.permission, 'id', 'text')}}
+          </template>
+        </el-table-column>
         <el-table-column prop="last_login_ip" label="最后登录ip"></el-table-column>
         <el-table-column prop="last_login_time" label="最后登录时间"></el-table-column>
         <el-table-column  align="center" label="操作">
@@ -43,7 +47,7 @@
           </el-form-item>
           <el-form-item label="状态" prop="status">
             <el-select v-model="form.status" placeholder="请选择管理员状态">
-              <el-option v-for="item in options.status" :key="item.value" :label="item.text" :value="item.value"></el-option>
+              <el-option v-for="item in options.status" :key="item.value" :label="item.text" :value="item.value + ''"></el-option>
             </el-select>
           </el-form-item>
         </el-form>
@@ -59,7 +63,7 @@
     components: {
       'pagination': Pagination,
       'tableHeader': TableHeader,
-      'dialogFooter': DialogFooter,
+      'dialogFooter': DialogFooter
     },
     data() {
       var checkRepassword = (rule, value, callback) => {
@@ -122,8 +126,8 @@
     methods: {
       getList() {
           let _this = this;
-          let params = {'data': {'searchForm': _this.searchForm}};
-          axios.get('/backend/admins?page=' + _this.$refs.pagination.pageData.current_page, params).then(response => {
+          let paramsData = {'data': {'searchForm': _this.searchForm}};
+          axios.get('/backend/admins?page=' + _this.$refs.pagination.pageData.current_page, {params: paramsData}).then(response => {
             let data = response.data;
             _this.tableData = data.data.lists.data;
             _this.options.permission = data.data.permission;
@@ -133,78 +137,74 @@
             _this.$refs.pagination.pageData.total = parseInt(data.data.lists.total);
           })
         },
-        detail(id) {
-          let _this = this;
-          _this.formTitle = '修改';
-          delete _this.rules.password;
-          delete _this.rules.repassword;
-          console.log(_this.rules);
-          _this.tableData.forEach (function (item) {
-            if (item.id === id) {
-              item.password = '';
-              _this.form = Vue.copyObj(item);
-              _this.formVisible = true;
-              return true;
+      detail(id) {
+        let _this = this;
+        _this.formTitle = '修改';
+        delete _this.rules.password;
+        delete _this.rules.repassword;
+        _this.tableData.forEach (function (item) {
+          if (item.id === id) {
+            item.password = '';
+            _this.form = Vue.copyObj(item);
+            _this.formVisible = true;
+            return true;
+          }
+        });
+      },
+      submit(formName) {
+        let _this = this;
+        _this.$refs[formName].validate((valid) => {
+          if (valid) {
+            _this.$store.state.submitLoading = true;
+            //let method = url = params = '';
+            if (!_this.form.id) {
+              var method = 'post', url = '/backend/admins', params = {'data': _this.form};
+            } else {
+              var method = 'put', url = '/backend/admins/' + _this.form.id, params = {'data': _this.form};
             }
-          });
-        },
-        submit(formName) {
-          let _this = this;
-          _this.$refs[formName].validate((valid) => {
-            if (valid) {
-              _this.$store.state.submitLoading = true;
-              if (!_this.form.id) {
-                var method = 'post', url = '/backend/admins', params = {'data': _this.form};
-              } else {
-                var method = 'put', url = '/backend/admins/' + _this.form.id, params = {'data': _this.form};
+            axios[method](url, params).then(response => {
+              _this.$store.state.submitLoading = false;
+              let data = response.data;
+              if(!data.status) {
+                _this.$message.error(data.message);
+                return false;
               }
-              save(method, url, params).then(data => {
-                _this.$store.state.submitLoading = false;
-                if(!data.status) {
-                  _this.$message.error(data.message);
-                  return false;
-                }
-                _this.$message.success(data.message);
-                _this.formVisible = false;
-                _this.getList();
-              });
-            }
-          });
-        },
-        trashed(id) {
-          let _this = this;
-          _this.$confirm('确定删除这个管理员吗').then(() => {
-            trashed('/backend/admins/' + id).then(data => {
-                _this.$message.success(data.message);
-                Vue.removeOneData(_this.tableData, id);
+              _this.$message.success(data.message);
+              _this.formVisible = false;
+              _this.getList();
+            }).catch(function(response) {
+              _this.$store.state.submitLoading = false;
             });
-          });
-        },
-        close() {
-          this.formVisible = false;
-          Vue.resetForm(this.form);
-          this.$refs.form.resetFields();
-        },
-        create() {
-          this.formTitle = '添加管理员';
-          if(!this.rules.password) {
-            this.rules.password = this.passwordRules;
           }
-          if(!this.rules.repassword) {
-            this.rules.repassword = this.repasswordRules;
-          }
-          console.log(this.rules);
-          this.formVisible = true;
-        },
-        formatPermission(row) {
-          let text = '-';
-          this.options.permission.forEach(function(item) {
-            if(row.permission_id == item.id) {
-              return text = item.text;
-            }
+        });
+      },
+      trashed(id) {
+        let _this = this;
+        _this.$confirm('确定删除这个管理员吗').then(() => {
+          axios.delete('/backend/admins/' + id).then(response => {
+              _this.$message.success(response.data.message);
+              Vue.removeOneData(_this.tableData, id);
           });
-          return text;
+        }).catch(function(response) {
+          console.log(response);
+        });
+      },
+      close() {
+        this.formVisible = false;
+        Vue.resetForm(this.form);
+        this.$refs.form.resetFields();
+      },
+      create() {
+        this.formTitle = '添加管理员';
+        Vue.resetForm(this.form);
+        if(!this.rules.password) {
+          this.rules.password = this.passwordRules;
         }
+        if(!this.rules.repassword) {
+          this.rules.repassword = this.repasswordRules;
+        }
+        this.formVisible = true;
+      }
     }
   }
 </script>

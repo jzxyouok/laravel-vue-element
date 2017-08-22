@@ -13,6 +13,10 @@ export default [{
     name: '登录',
     hidden: true
 }, {
+    path: '/',
+    component: Main,
+    hidden: true
+},  {
     path: '/index',
     component: Main,
     name: '首页',
