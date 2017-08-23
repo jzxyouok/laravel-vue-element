@@ -3,13 +3,13 @@
       <tableHeader v-on:create="create" v-on:getList="getList">
         <el-input v-model="searchForm.username" placeholder="请输入账户名" style="width: 200px;"></el-input>
         <el-select v-model="searchForm.permission_id" placeholder="请选择管理员等级">
-          <el-option label="全部" value=""></el-option>
+          <el-option label="全部权限" value=""></el-option>
           <el-option v-for="item in options.permission" :key="item.id" :label="item.text" :value="item.id"></el-option>
         </el-select>
       </tableHeader>
       <el-table :data="tableData" border style="width: 100%">
-        <el-table-column prop="username" label="用户名" width="180"></el-table-column>
-        <el-table-column prop="email" label="电子邮件" width="180"></el-table-column>
+        <el-table-column prop="username" label="用户名"></el-table-column>
+        <el-table-column prop="email" label="电子邮件"></el-table-column>
         <el-table-column label="管理员等级">
           <template scope="scope">
               {{scope.row.permission_id | formatByOptions(options.permission, 'id', 'text')}}
@@ -17,10 +17,16 @@
         </el-table-column>
         <el-table-column prop="last_login_ip" label="最后登录ip"></el-table-column>
         <el-table-column prop="last_login_time" label="最后登录时间"></el-table-column>
-        <el-table-column  align="center" label="操作">
+        <el-table-column label="状态">
+          <template scope="scope">
+              {{scope.row.status | formatByOptions(options.status, 'value', 'text')}}
+          </template>
+        </el-table-column>
+        <el-table-column  align="center" label="操作" width="200">
             <template scope="scope">
-              <el-button size="small" type="success" @click="detail(scope.row.id)">编辑</el-button>
-              <el-button size="small" type="danger" @click="trashed(scope.row.id)">删除</el-button>
+              <router-link to="/home"><el-button size="mini" type="info">操作记录</el-button></router-link>
+              <el-button size="mini" type="success" @click="detail(scope.row.id)">编辑</el-button>
+              <el-button size="mini" type="danger" @click="trashed(scope.row.id)">删除</el-button>
             </template>
         </el-table-column>
       </el-table>
@@ -78,13 +84,13 @@
         formVisible: false,
         tableData: [],
         form: {
-            id: '',
-            username: '',
-            email: '',
-            password: '',
-            repassword: '',
-            permission_id: '',
-            status: ''
+          id: '',
+          username: '',
+          email: '',
+          password: '',
+          repassword: '',
+          permission_id: '',
+          status: ''
         },
         searchForm: {
           username: '',
@@ -156,7 +162,6 @@
         _this.$refs[formName].validate((valid) => {
           if (valid) {
             _this.$store.state.submitLoading = true;
-            //let method = url = params = '';
             if (!_this.form.id) {
               var method = 'post', url = '/backend/admins', params = {'data': _this.form};
             } else {
@@ -165,7 +170,7 @@
             axios[method](url, params).then(response => {
               _this.$store.state.submitLoading = false;
               let data = response.data;
-              if(!data.status) {
+              if (!data.status) {
                 _this.$message.error(data.message);
                 return false;
               }

@@ -55,7 +55,7 @@
     },
     mounted() {
       let _this = this;
-      var adminData = sessionStorage.getItem('adminData');
+      var adminData = sessionStorage.getItem('admin');
       if (adminData) {
         _this.adminData = JSON.parse(adminData);
       }

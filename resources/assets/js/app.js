@@ -43,7 +43,7 @@ router.beforeEach((to, from, next) => {
         return false;
     }
     if (to.path == '/login') {
-        sessionStorage.removeItem('adminData');
+        sessionStorage.removeItem('admin');
     }
     next();
 });

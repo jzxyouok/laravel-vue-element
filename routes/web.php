@@ -15,11 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
+Route::post('/backend/login', 'Auth\LoginController@login');
+Route::post('/backend/logout', 'Auth\LoginController@logout');
 Route::group(['namespace' => 'Backend', 'prefix' => 'backend'], function () {
     
     Route::get('/', 'IndexController@index');
+
+
+
     /*管理员*/
     Route::resource('admins', 'AdminController');
 });

@@ -102,7 +102,7 @@
           if (valid) {
             _this.loginSubmitLoading = true;
             let params = {'data': _this.loginForm};
-            axios.post('/login', params).then(function(res) {
+            axios.post('/backend/login', params).then(function(res) {
               _this.loginSubmitLoading = false;
               let{status, data, message} = res.data;
               if (!status) {

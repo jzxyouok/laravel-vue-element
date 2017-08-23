@@ -63,7 +63,7 @@ class LoginController extends Controller
         if (Auth::check()) {
             Auth::logout();
         }
-        return;
+        return response()->json(['status' => 1, 'message' => '退出成功']);
     }
 
     public function reset(Request $request)
