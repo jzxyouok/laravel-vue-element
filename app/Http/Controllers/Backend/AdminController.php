@@ -110,4 +110,14 @@ class AdminController extends BaseController
         $result = AdminRepository::getInstance()->out($input);
         return response()->json($result);
     }
+
+    /**
+     * 改变状态
+     */
+    public function changeStatus($id, Request $request)
+    {
+        $input = $request->input('data');
+        $result = AdminRepository::getInstance()->changeStatus($id, $input);
+        return response()->json($result);
+    }
 }

@@ -28,7 +28,7 @@ class AdminsTableSeeder extends Seeder
                 'email'         => 'admin' . $index . '@qq.com',
                 'password'      => Hash::make('123456'),
                 'permission_id' => $index,
-                'status'        => 1,
+                'status'        => 10,
             ];
         }
         App\Models\Admin::insert($data);
@@ -47,14 +47,14 @@ class AdminPermissionsTableSeeder extends Seeder
         \App\Models\AdminPermission::create([
             'text'          => '超级管理员',
             'include_menus' => '1,2,3,4,5,6,7',
-            'status'        => 1,
+            'status'        => 10,
         ]);
 
         foreach (range(1, 10) as $index) {
             \App\Models\AdminPermission::create([
                 'text'          => '管理员' . $index,
                 'include_menus' => $index,
-                'status'        => 1,
+                'status'        => 10,
             ]);
         }
     }

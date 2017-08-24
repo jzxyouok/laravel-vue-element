@@ -23,7 +23,6 @@
 <script>
   import Pagination from '../common/pagination';
   import TableHeader from '../common/tableHeader';
-  import {get, trashed, post} from '../../request.js';
   export default {
     components: {
       'pagination': Pagination,
@@ -41,72 +40,29 @@
       }
     },
     mounted() {
-        this.getList();
+        //this.getList();
     },
     methods: {
         getList() {
-          let _this = this;
-          let params = {'data': {'searchForm': _this.searchForm}};
-          get('/backend/permissions?page=' + _this.$refs.pagination.pageData.current_page, params).then(data => {
-            _this.tableData = data.data.lists.data;
-            _this.options.statusOptions = data.data.statusOptions;
-            _this.options.numOptions = data.data.numOptions;
-            _this.$refs.pagination.pageData.per_page = parseInt(data.data.lists.per_page);
-            _this.$refs.pagination.pageData.current_page = parseInt(data.data.lists.current_page);
-            _this.$refs.pagination.pageData.total = parseInt(data.data.lists.total);
-          })
+          
         },
         trashed(id) {
-          let _this = this;
-          _this.$confirm('确定删除这个权限等级吗').then(() => {
-            trashed('/backend/permissions/' + id).then(data => {
-                _this.$message.success(data.message);
-                Vue.removeOneData(_this.tableData, id);
-            });
-          });
+          
         },
         changeStatus(id, status) {
-          let _this = this;
-          _this.$confirm('确定更新这个权限等级吗').then(() => {
-            let params = {'data': {'permission_id': id, 'status': status}};
-            post('/backend/permissions/change-status', params).then(data => {
-              if(!data.status) {
-                _this.$message.error(data.message);
-                return false;
-              }
-              _this.$message.success(data.message);
-              _this.tableData.forEach(function(item) {
-                if(item.id == id) {
-                  item.status = status;
-                }
-              });
-            });
-          });
+          
         },
         formatNum(row) {
-          let text = '0';
-          if (this.options.numOptions[row.id]) {
-            return text = this.options.numOptions[row.id];
-          }
-          return text;
+          
         },
         formatMenus(row) {
-          let text = '-';
-          let arr = row.include_menus.split(",");
-          if (arr.length > 0) {
-            return text = arr.length;
-          }
-          return text;
+          
         },
         formatStatus(row) {
-          let text = '-';
-          if (this.options.statusOptions[row.status]) {
-            return text = this.options.statusOptions[row.status];
-          }
-          return text;
+          
         },
         toLink(link) {
-          this.$router.push({ path: link });
+          
         }
     }
   }

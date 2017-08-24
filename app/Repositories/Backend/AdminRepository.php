@@ -113,7 +113,20 @@ class AdminRepository extends BaseRepository
         return [
             'status'  => $deleted ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
             'data'    => $this->data,
-            'message' => $deleted ? '管理员删除成功' : '管理员删除失败',
+            'message' => $deleted ? '管理员删除成功' : '管理员删除失败'
+        ];
+    }
+
+    /**
+     * 改变状态
+     */
+    public function changeStatus($id, $data)
+    {
+        $result = Admin::where('id', $id)->update(['status' => $data['status']]);
+        return [
+            'status'  => $result ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
+            'data'    => $this->data,
+            'message' => $result ? '更改状态成功' : '更改状态失败'
         ];
     }
 }

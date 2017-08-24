@@ -3,10 +3,10 @@ import Main from './components/common/main.vue';
 /*首页*/
 import Index from './components/index/index.vue';
 /*管理员*/
-import Lists from './components/Admin/lists.vue';
-import Permissions from './components/index/index.vue';
-import Permissions_detail from './components/index/index.vue';
-import Permissions_create from './components/index/index.vue';
+import Lists from './components/admin/lists.vue';
+import Permission from './components/admin/permissions.vue';
+import Permission_detail from './components/index/index.vue';
+import Permission_create from './components/index/index.vue';
 export default [{
     path: '/login',
     component: Login,
@@ -38,17 +38,17 @@ export default [{
         component: Lists,
         name: '管理员列表'
     }, {
-        path: 'permissions',
-        component: Permissions,
+        path: 'permission',
+        component: Permission,
         name: '管理员权限'
     }, {
-        path: 'permissions/detail/:id',
-        component: Permissions_detail,
+        path: 'permission/detail/:id',
+        component: Permission_detail,
         name: '权限详情',
         hidden: true
     }, {
-        path: 'permissions/create',
-        component: Permissions_create,
+        path: 'permission/create',
+        component: Permission_create,
         name: '新增权限',
         hidden: true
     }]

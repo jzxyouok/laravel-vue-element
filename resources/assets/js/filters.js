@@ -28,7 +28,7 @@ export function parseTime(time, cFormat) {
  *  根据对象内容获取某一个字段
  * */
 export function formatByOptions(val, options, objKey, objValue, text = '-') {
-    if (!val) {
+    if (val == undefined) {
         return text;
     }
     options.forEach(function (item) {

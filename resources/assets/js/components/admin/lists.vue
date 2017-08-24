@@ -19,10 +19,11 @@
         <el-table-column prop="last_login_time" label="最后登录时间"></el-table-column>
         <el-table-column label="状态">
           <template scope="scope">
-              {{scope.row.status | formatByOptions(options.status, 'value', 'text')}}
+            <el-tag type="gray" v-show="scope.row.status != 10" @click.native="changeStatus(scope.row.id, 10)">{{scope.row.status | formatByOptions(options.status, 'value', 'text')}}</el-tag>
+            <el-tag type="primary" v-show="scope.row.status == 10" @click.native="changeStatus(scope.row.id, 0)">{{scope.row.status | formatByOptions(options.status, 'value', 'text')}}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column  align="center" label="操作" width="200">
+        <el-table-column  align="center" label="操作" width="190">
             <template scope="scope">
               <router-link to="/home"><el-button size="mini" type="info">操作记录</el-button></router-link>
               <el-button size="mini" type="success" @click="detail(scope.row.id)">编辑</el-button>
@@ -47,9 +48,13 @@
               <el-input type="password" v-model="form.repassword" placeholder="再次输入密码"></el-input>
           </el-form-item>
           <el-form-item label="管理员等级" prop="permission_id">
-            <el-select v-model="form.permission_id" placeholder="请选择管理员等级">
+            <el-select v-model="form.permission_id" @change="changePermission" placeholder="请选择管理员等级">
               <el-option v-for="item in options.permission" :key="item.id" :label="item.text" :value="item.id + ''"></el-option>
             </el-select>
+            <span style="margin-left: 5px;" v-show="loadPermissionBoxLoading">
+              <i class="el-icon-loading" v-show="loadPermissionIconLoading"></i> 权限节点<strong>87</strong>个，
+              <router-link to="/home">编辑</router-link>
+            </span>
           </el-form-item>
           <el-form-item label="状态" prop="status">
             <el-select v-model="form.status" placeholder="请选择管理员状态">
@@ -83,6 +88,8 @@
         formTitle: '',
         formVisible: false,
         tableData: [],
+        loadPermissionBoxLoading: false,
+        loadPermissionIconLoading: false,
         form: {
           id: '',
           username: '',
@@ -209,6 +216,26 @@
           this.rules.repassword = this.repasswordRules;
         }
         this.formVisible = true;
+      },
+      changeStatus(id, status) {
+        let _this = this;
+        let params = {'data': {'status': status}};
+        axios.post('/backend/admin/change-status/' + id, params).then(response => {
+          if (!response.data.status) {
+            _this.$message.error(response.data.message);
+            return false;
+          }
+          _this.$message.success(response.data.message);
+          _this.tableData.forEach((item, index) => {
+            if (item.id == id) {
+              item.status = status;
+            }
+          });
+        });
+      },
+      changePermission(val) {
+        this.loadPermissionBoxLoading = true;
+        this.loadPermissionIconLoading = true;
       }
     }
   }

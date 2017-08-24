@@ -46,7 +46,7 @@ class LoginController extends Controller
     // 登录界面
     public function index()
     {
-        return view('login');
+        return view('backend.index');
     }
 
     // 登录

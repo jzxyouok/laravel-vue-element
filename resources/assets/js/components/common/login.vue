@@ -111,7 +111,7 @@
               }
               _this.$message.success(message);
               sessionStorage.setItem('admin', JSON.stringify(data.admin));
-              _this.$router.push({ path: '/index' });
+              _this.$router.push({ path: '/index/index' });
             }).catch(function(err) {
               _this.loginSubmitLoading = false;
               _this.$message.error('网络连接失败');
