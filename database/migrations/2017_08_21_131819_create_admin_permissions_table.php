@@ -17,7 +17,7 @@ class CreateAdminPermissionsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('text', 15);
-            $table->text('include_menus')->comment('包含权限菜单id');
+            $table->text('permission_include')->comment('权限节点');
             $table->tinyInteger('status')->default(1)->comment('状态,0禁用，10启用');
             $table->timestamps();
             $table->softDeletes();
