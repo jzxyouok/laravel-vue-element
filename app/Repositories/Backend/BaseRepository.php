@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositorys\Backend;
+namespace App\Repositories\Backend;
 
 use App\Models\Dict;
 

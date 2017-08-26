@@ -7,13 +7,12 @@
                 <el-option v-for="item in options.permission" :key="item.id" :label="item.text" :value="item.id"></el-option>
             </el-select>
         </tableHeader>
+        <!-- 用户快捷窗口 -->
         <am-link-box ref="describtion"></am-link-box>
         <el-table :data="tableData" border style="width: 100%">
             <el-table-column label="用户名" class-name="am-link-target-td">
                 <template scope="scope">
-                    <div class="am-link-target">
-                        <a href="javascript:;" @click="getLinkDescribe(scope.row.id)">{{scope.row.username}}</a>
-                    </div>
+                    <a href="javascript:;" @click="getLinkDescribe(scope.row.id)">{{scope.row.username}}</a>
                 </template>
             </el-table-column>
             <el-table-column prop="email" label="电子邮件"></el-table-column>
@@ -26,14 +25,14 @@
             <el-table-column prop="last_login_time" label="最后登录时间"></el-table-column>
             <el-table-column align="center" label="状态">
                 <template scope="scope">
-                    <el-tag type="gray" v-show="scope.row.status != 10" @click.native="changeStatus(scope.row.id, 10)">{{scope.row.status | formatByOptions(options.status, 'value', 'text')}}</el-tag>
-                    <el-tag type="primary" v-show="scope.row.status == 10" @click.native="changeStatus(scope.row.id, 0)">{{scope.row.status | formatByOptions(options.status, 'value', 'text')}}</el-tag>
+                    <el-tag type="gray" v-show="scope.row.status != 10" @click.native="changeFieldValue('status', scope.row.id, 10)">{{scope.row.status | formatByOptions(options.status, 'value', 'text')}}</el-tag>
+                    <el-tag type="primary" v-show="scope.row.status == 10" @click.native="changeFieldValue('status', scope.row.id, 0)">{{scope.row.status | formatByOptions(options.status, 'value', 'text')}}</el-tag>
                 </template>
             </el-table-column>
             <el-table-column align="center" label="操作" width="190">
                 <template scope="scope">
                     <router-link to="/home">
-                        <el-button size="mini" type="info">操作记录</el-button>
+                        <el-button size="mini" type="info">查看详情</el-button>
                     </router-link>
                     <el-button size="mini" type="success" @click="detail(scope.row.id)">编辑</el-button>
                     <el-button size="mini" type="danger" @click="trashed(scope.row.id)">删除</el-button>
@@ -181,13 +180,13 @@ export default {
                     if (!window._this.form.id) {
                         var method = 'post',
                             url = '/backend/admins',
-                            params = { 'data': window._this.form };
+                            paramsData = { 'data': window._this.form };
                     } else {
                         var method = 'put',
                             url = '/backend/admins/' + window._this.form.id,
-                            params = { 'data': window._this.form };
+                            paramsData = { 'data': window._this.form };
                     }
-                    axios[method](url, params).then(response => {
+                    axios[method](url, paramsData).then(response => {
                         window._this.$store.state.submitLoading = false;
                         let data = response.data;
                         if (!data.status) {
@@ -229,9 +228,9 @@ export default {
             }
             window._this.formVisible = true;
         },
-        changeStatus(id, status) {
-            let params = { 'data': { 'status': status } };
-            axios.post('/backend/admin/change-status/' + id, params).then(response => {
+        changeFieldValue(field, id, value) {
+            let paramsData = { 'data': { 'field': field, 'value': value } };
+            axios.post('/backend/user/change-field-value/' + id, paramsData).then(response => {
                 if (!response.data.status) {
                     window._this.$message.error(response.data.message);
                     return false;
@@ -239,7 +238,7 @@ export default {
                 window._this.$message.success(response.data.message);
                 window._this.tableData.forEach((item, index) => {
                     if (item.id == id) {
-                        item.status = status;
+                        item[field] = value;
                     }
                 });
             });

@@ -58,7 +58,6 @@
   import Pagination from '../common/pagination';
   import TableHeader from '../common/tableHeader';
   import DialogFooter from '../common/dialogFooter';
-  import {get, trashed, save, fetch} from '../../request.js';
   export default {
     components: {
       'pagination': Pagination,

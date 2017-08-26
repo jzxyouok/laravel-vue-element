@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositorys\Backend;
+namespace App\Repositories\Backend;
 
 use DB;
 use Illuminate\Support\Facades\Auth;

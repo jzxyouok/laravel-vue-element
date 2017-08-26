@@ -1,224 +1,258 @@
 <template>
     <div class="app-container">
-      <tableHeader v-on:create="create" v-on:getList="getList">
-        <el-input v-model="searchForm.username" placeholder="请输入用户名" style="width: 200px;"></el-input>
-        <el-input v-model="searchForm.email" placeholder="请输入电子邮箱" style="width: 200px;"></el-input>
-        <el-select v-model="searchForm.status" placeholder="请选择状态">
-          <el-option label="全部" value=""></el-option>
-          <el-option v-for="item in options.statusOptions" :key="item.value" :label="item.text" :value="item.value"></el-option>
-        </el-select>
-      </tableHeader>
-      <el-table :data="tableData" border style="width: 100%">
-        <el-table-column prop="username" label="用户名"></el-table-column>
-        <el-table-column prop="email" label="电子邮件"></el-table-column>
-        <el-table-column prop="last_login_ip" label="最后登录ip"></el-table-column>
-        <el-table-column prop="last_login_time" label="最后登录时间"></el-table-column>
-        <el-table-column prop="active" label="是否激活" :formatter="formatActive"></el-table-column>
-        <el-table-column prop="status" label="状态" :formatter="formatStatus"></el-table-column>
-        <el-table-column  align="center" label="操作" width="250">
-            <template scope="scope">
-              <el-button size="small" type="info" @click="toLink('/user/detail/' + scope.row.id)">查看详情</el-button>
-              <el-button size="small" type="success" @click="modify(scope.row.id)">编辑</el-button>
-              <el-button size="small" type="danger" @click="trashed(scope.row.id)">删除</el-button>
-            </template>
-        </el-table-column>
-      </el-table>
-      <pagination ref="pagination" v-on:getList="getList"></pagination>
-      <el-dialog :title="formTitle" :visible.sync="formVisible" :close-on-click-modal="false" :close-on-press-escape="false">
-        <el-form class="small-space" :model="form" :rules="rules" ref="form" label-position="left" label-width="100px">
-          <input type="hidden" v-model="form.id">
-          <el-form-item label="用户名" prop="username">
-              <el-input v-model="form.username" placeholder="登录账号，2-15个字符"></el-input>
-          </el-form-item>
-          <el-form-item label="电子邮件" prop="email">
-              <el-input v-model="form.email" placeholder="电子邮件，使用常用的邮箱"></el-input>
-          </el-form-item>
-          <el-form-item label="密码" prop="password">
-              <el-input type="password" v-model="form.password" placeholder="登录密码，6-30个字符"></el-input>
-          </el-form-item>
-          <el-form-item label="确认密码" prop="repassword">
-              <el-input type="password" v-model="form.repassword" placeholder="再次输入密码"></el-input>
-          </el-form-item>
-          <el-form-item label="是否激活" prop="active">
-            <el-select v-model="form.active" placeholder="请选择用户是否激活">
-              <el-option v-for="item in options.activeOptions" :key="item.value" :label="item.text" :value="item.value"></el-option>
+        <tableHeader v-on:create="create" v-on:getList="getList">
+            <el-input v-model="searchForm.username" placeholder="请输入用户名" style="width: 200px;"></el-input>
+            <el-input v-model="searchForm.email" placeholder="请输入电子邮箱" style="width: 200px;"></el-input>
+            <el-select v-model="searchForm.status" placeholder="请选择状态">
+                <el-option label="全部" value=""></el-option>
+                <el-option v-for="item in options.status" :key="item.value" :label="item.text" :value="item.value"></el-option>
             </el-select>
-          </el-form-item>
-          <el-form-item label="状态" prop="status">
-            <el-select v-model="form.status" placeholder="请选择用户状态">
-              <el-option v-for="item in options.statusOptions" :key="item.value" :label="item.text" :value="item.value"></el-option>
-            </el-select>
-          </el-form-item>
-        </el-form>
-        <dialogFooter v-on:submit="submit(formName = 'form')" v-on:close="close"></dialogFooter>
-      </el-dialog>
+        </tableHeader>
+        <!-- 用户快捷窗口 -->
+        <am-link-box ref="describtion"></am-link-box>
+        <el-table :data="tableData" border style="width: 100%">
+            <el-table-column label="用户名">
+                <template scope="scope">
+                    <a href="javascript:;" @click="getLinkDescribe(scope.row.id)">{{scope.row.username}}</a>
+                </template>
+            </el-table-column>
+            <el-table-column prop="email" label="电子邮件"></el-table-column>
+            <el-table-column prop="last_login_ip" label="最后登录ip"></el-table-column>
+            <el-table-column prop="last_login_time" label="最后登录时间"></el-table-column>
+            <el-table-column align="center" label="是否激活">
+                <template scope="scope">
+                    <el-tag type="gray" v-show="scope.row.active != 10" @click.native="changeFieldValue('active', scope.row.id, 10)">{{scope.row.active | formatByOptions(options.active, 'value', 'text')}}</el-tag>
+                    <el-tag type="primary" v-show="scope.row.active == 10" @click.native="changeFieldValue('active', scope.row.id, 0)">{{scope.row.active | formatByOptions(options.active, 'value', 'text')}}</el-tag>
+                </template>
+            </el-table-column>
+            <el-table-column align="center" label="状态">
+                <template scope="scope">
+                    <el-tag type="gray" v-show="scope.row.status != 10" @click.native="changeFieldValue('status', scope.row.id, 10)">{{scope.row.status | formatByOptions(options.status, 'value', 'text')}}</el-tag>
+                    <el-tag type="primary" v-show="scope.row.status == 10" @click.native="changeFieldValue('status', scope.row.id, 0)">{{scope.row.status | formatByOptions(options.status, 'value', 'text')}}</el-tag>
+                </template>
+            </el-table-column>
+            <el-table-column align="center" label="操作" width="250">
+                <template scope="scope">
+                    <router-link to="/home">
+                        <el-button size="mini" type="info">查看详情</el-button>
+                    </router-link>
+                    <el-button size="mini" type="success" @click="detail(scope.row.id)">编辑</el-button>
+                    <el-button size="mini" type="danger" @click="trashed(scope.row.id)">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+        <pagination ref="pagination" v-on:getList="getList"></pagination>
+        <el-dialog :title="formTitle" :visible.sync="formVisible" :close-on-click-modal="false" :close-on-press-escape="false">
+            <el-form class="small-space" :model="form" :rules="rules" ref="form" label-position="left" label-width="100px">
+                <input type="hidden" v-model="form.id">
+                <el-form-item label="用户名" prop="username">
+                    <el-input v-model="form.username" placeholder="登录账号，2-15个字符"></el-input>
+                </el-form-item>
+                <el-form-item label="电子邮件" prop="email">
+                    <el-input v-model="form.email" placeholder="电子邮件，使用常用的邮箱"></el-input>
+                </el-form-item>
+                <el-form-item label="密码" prop="password">
+                    <el-input type="password" v-model="form.password" placeholder="登录密码，6-30个字符"></el-input>
+                </el-form-item>
+                <el-form-item label="确认密码" prop="repassword">
+                    <el-input type="password" v-model="form.repassword" placeholder="再次输入密码"></el-input>
+                </el-form-item>
+                <el-form-item label="是否激活" prop="active">
+                    <el-select v-model="form.active" placeholder="请选择用户是否激活">
+                        <el-option v-for="item in options.active" :key="item.value" :label="item.text" :value="item.value"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="状态" prop="status">
+                    <el-select v-model="form.status" placeholder="请选择用户状态">
+                        <el-option v-for="item in options.status" :key="item.value" :label="item.text" :value="item.value"></el-option>
+                    </el-select>
+                </el-form-item>
+            </el-form>
+            <dialogFooter v-on:submit="submit(formName = 'form')" v-on:close="close"></dialogFooter>
+        </el-dialog>
     </div>
 </template>
 <script>
-  import Pagination from '../common/pagination';
-  import TableHeader from '../common/tableHeader';
-  import DialogFooter from '../common/dialogFooter';
-  import {get, trashed, save, fetch} from '../../request.js';
-  export default {
+import Pagination from '../common/pagination';
+import TableHeader from '../common/tableHeader';
+import DialogFooter from '../common/dialogFooter';
+import amLinkBox from '../common/amLinkBox';
+export default {
     components: {
-      'pagination': Pagination,
-      'tableHeader': TableHeader,
-      'dialogFooter': DialogFooter,
+        'pagination': Pagination,
+        'tableHeader': TableHeader,
+        'dialogFooter': DialogFooter,
+        'am-link-box': amLinkBox
     },
     data() {
-      var checkRepassword = (rule, value, callback) => {
-        if (value !== this.form.password) {
-          callback(new Error('密码输入不一致!'));
-        } else {
-          callback();
+        var checkRepassword = (rule, value, callback) => {
+            if (value !== this.form.password) {
+                callback(new Error('密码输入不一致!'));
+            } else {
+                callback();
+            }
+        };
+        return {
+            formTitle: '',
+            formVisible: false,
+            tableData: [],
+            form: {
+                id: '',
+                username: '',
+                email: '',
+                password: '',
+                repassword: '',
+                active: '',
+                status: ''
+            },
+            searchForm: {
+                username: '',
+                email: '',
+                status: '',
+            },
+            options: {
+                status: '',
+                active: ''
+            },
+            rules: {
+                username: [
+                    { required: true, message: '请输入用户名', trigger: 'blur' },
+                    { min: 2, max: 15, message: '长度在 2 到 15 个字符', trigger: 'blur' }
+                ],
+                email: [
+                    { required: true, message: '请输入登录邮箱', trigger: 'blur' },
+                    { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur,change' }
+                ],
+                active: [
+                    { required: true, message: '请选择用户是否激活', trigger: 'blur' },
+                ],
+                status: [
+                    { required: true, message: '请选择用户状态', trigger: 'blur' },
+                ]
+            },
+            passwordRules: [
+                { required: true, message: '请输入登录密码', trigger: 'blur' },
+                { min: 6, max: 30, message: '长度在 6 到 30 个字符', trigger: 'blur' }
+            ],
+            repasswordRules: [
+                { required: true, message: '请再次输入密码', trigger: 'blur' },
+                { validator: checkRepassword, trigger: 'blur' }
+            ],
         }
-      };
-      return {
-        formTitle: '',
-        formVisible: false,
-        tableData: [],
-        form: {
-            id: '',
-            username: '',
-            email: '',
-            password: '',
-            repassword: '',
-            active: '',
-            status: ''
-        },
-        searchForm: {
-          username: '',
-          email: '',
-          status: '',
-        },
-        options: {
-          statusOptions: '',
-          activeOptions: ''
-        },
-        rules: {
-          username: [
-            { required: true, message: '请输入用户名', trigger: 'blur' },
-            { min: 2, max: 15, message: '长度在 2 到 15 个字符', trigger: 'blur' }
-          ],
-          email: [
-            { required: true, message: '请输入登录邮箱', trigger: 'blur' },
-            { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur,change' }
-          ],
-          active: [
-            { required: true, message: '请选择用户是否激活', trigger: 'blur' },
-          ],
-          status: [
-            { required: true, message: '请选择用户状态', trigger: 'blur' },
-          ]
-        },
-        passwordRules: [
-          { required: true, message: '请输入登录密码', trigger: 'blur' },
-          { min: 6, max: 30, message: '长度在 6 到 30 个字符', trigger: 'blur' }
-        ],
-        repasswordRules: [
-          { required: true, message: '请再次输入密码', trigger: 'blur' },
-          { validator: checkRepassword, trigger: 'blur' }
-        ],
-      }
     },
     mounted() {
-      this.getList();
+        window._this = this;
+        window._this.getList();
     },
     methods: {
-      getList() {
-        let _this = this;
-        let params = {'data': {'searchForm': _this.searchForm}};
-        get('/backend/users?page=' + _this.$refs.pagination.pageData.current_page, params).then(data => {
-          _this.tableData = data.data.lists.data;
-          _this.options.statusOptions = data.data.statusOptions;
-          _this.options.activeOptions = data.data.activeOptions;
-          _this.$refs.pagination.pageData.per_page = parseInt(data.data.lists.per_page);
-          _this.$refs.pagination.pageData.current_page = parseInt(data.data.lists.current_page);
-          _this.$refs.pagination.pageData.total = parseInt(data.data.lists.total);
-        })
-      },
-      modify(id) {
-        let _this = this;
-        _this.formTitle = '修改';
-        delete _this.rules.password;
-        delete _this.rules.repassword;
-        _this.tableData.forEach (function (item) {
-          if (item.id === id) {
-            item.password = '';
-            _this.form = Vue.copyObj(item);
-            _this.formVisible = true;
-            return true;
-          }
-        });
-      },
-      submit(formName) {
-        let _this = this;
-        _this.$refs[formName].validate((valid) => {
-          if (valid) {
-            _this.$store.state.submitLoading = true;
-            if (!_this.form.id) {
-              var method = 'post', url = '/backend/users', params = {'data': _this.form};
-            } else {
-              var method = 'put', url = '/backend/users/' + _this.form.id, params = {'data': _this.form};
-            }
-            save(method, url, params).then(data => {
-              _this.$store.state.submitLoading = false;
-              if(!data.status) {
-                _this.$message.error(data.message);
-                return false;
-              }
-              _this.$message.success(data.message);
-              _this.formVisible = false;
-              _this.getList();
+        getList() {
+            let paramsData = { 'data': { 'searchForm': window._this.searchForm } };
+            axios.get('/backend/users?page=' + window._this.$refs.pagination.pageData.current_page, { params: paramsData }).then(response => {
+                let data = response.data;
+                window._this.tableData = data.data.lists.data;
+                window._this.options.active = data.dicts.active;
+                window._this.options.status = data.dicts.status;
+                window._this.$refs.pagination.pageData.per_page = parseInt(data.data.lists.per_page);
+                window._this.$refs.pagination.pageData.current_page = parseInt(data.data.lists.current_page);
+                window._this.$refs.pagination.pageData.total = parseInt(data.data.lists.total);
+            })
+        },
+        modify(id) {
+            window._this.formTitle = '修改';
+            delete window._this.rules.password;
+            delete window._this.rules.repassword;
+            window._this.tableData.forEach(function(item) {
+                if (item.id === id) {
+                    item.password = '';
+                    window._this.form = Vue.copyObj(item);
+                    window._this.formVisible = true;
+                    return true;
+                }
             });
-          }
-        });
-      },
-      trashed(id) {
-        let _this = this;
-        _this.$confirm('确定删除这个用户吗').then(() => {
-          trashed('/backend/users/' + id).then(data => {
-              _this.$message.success(data.message);
-              Vue.removeOneData(_this.tableData, id);
-          });
-        });
-      },
-      close() {
-        this.formVisible = false;
-        Vue.resetForm(this.form);
-        this.$refs.form.resetFields();
-      },
-      create() {
-        this.formTitle = '添加用户';
-        if(!this.rules.password) {
-          this.rules.password = this.passwordRules;
+        },
+        submit(formName) {
+            window._this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    window._this.$store.state.submitLoading = true;
+                    if (!window._this.form.id) {
+                        var method = 'post',
+                            url = '/backend/users',
+                            paramsData = { 'data': window._this.form };
+                    } else {
+                        var method = 'put',
+                            url = '/backend/users/' + window._this.form.id,
+                            paramsData = { 'data': window._this.form };
+                    }
+                    axios[method](url, paramsData).then(data => {
+                        window._this.$store.state.submitLoading = false;
+                        if (!data.status) {
+                            window._this.$message.error(data.message);
+                            return false;
+                        }
+                        window._this.$message.success(data.message);
+                        window._this.formVisible = false;
+                        window._this.getList();
+                    });
+                }
+            });
+        },
+        trashed(id) {
+            window._this.$confirm('确定删除这个用户吗').then(() => {
+                axios.delete('/backend/users/' + id).then(data => {
+                    window._this.$message.success(data.message);
+                    Vue.removeOneData(window._this.tableData, id);
+                });
+            });
+        },
+        close() {
+            this.formVisible = false;
+            Vue.resetForm(this.form);
+            this.$refs.form.resetFields();
+        },
+        create() {
+            this.formTitle = '添加用户';
+            if (!this.rules.password) {
+                this.rules.password = this.passwordRules;
+            }
+            if (!this.rules.repassword) {
+                this.rules.repassword = this.repasswordRules;
+            }
+            this.formVisible = true;
+        },
+        toLink(url) {
+            this.$router.push({ path: url });
+        },
+        changeFieldValue(field, id, value) {
+            let paramsData = { 'data': { 'field': field, 'value': value } };
+            axios.post('/backend/user/change-field-value/' + id, paramsData).then(response => {
+                if (!response.data.status) {
+                    window._this.$message.error(response.data.message);
+                    return false;
+                }
+                window._this.$message.success(response.data.message);
+                window._this.tableData.forEach((item, index) => {
+                    if (item.id == id) {
+                        item[field] = value;
+                    }
+                });
+            });
+        },
+        getLinkDescribe(id) {
+            document.getElementById('am-link-container').style.left = (Vue.getX(event) + 30) + 'px';
+            document.getElementById('am-link-container').style.top = (Vue.getY(event) - 80) + 'px';
+            //重复点击
+            if (window._this.$refs.describtion.describeData.id == id && window._this.$refs.describtion.describeData.show) {
+                window._this.$refs.describtion.describeData.show = false;
+                return false;
+            }
+            window._this.tableData.forEach(function(item) {
+                if (item.id === id) {
+                    window._this.$refs.describtion.describeData.id = item.id;
+                    window._this.$refs.describtion.describeData.username = item.username;
+                    window._this.$refs.describtion.describeData.show = true;
+                }
+            });
         }
-        if(!this.rules.repassword) {
-          this.rules.repassword = this.repasswordRules;
-        }
-        this.formVisible = true;
-      },
-      formatStatus(row) {
-        let text = '-';
-        this.options.statusOptions.forEach(function(item) {
-          if(row.status == item.value) {
-            return text = item.text;
-          }
-        });
-        return text;
-      },
-      formatActive(row) {
-        let text = '-';
-        this.options.activeOptions.forEach(function(item) {
-          if(row.active == item.value) {
-            return text = item.text;
-          }
-        });
-        return text;
-      },
-      toLink(url) {
-        this.$router.push({ path: url });
-      }
     }
-  }
+}
 </script>

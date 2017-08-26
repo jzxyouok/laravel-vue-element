@@ -1,10 +1,13 @@
 <?php
+
 namespace App\Http\Controllers\Backend;
 
-use App\Repositories\Backend\AdminRepository;
+use App\Http\Controllers\Controller;
+use App\Repositories\Backend\UserRepository;
 use Illuminate\Http\Request;
 
-class AdminController extends BaseController
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,7 @@ class AdminController extends BaseController
     public function index(Request $request)
     {
         $input  = json_decode($request->input('data'), true);
-        $result = AdminRepository::getInstance()->lists($input);
+        $result = UserRepository::getInstance()->lists($input);
         return response()->json($result);
     }
 
@@ -36,9 +39,7 @@ class AdminController extends BaseController
      */
     public function store(Request $request)
     {
-        $input  = $request->input('data');
-        $result = AdminRepository::getInstance()->create($input);
-        return response()->json($result);
+        //
     }
 
     /**
@@ -49,8 +50,7 @@ class AdminController extends BaseController
      */
     public function show($id)
     {
-        $result = AdminRepository::getInstance()->show($id);
-        return response()->json($result);
+        //
     }
 
     /**
@@ -73,9 +73,7 @@ class AdminController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        $input  = $request->input('data');
-        $result = AdminRepository::getInstance()->update($input, $id);
-        return response()->json($result);
+        //
     }
 
     /**
@@ -86,38 +84,13 @@ class AdminController extends BaseController
      */
     public function destroy($id)
     {
-        $result = AdminRepository::getInstance()->delete($id);
-        return response()->json($result);
+        //
     }
 
-    /*
-     * 获取options
-     */
-    public function options()
-    {
-        $result = AdminRepository::getInstance()->getOptions();
-        return response()->json($result);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function out(Request $request)
-    {
-        $input  = json_decode($request->input('data'), true);
-        $result = AdminRepository::getInstance()->out($input);
-        return response()->json($result);
-    }
-
-    /**
-     * 改变状态
-     */
-    public function changeStatus($id, Request $request)
+    public function changeFieldValue($id, Request $request)
     {
         $input  = $request->input('data');
-        $result = AdminRepository::getInstance()->changeStatus($id, $input);
+        $result = UserRepository::getInstance()->changeFieldValue($id, $input);
         return response()->json($result);
     }
 }

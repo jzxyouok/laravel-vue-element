@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminsTableSeeder::class);
         $this->call(AdminPermissionsTableSeeder::class);
         $this->call(DictsTableSeeder::class);
+        $this->call(UserTableSeeder::class);
     }
 }
 
@@ -73,7 +74,41 @@ class DictsTableSeeder extends Seeder
             //状态
             ['code' => 'status', 'code_name' => '状态', 'value' => 0, 'text_en' => 'is_disabled', 'text' => '禁用'],
             ['code' => 'status', 'code_name' => '状态', 'value' => 10, 'text_en' => 'is_normal', 'text' => '启用'],
+            //是否激活
+            ['code' => 'active', 'code_name' => '是否激活', 'value' => 0, 'text_en' => 'not_actived', 'text' => '未激活'],
+            ['code' => 'active', 'code_name' => '是否激活', 'value' => 10, 'text_en' => 'is_actived', 'text' => '已激活'],
         ];
         \App\Models\Dict::insert($data);
+    }
+}
+class UserTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        \App\Models\User::create([
+            'username' => 'test',
+            'email' => '292304400@qq.com',
+            'face' => 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png',
+            'password' => Hash::make('123123'),
+            'active' => 10,
+            'status' => 10
+        ]);
+
+        foreach (range(1, 100) as $index) {
+            \App\Models\User::create([
+                'username' => 'test' . $index,
+                'email' => 'user' . $index . '@qq.com',
+                'face' => 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png',
+                'password' => Hash::make('123123'),
+                'active' => 10,
+                'status' => 10
+            ]);
+        }
+
     }
 }
