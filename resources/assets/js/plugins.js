@@ -1,6 +1,6 @@
 export default {
-    install: function (Vue, options) {
-        Vue.resetForm = function (form) {
+    install: function(Vue, options) {
+        Vue.resetForm = function(form) {
             for (let key in form) {
                 if (form[key] instanceof Array) {
                     form[key] = [];
@@ -11,9 +11,9 @@ export default {
                 }
             }
         };
-        Vue.copyObj = function (obj, newobj = {}) {
-            for ( var attr in obj) {
-                if(obj[attr] instanceof Object) {
+        Vue.copyObj = function(obj, newobj = {}) {
+            for (var attr in obj) {
+                if (obj[attr] instanceof Object) {
                     newobj = Vue.copyObj(obj[attr], newobj);
                 } else {
                     newobj[attr] = '' + obj[attr];
@@ -21,11 +21,11 @@ export default {
             }
             return newobj;
         };
-        Vue.formatDate = function (time, format) {
+        Vue.formatDate = function(time, format) {
             var t = new Date(time);
-            var tf = function(i){return (i < 10 ? '0' : '') + i};
-            return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function(a){
-                switch(a){
+            var tf = function(i) { return (i < 10 ? '0' : '') + i };
+            return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function(a) {
+                switch (a) {
                     case 'yyyy':
                         return tf(t.getFullYear());
                         break;
@@ -47,22 +47,40 @@ export default {
                 }
             })
         };
-        Vue.findOne = function (data, value, key = 'id'){
+        Vue.findOne = function(data, value, key = 'id') {
             let result = '';
-            data.forEach(function (item) {
-                if (item[key] === value){
+            data.forEach(function(item) {
+                if (item[key] === value) {
                     return result = item;
                 }
             });
             return result;
         };
-        Vue.removeOneData = function (data, value, key = 'id'){
-            data.forEach(function (item, index) {
-                if (item[key] === value){
+        Vue.removeOneData = function(data, value, key = 'id') {
+            data.forEach(function(item, index) {
+                if (item[key] === value) {
                     data.splice(index, 1);
                     return item;
                 }
             });
+        };
+
+        Vue.mousePosition = function(evt) {
+            evt = evt || window.event;
+            return { x: evt.clientX, y: evt.clientY };
+        };
+
+        //获取X轴坐标  
+        Vue.getX = function(evt) {
+            evt = evt || window.event;
+            return Vue.mousePosition(evt).x;
+        };
+
+        //获取Y轴坐标  
+
+        Vue.getY = function(evt) {
+            evt = evt || window.event;
+            return Vue.mousePosition(evt).y;
         };
     }
 };

@@ -22,12 +22,13 @@ class AdminsTableSeeder extends Seeder
     public function run()
     {
         $data = [];
-        foreach (range(1, 10) as $index) {
+        foreach (range(1, 100) as $index) {
             $data[] = [
                 'username'      => 'admin' . $index,
                 'email'         => 'admin' . $index . '@qq.com',
                 'password'      => Hash::make('123456'),
                 'permission_id' => $index,
+                'permission_include' => $index,
                 'status'        => 10,
             ];
         }
@@ -46,14 +47,14 @@ class AdminPermissionsTableSeeder extends Seeder
     {
         \App\Models\AdminPermission::create([
             'text'          => '超级管理员',
-            'include_menus' => '1,2,3,4,5,6,7',
+            'permission_include' => '1,2,3,4,5,6,7',
             'status'        => 10,
         ]);
 
         foreach (range(1, 10) as $index) {
             \App\Models\AdminPermission::create([
                 'text'          => '管理员' . $index,
-                'include_menus' => $index,
+                'permission_include' => $index,
                 'status'        => 10,
             ]);
         }

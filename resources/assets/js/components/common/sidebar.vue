@@ -11,7 +11,7 @@
                     </el-menu-item>
                 </router-link>
             </el-submenu>
-            <router-link v-if="item.noDropdown&&item.children.length>0"  :to="item.path+'/'+item.children[0].path">
+            <router-link v-if="item.noDropdown&&item.children.length>0" :to="item.path+'/'+item.children[0].path">
                 <el-menu-item :index="item.path+'/'+item.children[0].path">
                     <i :class="item.iconCls"></i>&nbsp;&nbsp;&nbsp;{{item.children[0].name}}
                 </el-menu-item>
@@ -20,17 +20,17 @@
     </el-menu>
 </template>
 <script>
-    export default {
-      name: 'Sidebar',
-      data() {
+export default {
+    name: 'Sidebar',
+    data() {
         return {
             permission_routers: '',
         };
-      },
-      mounted() {
+    },
+    mounted() {
         //this.getMenu();
-      },
-      methods: {
+    },
+    methods: {
         getMenu: function() {
             axios.get('backend/menu-list').then(function(res) {
                 permission_routers = res.data.lists;
@@ -38,22 +38,26 @@
 
             });
         }
-      }
     }
+}
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-    .el-menu {
-        min-height: 100%;
-        border-radius: 0;
-    }
-    .el-submenu .el-menu-item:active, .el-submenu .el-menu-item:hover {
-        text-decoration: none;
-    }
-    .wscn-icon {
-        margin-right: 10px;
-    }
-    .hideSidebar .title-link{
-        display: inline-block;
-        padding-left: 10px;
-    }
+.el-menu {
+    min-height: 100%;
+    border-radius: 0;
+}
+
+.el-submenu .el-menu-item:active,
+.el-submenu .el-menu-item:hover {
+    text-decoration: none;
+}
+
+.wscn-icon {
+    margin-right: 10px;
+}
+
+.hideSidebar .title-link {
+    display: inline-block;
+    padding-left: 10px;
+}
 </style>

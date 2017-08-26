@@ -16,7 +16,6 @@ const { mix } = require('laravel-mix');
  * 后台
  */
  mix.styles([
-    'node_modules/element-ui/lib/theme-default/index.css', 
     'node_modules/font-awesome/css/font-awesome.min.css'
 ], 'public/css/backend/vendor.css').version();
 
