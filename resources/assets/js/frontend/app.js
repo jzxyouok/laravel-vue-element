@@ -25,8 +25,14 @@ Object.keys(filters).forEach(key => {
 //vuex
 const store = new Vuex.Store({
     state: {
-        submitLoading: false
+        submitLoading: false,
+        menuActive: '1'
     },
+    mutations: {
+        changeMenuActive(state, active) {
+            state.menuActive = active;
+        },
+    }
 });
 //vue-router
 const router = new VueRouter({

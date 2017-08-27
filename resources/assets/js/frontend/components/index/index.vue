@@ -30,7 +30,7 @@
                                             <p>laravel基础教程（<strong>53</strong>课时）</p>
                                             <div class="bottom clearfix">
                                                 <time class="time">2017-07-21</time>
-                                                <el-button type="info"size="small" class="button" style="float: right;">免费观看</el-button>
+                                                <el-button type="info" size="small" class="button" style="float: right;">免费观看</el-button>
                                             </div>
                                         </div>
                                     </el-card>

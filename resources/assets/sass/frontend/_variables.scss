@@ -22,12 +22,17 @@ body {
     height: 100%;
     background: #F9FAFC;
 }
+
 .content-container {
     width: 100%;
     max-width: 1280px;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 20px 10px;
+    background: #fff;
+    border: 1px solid #d1dbe5;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
 }
+
 .web-header {
     background-color: #324157;
     .web-logo {
@@ -55,9 +60,14 @@ body {
 }
 
 
+
+
 /* 首页 */
 
 .index-container {
+    .content-container {
+        border: none;
+    }
     .banner {
         background-color: #475669;
         color: #fff;
@@ -95,6 +105,12 @@ body {
                 transform: rotate(360deg);
             }
         }
+    }
+}
+
+.video-container {
+    .video-box {
+        margin-top: 30px;
     }
 }
 

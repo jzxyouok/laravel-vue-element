@@ -11,7 +11,7 @@
                     <el-col :xs="0" :sm="11" :md="11" :lg="10">
                         <div class="web-search">
                             <el-input placeholder="请输入内容" v-model="searchContent">
-                                <el-select v-model="select" slot="prepend" placeholder="请选择">
+                                <el-select v-model="searchSelect" slot="prepend" placeholder="请选择">
                                     <el-option label="餐厅名" value="1"></el-option>
                                     <el-option label="订单号" value="2"></el-option>
                                     <el-option label="用户电话" value="3"></el-option>
@@ -22,9 +22,9 @@
                     </el-col>
                     <el-col :xs="24" :sm="13" :md="13" :lg="14">
                         <div class="web-menu">
-                            <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-                                <el-menu-item index="1">首页</el-menu-item>
-                                <el-menu-item index="2">视频列表</el-menu-item>
+                            <el-menu theme="dark" :default-active="$store.state.menuActive" class="el-menu-demo" mode="horizontal" @select="menuSelect">
+                                <router-link to="/"><el-menu-item index="1">首页</el-menu-item></router-link>
+                                <router-link to="/video"><el-menu-item index="2">视频列表</el-menu-item></router-link>
                                 <el-submenu index="3">
                                     <template slot="title">文章列表</template>
                                     <el-menu-item index="3-1">前端技术</el-menu-item>
@@ -62,14 +62,14 @@
 export default {
     data() {
         return {
-            activeIndex: '1',
+            menuDefaultActive: '1',
             searchContent: '',
-            select: '',
+            searchSelect: '',
         };
     },
     methods: {
-        handleSelect(key, keyPath) {
-            console.log(key, keyPath);
+        menuSelect(key, keyPath) {
+            
         }
     }
 }
