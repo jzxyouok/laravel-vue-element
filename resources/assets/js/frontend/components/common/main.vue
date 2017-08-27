@@ -1,14 +1,14 @@
 <template>
     <div class="container">
         <div class="web-header">
-            <el-row :gutter="10">
-                <el-col :xs="6" :sm="5" :md="4" :lg="3">
+            <el-row :gutter="10" style="margin: 0;">
+                <el-col :xs="6" :sm="5" :md="4" :lg="4">
                     <div class="web-logo">
                         <router-link to="/">quickzz博客</router-link>
                     </div>
                 </el-col>
-                <el-col :xs="18" :sm="19" :md="20" :lg="21">
-                    <el-col :xs="0" :sm="11" :md="11" :lg="11">
+                <el-col :xs="18" :sm="19" :md="20" :lg="20">
+                    <el-col :xs="0" :sm="11" :md="11" :lg="10">
                         <div class="web-search">
                             <el-input placeholder="请输入内容" v-model="searchContent">
                                 <el-select v-model="select" slot="prepend" placeholder="请选择">
@@ -20,7 +20,7 @@
                             </el-input>
                         </div>
                     </el-col>
-                    <el-col :xs="24" :sm="13" :md="13" :lg="13">
+                    <el-col :xs="24" :sm="13" :md="13" :lg="14">
                         <div class="web-menu">
                             <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
                                 <el-menu-item index="1">首页</el-menu-item>

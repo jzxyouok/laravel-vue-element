@@ -20,12 +20,14 @@ h5 {
 html,
 body {
     height: 100%;
+    background: #F9FAFC;
 }
-
-body {
-    overflow: hidden;
+.content-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px 10px;
 }
-
 .web-header {
     background-color: #324157;
     .web-logo {
@@ -56,8 +58,8 @@ body {
 /* 首页 */
 
 .index-container {
-    background-color: #475669;
     .banner {
+        background-color: #475669;
         color: #fff;
         font-weight: bold;
         .introduce {

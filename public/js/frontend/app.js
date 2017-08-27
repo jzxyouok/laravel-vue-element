@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 183);
+/******/ 	return __webpack_require__(__webpack_require__.s = 185);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -11106,33 +11106,6 @@ var getValueByPath = exports.getValueByPath = function getValueByPath(object, pr
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* eslint-disable no-undefined */
-
-var throttle = __webpack_require__(33);
-
-/**
- * Debounce execution of a function. Debouncing, unlike throttling,
- * guarantees that a function is only executed a single time, either at the
- * very beginning of a series of calls, or at the very end.
- *
- * @param  {Number}   delay         A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
- * @param  {Boolean}  atBegin       Optional, defaults to false. If atBegin is false or unspecified, callback will only be executed `delay` milliseconds
- *                                  after the last debounced-function call. If atBegin is true, callback will be executed only at the first debounced-function call.
- *                                  (After the throttled-function has not been called for `delay` milliseconds, the internal counter is reset).
- * @param  {Function} callback      A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
- *                                  to `callback` when the debounced-function is executed.
- *
- * @return {Function} A new, debounced function.
- */
-module.exports = function ( delay, atBegin, callback ) {
-	return callback === undefined ? throttle(delay, atBegin, false) : throttle(delay, callback, atBegin !== false);
-};
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
 /*
   MIT License http://www.opensource.org/licenses/mit-license.php
   Author Tobias Koppers @sokra
@@ -11348,6 +11321,33 @@ function applyToTag (styleElement, obj) {
     styleElement.appendChild(document.createTextNode(css))
   }
 }
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* eslint-disable no-undefined */
+
+var throttle = __webpack_require__(33);
+
+/**
+ * Debounce execution of a function. Debouncing, unlike throttling,
+ * guarantees that a function is only executed a single time, either at the
+ * very beginning of a series of calls, or at the very end.
+ *
+ * @param  {Number}   delay         A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
+ * @param  {Boolean}  atBegin       Optional, defaults to false. If atBegin is false or unspecified, callback will only be executed `delay` milliseconds
+ *                                  after the last debounced-function call. If atBegin is true, callback will be executed only at the first debounced-function call.
+ *                                  (After the throttled-function has not been called for `delay` milliseconds, the internal counter is reset).
+ * @param  {Function} callback      A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
+ *                                  to `callback` when the debounced-function is executed.
+ *
+ * @return {Function} A new, debounced function.
+ */
+module.exports = function ( delay, atBegin, callback ) {
+	return callback === undefined ? throttle(delay, atBegin, false) : throttle(delay, callback, atBegin !== false);
+};
 
 
 /***/ }),
@@ -21841,7 +21841,7 @@ module.exports =
 /* 69 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(9);
+	module.exports = __webpack_require__(10);
 
 /***/ },
 /* 70 */
@@ -45936,7 +45936,7 @@ module.exports =
 /***/ 63:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(9);
+	module.exports = __webpack_require__(10);
 
 /***/ },
 
@@ -47545,7 +47545,7 @@ module.exports =
 /***/ 63:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(9);
+	module.exports = __webpack_require__(10);
 
 /***/ },
 
@@ -48993,7 +48993,7 @@ module.exports =
 /***/ 63:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(9);
+	module.exports = __webpack_require__(10);
 
 /***/ },
 
@@ -55497,8 +55497,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {};
+    }
+});
 
 /***/ }),
 /* 132 */,
@@ -55659,9 +55694,9 @@ function formatByOptions(val, options, objKey, objValue) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_common_main_vue__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_common_main_vue__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_common_main_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_common_main_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_index_index_vue__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_index_index_vue__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_index_index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_index_index_vue__);
 
 /*首页*/
@@ -55693,7 +55728,13 @@ exports.push([module.i, "", ""]);
 /***/ }),
 /* 141 */,
 /* 142 */,
-/* 143 */,
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(6)();
+exports.push([module.i, "\n.el-row[data-v-70bb44f4] { margin-bottom: 20px;\n&:last-child { margin-bottom: 0;\n}\n}\n", ""]);
+
+/***/ }),
 /* 144 */,
 /* 145 */,
 /* 146 */,
@@ -55705,19 +55746,20 @@ exports.push([module.i, "", ""]);
 /* 152 */,
 /* 153 */,
 /* 154 */,
-/* 155 */
+/* 155 */,
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(174)
 __webpack_require__(175)
+__webpack_require__(176)
 
 var Component = __webpack_require__(4)(
   /* script */
   __webpack_require__(130),
   /* template */
-  __webpack_require__(159),
+  __webpack_require__(160),
   /* scopeId */
   "data-v-21d6f6fc",
   /* cssModules */
@@ -55744,16 +55786,20 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(179)
 
 var Component = __webpack_require__(4)(
   /* script */
   __webpack_require__(131),
   /* template */
-  __webpack_require__(164),
+  __webpack_require__(165),
   /* scopeId */
-  null,
+  "data-v-70bb44f4",
   /* cssModules */
   null
 )
@@ -55778,9 +55824,9 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 157 */,
 /* 158 */,
-/* 159 */
+/* 159 */,
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -55789,6 +55835,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "web-header"
   }, [_c('el-row', {
+    staticStyle: {
+      "margin": "0"
+    },
     attrs: {
       "gutter": 10
     }
@@ -55797,7 +55846,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "xs": 6,
       "sm": 5,
       "md": 4,
-      "lg": 3
+      "lg": 4
     }
   }, [_c('div', {
     staticClass: "web-logo"
@@ -55810,14 +55859,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "xs": 18,
       "sm": 19,
       "md": 20,
-      "lg": 21
+      "lg": 20
     }
   }, [_c('el-col', {
     attrs: {
       "xs": 0,
       "sm": 11,
       "md": 11,
-      "lg": 11
+      "lg": 10
     }
   }, [_c('div', {
     staticClass: "web-search"
@@ -55869,7 +55918,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "xs": 24,
       "sm": 13,
       "md": 13,
-      "lg": 13
+      "lg": 14
     }
   }, [_c('div', {
     staticClass: "web-menu"
@@ -55961,11 +56010,11 @@ if (false) {
 }
 
 /***/ }),
-/* 160 */,
 /* 161 */,
 /* 162 */,
 /* 163 */,
-/* 164 */
+/* 164 */,
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -56007,7 +56056,78 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('i', {
       staticClass: "fa fa-star"
     }), _vm._v("加入我们")])], 1)])])
-  }))], 1)])])
+  }))], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "content-container"
+  }, [_c('div', {
+    staticClass: "card"
+  }, [_c('el-tabs', {
+    attrs: {
+      "type": "border-card"
+    }
+  }, [_c('el-tab-pane', [_c('span', {
+    slot: "label"
+  }, [_c('i', {
+    staticClass: "el-icon-date"
+  }), _vm._v(" 我的行程")]), _vm._v(" "), _c('div', {
+    staticClass: "detail-card"
+  }, [_c('el-row', {
+    attrs: {
+      "gutter": 20
+    }
+  }, _vm._l((10), function(o, index) {
+    return _c('el-col', {
+      key: o,
+      staticStyle: {
+        "margin-bottom": "20px"
+      },
+      attrs: {
+        "span": 6
+      }
+    }, [_c('el-card', {
+      attrs: {
+        "body-style": {
+          padding: '0px'
+        }
+      }
+    }, [_c('img', {
+      staticClass: "image",
+      staticStyle: {
+        "width": "100%"
+      },
+      attrs: {
+        "src": "/images/focus_weixin.png"
+      }
+    }), _vm._v(" "), _c('div', {
+      staticStyle: {
+        "padding": "14px"
+      }
+    }, [_c('p', [_vm._v("laravel基础教程（"), _c('strong', [_vm._v("53")]), _vm._v("课时）")]), _vm._v(" "), _c('div', {
+      staticClass: "bottom clearfix"
+    }, [_c('time', {
+      staticClass: "time"
+    }, [_vm._v("2017-07-21")]), _vm._v(" "), _c('el-button', {
+      staticClass: "button",
+      staticStyle: {
+        "float": "right"
+      },
+      attrs: {
+        "type": "info",
+        "size": "small"
+      }
+    }, [_vm._v("免费观看")])], 1)])])], 1)
+  }))], 1)]), _vm._v(" "), _c('el-tab-pane', {
+    attrs: {
+      "label": "消息中心"
+    }
+  }, [_vm._v("消息中心")]), _vm._v(" "), _c('el-tab-pane', {
+    attrs: {
+      "label": "角色管理"
+    }
+  }, [_vm._v("角色管理")]), _vm._v(" "), _c('el-tab-pane', {
+    attrs: {
+      "label": "定时任务补偿"
+    }
+  }, [_vm._v("定时任务补偿")])], 1)], 1)])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -56018,7 +56138,6 @@ if (false) {
 }
 
 /***/ }),
-/* 165 */,
 /* 166 */,
 /* 167 */,
 /* 168 */,
@@ -56027,7 +56146,8 @@ if (false) {
 /* 171 */,
 /* 172 */,
 /* 173 */,
-/* 174 */
+/* 174 */,
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -56037,7 +56157,7 @@ var content = __webpack_require__(139);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("17ecef83", content, false);
+var update = __webpack_require__(9)("17ecef83", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -56053,7 +56173,7 @@ if(false) {
 }
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -56063,7 +56183,7 @@ var content = __webpack_require__(140);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("1ed3e160", content, false);
+var update = __webpack_require__(9)("1ed3e160", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -56079,14 +56199,40 @@ if(false) {
 }
 
 /***/ }),
-/* 176 */,
 /* 177 */,
 /* 178 */,
-/* 179 */,
+/* 179 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(143);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(9)("60214918", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-70bb44f4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-70bb44f4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
 /* 180 */,
 /* 181 */,
 /* 182 */,
-/* 183 */
+/* 183 */,
+/* 184 */,
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(112);
