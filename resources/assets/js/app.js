@@ -34,12 +34,12 @@ const router = new VueRouter({
 });
 //vue-router拦截器
 router.beforeEach((to, from, next) => {
-    NProgress.start(); // 开启Progress
+    //NProgress.start(); // 开启Progress
     if (!sessionStorage.getItem('admin') && to.path != '/login') {
         next({
             path: '/login'
         });
-        NProgress.done();
+        //NProgress.done();
         return false;
     }
     if (to.path == '/login') {
@@ -48,7 +48,7 @@ router.beforeEach((to, from, next) => {
     next();
 });
 router.afterEach(() => {
-    NProgress.done(); // 结束Progress
+    //NProgress.done(); // 结束Progress
 });
 //axios拦截器
 axios.interceptors.request.use(function(config) {

@@ -30,15 +30,14 @@ class LoginRepository extends BaseRepository
                 'message' => '帐号被禁用',
             ];
         };
-        $result = DB::update('update admins set last_login_ip = ? , last_login_time = ? where id = ?', [
+        $this->status = !!DB::update('update admins set last_login_ip = ? , last_login_time = ? where id = ?', [
             $login_ip, date('Y-m-d H:i:s', time()), $adminData->id,
         ]);
-        $this->status        = isTrueOrFalse($result);
         $this->data['admin'] = [
             'username' => $adminData->username,
             'email'    => $adminData->email
         ];
-        $this->message = isTrueOrFalse($result) ? '登录成功': '发生未知错误';
+        $this->message = $this->status ? '登录成功': '发生未知错误';
         return [
             'status'  => $this->status,
             'data'    => $this->data,

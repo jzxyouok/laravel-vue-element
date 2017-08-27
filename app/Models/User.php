@@ -35,9 +35,15 @@ class User extends Model
     public static function lists($searchForm)
     {
         $whereParams = [];
-        $query = User::where($whereParams);
+        $query       = User::where($whereParams);
+        if (issetAndNotEmpty($searchForm['status'])) {
+            $query->where('status', $searchForm['status']);
+        }
         if (issetAndNotEmpty($searchForm['username'])) {
             $query->where('username', 'like', '%' . $searchForm['username'] . '%');
+        }
+        if (issetAndNotEmpty($searchForm['email'])) {
+            $query->where('email', 'like', '%' . $searchForm['email'] . '%');
         }
         return $query->paginate(config('app.pageSize'));
     }

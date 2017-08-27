@@ -1,15 +1,15 @@
 <template>
     <div class="app-container">
-        <tableHeader v-on:create="create" v-on:getList="getList">
+        <am-table-header v-on:create="create" v-on:getList="getList">
             <el-input v-model="searchForm.username" placeholder="请输入用户名" style="width: 200px;"></el-input>
             <el-input v-model="searchForm.email" placeholder="请输入电子邮箱" style="width: 200px;"></el-input>
             <el-select v-model="searchForm.status" placeholder="请选择状态">
-                <el-option label="全部" value=""></el-option>
+                <el-option label="全部状态" value=""></el-option>
                 <el-option v-for="item in options.status" :key="item.value" :label="item.text" :value="item.value"></el-option>
             </el-select>
-        </tableHeader>
+        </am-table-header>
         <!-- 用户快捷窗口 -->
-        <am-link-box ref="describtion"></am-link-box>
+        <am-describe-box ref="describtion"></am-describe-box>
         <el-table :data="tableData" border style="width: 100%">
             <el-table-column label="用户名">
                 <template scope="scope">
@@ -41,7 +41,7 @@
                 </template>
             </el-table-column>
         </el-table>
-        <pagination ref="pagination" v-on:getList="getList"></pagination>
+        <am-pagination ref="pagination" v-on:getList="getList"></am-pagination>
         <el-dialog :title="formTitle" :visible.sync="formVisible" :close-on-click-modal="false" :close-on-press-escape="false">
             <el-form class="small-space" :model="form" :rules="rules" ref="form" label-position="left" label-width="100px">
                 <input type="hidden" v-model="form.id">
@@ -68,7 +68,7 @@
                     </el-select>
                 </el-form-item>
             </el-form>
-            <dialogFooter v-on:submit="submit(formName = 'form')" v-on:close="close"></dialogFooter>
+            <am-dialog-footer v-on:submit="submit(formName = 'form')" v-on:close="close"></am-dialog-footer>
         </el-dialog>
     </div>
 </template>
@@ -76,13 +76,13 @@
 import Pagination from '../common/pagination';
 import TableHeader from '../common/tableHeader';
 import DialogFooter from '../common/dialogFooter';
-import amLinkBox from '../common/amLinkBox';
+import DescribeBox from '../common/describeBox';
 export default {
     components: {
-        'pagination': Pagination,
-        'tableHeader': TableHeader,
-        'dialogFooter': DialogFooter,
-        'am-link-box': amLinkBox
+        'am-pagination': Pagination,
+        'am-table-header': TableHeader,
+        'am-dialog-footer': DialogFooter,
+        'am-describe-box': DescribeBox
     },
     data() {
         var checkRepassword = (rule, value, callback) => {
@@ -117,7 +117,7 @@ export default {
             rules: {
                 username: [
                     { required: true, message: '请输入用户名', trigger: 'blur' },
-                    { min: 2, max: 15, message: '长度在 2 到 15 个字符', trigger: 'blur' }
+                    { min: 2, max: 15, message: '长度在 2 到 20 个字符', trigger: 'blur' }
                 ],
                 email: [
                     { required: true, message: '请输入登录邮箱', trigger: 'blur' },
@@ -150,14 +150,13 @@ export default {
             axios.get('/backend/users?page=' + window._this.$refs.pagination.pageData.current_page, { params: paramsData }).then(response => {
                 let data = response.data;
                 window._this.tableData = data.data.lists.data;
-                window._this.options.active = data.dicts.active;
-                window._this.options.status = data.dicts.status;
+                window._this.options = data.dicts;
                 window._this.$refs.pagination.pageData.per_page = parseInt(data.data.lists.per_page);
                 window._this.$refs.pagination.pageData.current_page = parseInt(data.data.lists.current_page);
                 window._this.$refs.pagination.pageData.total = parseInt(data.data.lists.total);
             })
         },
-        modify(id) {
+        detail(id) {
             window._this.formTitle = '修改';
             delete window._this.rules.password;
             delete window._this.rules.repassword;
@@ -218,9 +217,6 @@ export default {
                 this.rules.repassword = this.repasswordRules;
             }
             this.formVisible = true;
-        },
-        toLink(url) {
-            this.$router.push({ path: url });
         },
         changeFieldValue(field, id, value) {
             let paramsData = { 'data': { 'field': field, 'value': value } };

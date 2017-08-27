@@ -1,14 +1,14 @@
 <template>
     <div class="app-container">
-        <tableHeader v-on:create="create" v-on:getList="getList">
+        <am-table-header v-on:create="create" v-on:getList="getList">
             <el-input v-model="searchForm.username" placeholder="请输入账户名" style="width: 200px;"></el-input>
             <el-select v-model="searchForm.permission_id" placeholder="请选择管理员等级">
                 <el-option label="全部权限" value=""></el-option>
                 <el-option v-for="item in options.permission" :key="item.id" :label="item.text" :value="item.id"></el-option>
             </el-select>
-        </tableHeader>
+        </am-table-header>
         <!-- 用户快捷窗口 -->
-        <am-link-box ref="describtion"></am-link-box>
+        <am-describe-box ref="describtion"></am-describe-box>
         <el-table :data="tableData" border style="width: 100%">
             <el-table-column label="用户名" class-name="am-link-target-td">
                 <template scope="scope">
@@ -39,7 +39,7 @@
                 </template>
             </el-table-column>
         </el-table>
-        <pagination ref="pagination" v-on:getList="getList"></pagination>
+        <am-pagination ref="pagination" v-on:getList="getList"></am-pagination>
         <el-dialog :title="formTitle" :visible.sync="formVisible" :close-on-click-modal="false" :close-on-press-escape="false">
             <el-form class="small-space" :model="form" :rules="rules" ref="form" label-position="left" label-width="100px">
                 <input type="hidden" v-model="form.id">
@@ -70,7 +70,7 @@
                     </el-select>
                 </el-form-item>
             </el-form>
-            <dialogFooter v-on:submit="submit(formName = 'form')" v-on:close="close"></dialogFooter>
+            <am-dialog-footer v-on:submit="submit(formName = 'form')" v-on:close="close"></am-dialog-footer>
         </el-dialog>
     </div>
 </template>
@@ -78,13 +78,13 @@
 import Pagination from '../common/pagination';
 import TableHeader from '../common/tableHeader';
 import DialogFooter from '../common/dialogFooter';
-import amLinkBox from '../common/amLinkBox';
+import DescribeBox from '../common/describeBox';
 export default {
     components: {
-        'pagination': Pagination,
-        'tableHeader': TableHeader,
-        'dialogFooter': DialogFooter,
-        'am-link-box': amLinkBox
+        'am-pagination': Pagination,
+        'am-table-header': TableHeader,
+        'am-dialog-footer': DialogFooter,
+        'am-describe-box': DescribeBox
     },
     data() {
         var checkRepassword = (rule, value, callback) => {
