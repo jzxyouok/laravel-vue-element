@@ -55342,8 +55342,12 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
 });
 //vue-router拦截器
 router.beforeEach(function (to, from, next) {
-    //NProgress.start(); // 开启Progress
-
+    if (to.path == '/') {
+        next({
+            path: '/index'
+        });
+        return false;
+    }
     next();
 });
 router.afterEach(function () {
@@ -55473,6 +55477,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -55929,7 +55950,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "clear": "both"
     }
-  }, [_c('router-view', [_vm._v("123")])], 1)])
+  }, [_c('router-view')], 1)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -55948,7 +55969,45 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div')
+  return _c('div', {
+    staticClass: "index-container"
+  }, [_c('div', {
+    staticClass: "banner"
+  }, [_c('div', {
+    staticClass: "block"
+  }, [_c('el-carousel', {
+    attrs: {
+      "trigger": "click",
+      "height": "280px"
+    }
+  }, _vm._l((2), function(item) {
+    return _c('el-carousel-item', {
+      key: item,
+      attrs: {
+        "align": "center"
+      }
+    }, [_c('div', {
+      staticClass: "introduce"
+    }, [_c('p', {
+      staticClass: "large-title"
+    }, [_vm._v("从高质量的视频中学习 Laravel 和 Web 开发")]), _vm._v(" "), _c('p', {
+      staticClass: "small-title"
+    }, [_vm._v("最持久的教学理念")]), _vm._v(" "), _c('p', {
+      staticClass: "type-select"
+    }, [_c('el-button', {
+      attrs: {
+        "type": "success"
+      }
+    }, [_c('i', {
+      staticClass: "fa fa-thumbs-up"
+    }), _vm._v("开始学习")]), _vm._v(" "), _c('el-button', {
+      attrs: {
+        "type": "success"
+      }
+    }, [_c('i', {
+      staticClass: "fa fa-star"
+    }), _vm._v("加入我们")])], 1)])])
+  }))], 1)])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

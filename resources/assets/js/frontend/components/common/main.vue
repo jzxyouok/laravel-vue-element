@@ -51,7 +51,7 @@
             </el-row>
         </div>
         <div class="app-main" style="clear: both;">
-            <router-view>123</router-view>
+            <router-view></router-view>
         </div>
     </div>
 </template>
