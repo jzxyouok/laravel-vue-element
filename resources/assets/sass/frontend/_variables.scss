@@ -1,0 +1,41 @@
+html, body, div, p, ul, li, ol, table, tr, td, h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+html, body {
+    height: 100%;
+}
+.web-header {
+    background-color: #324157;
+    .web-logo {
+        margin-left: 30px;
+        a {
+            height: 60px;
+            line-height: 60px;
+            display: inline-block;
+            padding: 0 20px;
+            color: #D3DCE6;
+        }
+    }
+    .web-search {
+        height: 60px;
+        line-height: 60px;
+        float: right;
+    }
+    .web-menu {
+        float: right;
+    }
+}
+.app-main {
+    width: 100%;
+}
+@media (max-width: 768px) { 
+    .web-logo {
+        margin-left: 10px;
+        padding: 0 10px;
+    }
+    .web-search {
+        display: none;
+    }
+}
