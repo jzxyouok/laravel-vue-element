@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 190);
+/******/ 	return __webpack_require__(__webpack_require__.s = 193);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -55294,7 +55294,7 @@ module.exports = g;
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routers_js__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routers_js__ = __webpack_require__(139);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_element_ui__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_element_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_element_ui__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_element_ui_lib_theme_default_index_css__ = __webpack_require__(102);
@@ -55304,8 +55304,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_nprogress_nprogress_css__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_nprogress_nprogress_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_nprogress_nprogress_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuex__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__plugins_js__ = __webpack_require__(137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__filters_js__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__plugins_js__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__filters_js__ = __webpack_require__(137);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -55460,6 +55460,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -55530,6 +55572,125 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        var _this = this;
+
+        var checkRepassword = function checkRepassword(rule, value, callback) {
+            if (value !== _this.signupForm.password) {
+                callback(new Error('密码输入不一致!'));
+            } else {
+                callback();
+            }
+        };
+        return {
+            signupForm: {
+                face: '',
+                username: '',
+                email: '',
+                password: '',
+                repassword: ''
+            },
+            signupRules: {
+                username: [{ required: true, message: '请输入用户名', trigger: 'blur' }, { min: 2, max: 15, message: '长度在 2 到 15 个字符', trigger: 'blur' }],
+                email: [{ required: true, message: '请输入登录邮箱', trigger: 'blur' }, { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur,change' }],
+                password: [{ required: true, message: '请输入登录密码', trigger: 'blur' }, { min: 6, max: 30, message: '长度在 6 到 30 个字符', trigger: 'blur' }],
+                repassword: [{ required: true, message: '请再次输入密码', trigger: 'blur' }, { validator: checkRepassword, trigger: 'blur' }]
+            }
+        };
+    },
+    mounted: function mounted() {
+        window._this = this;
+    },
+
+    methods: {
+        signupSubmit: function signupSubmit(formName) {
+            this.$refs[formName].validate(function (valid) {
+                if (valid) {
+                    alert('submit!');
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+        },
+        signupReset: function signupReset(formName) {
+            window._this.$refs[formName].resetFields();
+        },
+        uploadFaceSuccess: function uploadFaceSuccess(res, file) {
+            window._this.signupForm.imageUrl = URL.createObjectURL(file.raw);
+        },
+        beforeUploadFace: function beforeUploadFace(file) {
+            var isJPG = file.type === 'image/jpeg';
+            var isLt2M = file.size / 1024 / 1024 < 2;
+
+            if (!isJPG) {
+                window._this.$message.error('上传头像图片只能是 JPG 格式!');
+            }
+            if (!isLt2M) {
+                window._this.$message.error('上传头像图片大小不能超过 2MB!');
+            }
+            return isJPG && isLt2M;
+        }
+    }
+});
+
+/***/ }),
+/* 132 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 
@@ -55540,7 +55701,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55585,10 +55746,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 133 */,
 /* 134 */,
 /* 135 */,
-/* 136 */
+/* 136 */,
+/* 137 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55639,7 +55800,7 @@ function formatByOptions(val, options, objKey, objValue) {
 }
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55739,16 +55900,19 @@ function formatByOptions(val, options, objKey, objValue) {
 });
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_common_main_vue__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_common_main_vue__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_common_main_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_common_main_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_index_index_vue__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_index_index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_index_index_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_video_video_vue__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_video_video_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_video_video_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_common_signup_vue__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_common_signup_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_common_signup_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_index_index_vue__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_index_index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_index_index_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_video_video_vue__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_video_video_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_video_video_vue__);
+
 
 //首页
 
@@ -55760,42 +55924,48 @@ function formatByOptions(val, options, objKey, objValue) {
     name: '首页',
     iconCls: '', //图标样式class
     noDropdown: true,
-    children: [{ path: 'index', component: __WEBPACK_IMPORTED_MODULE_1__components_index_index_vue___default.a, name: '首页', iconCls: 'el-icon-edit' }, { path: 'video', component: __WEBPACK_IMPORTED_MODULE_2__components_video_video_vue___default.a, name: '视频列表', iconCls: 'el-icon-edit' }]
+    children: [{ path: 'index', component: __WEBPACK_IMPORTED_MODULE_2__components_index_index_vue___default.a, name: '首页', iconCls: 'el-icon-edit' }, { path: 'signup', component: __WEBPACK_IMPORTED_MODULE_1__components_common_signup_vue___default.a, name: '注册页面', iconCls: 'el-icon-edit' }]
+}, {
+    path: '/video',
+    component: __WEBPACK_IMPORTED_MODULE_0__components_common_main_vue___default.a,
+    name: '视频列表',
+    iconCls: '', //图标样式class
+    noDropdown: true,
+    children: [{ path: 'index', component: __WEBPACK_IMPORTED_MODULE_3__components_video_video_vue___default.a, name: '视频列表', iconCls: 'el-icon-edit' }]
 }]);
 
 /***/ }),
-/* 139 */,
-/* 140 */
+/* 140 */,
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)();
 exports.push([module.i, "\n.el-select .el-input { width: 80px;\n}\n", ""]);
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)();
 exports.push([module.i, "", ""]);
 
 /***/ }),
-/* 142 */,
 /* 143 */,
-/* 144 */
+/* 144 */,
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)();
 exports.push([module.i, "\n.el-row[data-v-49d53ef4] { margin-bottom: 20px;\n&:last-child { margin-bottom: 0;\n}\n}\n", ""]);
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)();
 exports.push([module.i, "\n.el-row[data-v-70bb44f4] { margin-bottom: 20px;\n&:last-child { margin-bottom: 0;\n}\n}\n", ""]);
 
 /***/ }),
-/* 146 */,
 /* 147 */,
 /* 148 */,
 /* 149 */,
@@ -55807,19 +55977,20 @@ exports.push([module.i, "\n.el-row[data-v-70bb44f4] { margin-bottom: 20px;\n&:la
 /* 155 */,
 /* 156 */,
 /* 157 */,
-/* 158 */
+/* 158 */,
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(179)
-__webpack_require__(180)
+__webpack_require__(182)
+__webpack_require__(183)
 
 var Component = __webpack_require__(4)(
   /* script */
   __webpack_require__(130),
   /* template */
-  __webpack_require__(163),
+  __webpack_require__(166),
   /* scopeId */
   "data-v-21d6f6fc",
   /* cssModules */
@@ -55846,18 +56017,52 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(184)
 
 var Component = __webpack_require__(4)(
   /* script */
   __webpack_require__(131),
   /* template */
-  __webpack_require__(169),
+  __webpack_require__(163),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "E:\\wamp64\\www\\github-blog\\resources\\assets\\js\\frontend\\components\\common\\signup.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] signup.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0cc27c1b", Component.options)
+  } else {
+    hotAPI.reload("data-v-0cc27c1b", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(187)
+
+var Component = __webpack_require__(4)(
+  /* script */
+  __webpack_require__(132),
+  /* template */
+  __webpack_require__(172),
   /* scopeId */
   "data-v-70bb44f4",
   /* cssModules */
@@ -55884,18 +56089,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 160 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(183)
+__webpack_require__(186)
 
 var Component = __webpack_require__(4)(
   /* script */
-  __webpack_require__(132),
+  __webpack_require__(133),
   /* template */
-  __webpack_require__(167),
+  __webpack_require__(170),
   /* scopeId */
   "data-v-49d53ef4",
   /* cssModules */
@@ -55922,9 +56127,190 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 161 */,
-/* 162 */,
 /* 163 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "content-container signup-container"
+  }, [_c('el-row', {
+    attrs: {
+      "gutter": 12
+    }
+  }, [_c('el-col', {
+    attrs: {
+      "xs": 12,
+      "sm": 12,
+      "md": 12,
+      "lg": 12
+    }
+  }, [_c('div', {
+    staticClass: "signup-detail-box"
+  }, [_c('div', {
+    staticClass: "signup-header"
+  }, [_c('a', {
+    staticClass: "active",
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-envelope-o"
+  }), _vm._v("邮箱注册")]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-mobile-phone"
+  }), _vm._v("手机注册")])]), _vm._v(" "), _c('div', {
+    staticClass: "signup-body"
+  }, [_c('el-form', {
+    ref: "signupForm",
+    attrs: {
+      "label-position": "right",
+      "label-width": "80px",
+      "model": _vm.signupForm,
+      "rules": _vm.signupRules
+    }
+  }, [_c('el-form-item', {
+    attrs: {
+      "label": "头像",
+      "prop": "face"
+    }
+  }, [_c('el-upload', {
+    staticClass: "avatar-uploader",
+    attrs: {
+      "action": "https://jsonplaceholder.typicode.com/posts/",
+      "show-file-list": false,
+      "on-success": _vm.uploadFaceSuccess,
+      "before-upload": _vm.beforeUploadFace
+    }
+  }, [(_vm.signupForm.face) ? _c('img', {
+    staticClass: "avatar",
+    attrs: {
+      "src": _vm.signupForm.face
+    }
+  }) : _c('i', {
+    staticClass: "el-icon-plus avatar-uploader-icon"
+  })]), _vm._v("（不传默认使用系统头像）\n                        ")], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "用户名",
+      "prop": "username"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "登录账号，2-15个字符"
+    },
+    model: {
+      value: (_vm.signupForm.username),
+      callback: function($$v) {
+        _vm.signupForm.username = $$v
+      },
+      expression: "signupForm.username"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "电子邮件",
+      "prop": "email"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "placeholder": "电子邮件，使用常用的邮箱"
+    },
+    model: {
+      value: (_vm.signupForm.email),
+      callback: function($$v) {
+        _vm.signupForm.email = $$v
+      },
+      expression: "signupForm.email"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "密码",
+      "prop": "password"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "password",
+      "placeholder": "登录密码，6-30个字符"
+    },
+    model: {
+      value: (_vm.signupForm.password),
+      callback: function($$v) {
+        _vm.signupForm.password = $$v
+      },
+      expression: "signupForm.password"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', {
+    attrs: {
+      "label": "确认密码",
+      "prop": "repassword"
+    }
+  }, [_c('el-input', {
+    attrs: {
+      "type": "password",
+      "placeholder": "再次输入密码"
+    },
+    model: {
+      value: (_vm.signupForm.repassword),
+      callback: function($$v) {
+        _vm.signupForm.repassword = $$v
+      },
+      expression: "signupForm.repassword"
+    }
+  })], 1), _vm._v(" "), _c('el-form-item', [_c('el-button', {
+    attrs: {
+      "type": "primary"
+    },
+    on: {
+      "click": function($event) {
+        _vm.signupSubmit('signupForm')
+      }
+    }
+  }, [_vm._v("立即注册")]), _vm._v(" "), _c('el-button', {
+    on: {
+      "click": function($event) {
+        _vm.signupReset('signupForm')
+      }
+    }
+  }, [_vm._v("重置")])], 1)], 1)], 1)])]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "xs": 12,
+      "sm": 12,
+      "md": 12,
+      "lg": 12
+    }
+  }, [_c('div', {
+    staticClass: "signup-other-type"
+  }, [_c('h3', {
+    staticClass: "type-header"
+  }, [_c('span', [_vm._v("使用其它方式登录")])]), _vm._v(" "), _c('div', {
+    staticClass: "type-detail"
+  }, [_c('p', [_c('el-button', {
+    attrs: {
+      "type": "info"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-qq"
+  }), _vm._v("使用QQ登录")])], 1), _vm._v(" "), _c('p', [_c('el-button', {
+    attrs: {
+      "type": "success"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-weixin"
+  }), _vm._v("使用微信登录")])], 1)])])])], 1)], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-0cc27c1b", module.exports)
+  }
+}
+
+/***/ }),
+/* 164 */,
+/* 165 */,
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -56040,7 +56426,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("首页")])], 1), _vm._v(" "), _c('router-link', {
     attrs: {
-      "to": "/video"
+      "to": "/video/index"
     }
   }, [_c('el-menu-item', {
     attrs: {
@@ -56105,7 +56491,106 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticStyle: {
       "clear": "both"
     }
-  }, [_c('router-view')], 1)])
+  }, [_c('router-view')], 1), _vm._v(" "), _c('div', {
+    staticClass: "web-footer"
+  }, [_c('div', {
+    staticClass: "footer-container"
+  }, [_c('el-row', {
+    staticStyle: {
+      "margin": "0"
+    },
+    attrs: {
+      "gutter": 10
+    }
+  }, [_c('el-col', {
+    attrs: {
+      "xs": 10,
+      "sm": 10,
+      "md": 10,
+      "lg": 10
+    }
+  }, [_c('div', {
+    staticClass: "describe introduction"
+  }, [_c('h4', {
+    staticClass: "title"
+  }, [_vm._v("网站介绍")]), _vm._v(" "), _c('p', [_vm._v("我们是 PHP 和 Laravel 开发者社区，致力于为 PHP 和 Laravel 开发者提供一个分享创造、结识伙伴、协同互助的平台。")]), _vm._v(" "), _c('p', {
+    staticClass: "add-friends"
+  }, [_c('a', {
+    staticClass: "qq",
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-qq"
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "weixin",
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-weixin"
+  })]), _vm._v(" "), _c('a', {
+    staticClass: "weibo",
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-weibo"
+  })])])])]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "xs": 8,
+      "sm": 8,
+      "md": 8,
+      "lg": 8
+    }
+  }, [_c('div', {
+    staticClass: "describe statistical"
+  }, [_c('h4', {
+    staticClass: "title"
+  }, [_vm._v("网站统计")]), _vm._v(" "), _c('div', {
+    staticClass: "all-statistical"
+  }, [_c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("视频总数："), _c('span', [_vm._v("113")]), _vm._v(" 个")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("文章总数："), _c('span', [_vm._v("98")]), _vm._v(" 篇")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("访客总数："), _c('span', [_vm._v("31133")]), _vm._v(" 个")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("会员总数："), _c('span', [_vm._v("3098")]), _vm._v(" 个")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("点赞总数："), _c('span', [_vm._v("5013")]), _vm._v(" 个")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("评论总数："), _c('span', [_vm._v("713")]), _vm._v(" 个")])])])])])]), _vm._v(" "), _c('el-col', {
+    attrs: {
+      "xs": 6,
+      "sm": 6,
+      "md": 6,
+      "lg": 6
+    }
+  }, [_c('div', {
+    staticClass: "describe share"
+  }, [_c('h4', {
+    staticClass: "title"
+  }, [_vm._v("关注微信")]), _vm._v(" "), _c('p', {
+    staticClass: "share-weixin"
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/focus_weixin.png"
+    }
+  })])])])], 1)], 1)])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -56116,10 +56601,10 @@ if (false) {
 }
 
 /***/ }),
-/* 164 */,
-/* 165 */,
-/* 166 */,
-/* 167 */
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -56195,8 +56680,8 @@ if (false) {
 }
 
 /***/ }),
-/* 168 */,
-/* 169 */
+/* 171 */,
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -56320,22 +56805,22 @@ if (false) {
 }
 
 /***/ }),
-/* 170 */,
-/* 171 */,
-/* 172 */,
 /* 173 */,
 /* 174 */,
 /* 175 */,
 /* 176 */,
 /* 177 */,
 /* 178 */,
-/* 179 */
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(140);
+var content = __webpack_require__(141);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -56355,13 +56840,13 @@ if(false) {
 }
 
 /***/ }),
-/* 180 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(141);
+var content = __webpack_require__(142);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -56381,15 +56866,15 @@ if(false) {
 }
 
 /***/ }),
-/* 181 */,
-/* 182 */,
-/* 183 */
+/* 184 */,
+/* 185 */,
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(144);
+var content = __webpack_require__(145);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -56409,13 +56894,13 @@ if(false) {
 }
 
 /***/ }),
-/* 184 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(145);
+var content = __webpack_require__(146);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -56435,12 +56920,12 @@ if(false) {
 }
 
 /***/ }),
-/* 185 */,
-/* 186 */,
-/* 187 */,
 /* 188 */,
 /* 189 */,
-/* 190 */
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(112);

@@ -1,5 +1,8 @@
+/*公共*/
 import Login from './components/common/login.vue';
 import Main from './components/common/main.vue';
+
+
 /*首页*/
 import Index from './components/index/index.vue';
 /*管理员*/
@@ -11,11 +14,12 @@ import Permission_create from './components/index/index.vue';
 import UserLists from './components/User/lists.vue';
 import UserDetail from './components/User/detail.vue';
 import UserNoActive from './components/User/noActive.vue';
+
 export default [{
         path: '/login',
         component: Login,
         name: '登录',
-        hidden: true
+        hidden: true,
     }, {
         path: '/',
         component: Main,
