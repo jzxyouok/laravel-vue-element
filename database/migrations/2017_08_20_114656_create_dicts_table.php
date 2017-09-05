@@ -14,6 +14,7 @@ class CreateDictsTable extends Migration
     public function up()
     {
         Schema::create('dicts', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('code', 20)->comment('分类代码');
             $table->string('code_name', 10)->comment('分类名称');

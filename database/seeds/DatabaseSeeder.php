@@ -74,6 +74,9 @@ class DictsTableSeeder extends Seeder
             //状态
             ['code' => 'status', 'code_name' => '状态', 'value' => 0, 'text_en' => 'is_disabled', 'text' => '禁用'],
             ['code' => 'status', 'code_name' => '状态', 'value' => 10, 'text_en' => 'is_normal', 'text' => '启用'],
+            //结果
+            ['code' => 'result', 'code_name' => '结果', 'value' => 0, 'text_en' => 'is_disabled', 'text' => '失败'],
+            ['code' => 'result', 'code_name' => '结果', 'value' => 1, 'text_en' => 'is_normal', 'text' => '成功'],
             //是否激活
             ['code' => 'active', 'code_name' => '是否激活', 'value' => 0, 'text_en' => 'not_actived', 'text' => '未激活'],
             ['code' => 'active', 'code_name' => '是否激活', 'value' => 10, 'text_en' => 'is_actived', 'text' => '已激活'],
