@@ -14,6 +14,7 @@ class CreateRecordsTable extends Migration
     public function up()
     {
         Schema::create('records', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->timestamps();
         });

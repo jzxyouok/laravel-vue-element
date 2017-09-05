@@ -18,7 +18,7 @@ class CreateAdminPermissionsTable extends Migration
             $table->increments('id');
             $table->string('text', 15);
             $table->text('permission_include')->comment('权限节点');
-            $table->tinyInteger('status')->default(1)->comment('状态,0禁用，10启用');
+            $table->tinyInteger('status')->default(1)->comment('状态(禁用|启用)');
             $table->timestamps();
             $table->softDeletes();
         });
