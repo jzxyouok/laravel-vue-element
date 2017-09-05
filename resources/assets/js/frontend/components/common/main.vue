@@ -23,31 +23,39 @@
                     <el-col :xs="24" :sm="13" :md="13" :lg="14">
                         <div class="web-menu">
                             <el-menu theme="dark" :default-active="$store.state.menuActive" class="el-menu-demo" mode="horizontal" @select="menuSelect">
-                                <router-link to="/">
-                                    <el-menu-item index="1">首页</el-menu-item>
-                                </router-link>
-                                <router-link to="/video/index">
-                                    <el-menu-item index="2">视频列表</el-menu-item>
-                                </router-link>
+                                <el-menu-item index="1">
+                                    <router-link to="/" class='menu-link'>首页</router-link>
+                                </el-menu-item>
+                                <el-menu-item index="2">
+                                    <router-link to="/video/index" class='menu-link'>视频列表</router-link>
+                                </el-menu-item>
                                 <el-submenu index="3">
-                                    <template slot="title">文章列表</template>
-                                    <el-menu-item index="3-1">前端技术</el-menu-item>
-                                    <el-menu-item index="3-2">后端技术</el-menu-item>
-                                    <el-menu-item index="3-3">服务器</el-menu-item>
-                                    <el-menu-item index="3-4">其它类别</el-menu-item>
+                                    <template slot="title">技术篇</template>
+                                    <el-menu-item index="3-1">
+                                        <router-link to="/article/index">前端技术</router-link>
+                                    </el-menu-item>
+                                    <el-menu-item index="3-2">
+                                        <router-link to="/article/index">PHP后端</router-link>
+                                    </el-menu-item>
+                                    <el-menu-item index="3-3">
+                                        <router-link to="/article/index">服务器层</router-link>
+                                    </el-menu-item>
+                                    <el-menu-item index="3-4">
+                                        <router-link to="/article/index">其它分享</router-link>
+                                    </el-menu-item>
                                 </el-submenu>
                                 <el-menu-item index="4">
-                                    <router-link to="/leave">投票</router-link>
+                                    <router-link to="/leave" class='menu-link'>投票</router-link>
                                 </el-menu-item>
                                 <el-menu-item index="5">
-                                    <router-link to="/leave">留言板</router-link>
+                                    <router-link to="/leave" class='menu-link'>留言板</router-link>
                                 </el-menu-item>
                                 <el-menu-item index="6">
-                                    <router-link to="/signin">登录</router-link>
-                                    /
-                                    <router-link to="/signup">注册</router-link>
+                                    <router-link to="/signin" class='menu-link'>登录</router-link>
                                 </el-menu-item>
-                                <el-menu-item index="7"></el-menu-item>
+                                <el-menu-item index="7">
+                                    <router-link to="/signup" class='menu-link'>注册</router-link>
+                                </el-menu-item>
                             </el-menu>
                         </div>
                     </el-col>

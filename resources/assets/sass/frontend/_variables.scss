@@ -40,10 +40,29 @@ a {
 
 
 
+
+
+
+
 /* 头部导航 */
 
 .web-header {
     background-color: #324157;
+    .el-menu-item {
+        padding: 0;
+        .menu-link {
+            display: block;
+            padding: 0 20px;
+        }
+    }
+    .el-menu {
+        .el-menu-item {
+            padding: 0;
+            a {
+                display: block;
+            }
+        }
+    }
     .web-logo {
         margin-left: 30px;
         a {
@@ -69,6 +88,10 @@ a {
 .app-main {
     width: 100%;
 }
+
+
+
+
 
 
 
@@ -147,9 +170,6 @@ a {
         }
     }
 }
-
-
-
 
 
 
@@ -242,6 +262,65 @@ a {
 
 
 
+/* 登录 */
+
+.signin-container {
+    .signin-detail-box {
+        border-right: 1px solid #ccc;
+        padding-right: 30px;
+        .signin-header {
+            margin: 20px auto;
+            text-align: center;
+            width: 80%;
+            border-bottom: 2px solid #666666;
+            a {
+                display: inline-block;
+                color: #666666;
+                padding: 10px 30px;
+                i {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .signin-body {
+            clear: both;
+        }
+    }
+    .signin-other-type {
+        text-align: center;
+        width: 70%;
+        margin: 100px auto;
+        .type-header {
+            border-bottom: 1px solid #D3DCE6;
+            height: 40px;
+            line-height: 40px;
+            margin-bottom: 20px;
+            span {
+                display: inline-block;
+                padding: 5px 10px;
+                line-height: 30px;
+                color: #8492A6;
+            }
+        }
+        ,
+        .type-detail {
+            p {
+                margin: 10px auto;
+                width: 80%;
+                button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
 
 
 /* 首页 */
@@ -296,10 +375,78 @@ a {
     }
 }
 
+//视频列表
 .video-container {
     .video-box {
         margin-top: 30px;
     }
+}
+
+//文章列表
+.article-container {
+    .article-box {
+        margin-top: 30px;
+        padding-right: 20px;
+        margin-right: 10px;
+        border-right: 1px solid #eee;
+        .article-detail {
+            padding: 5px 8px;
+            border: 1px solid #eee;
+            box-shadow: 3px 5px 3px #fafafa;
+            border-radius: 3px;
+            float: left;
+            margin-bottom: 20px;
+            .article-picture {
+                width: 20%;
+                float: left;
+                img {
+                    width: 100%;
+                    border-radius: 3px;
+                }
+            }
+            .article-word {
+                float: left;
+                width: 80%;
+                box-sizing: border-box;
+                padding-left: 5px;
+                .article-title {
+                    margin-bottom: 5px;
+                    a {
+                        font-size: 16px;
+                        color: #333;
+                    }
+                    a:hover {
+                        color: red;
+                        text-decoration: underline;
+                    }
+                }
+                .article-right {
+                    margin-bottom: 5px;
+                    font-size: 12px;
+                }
+                .article-intro {
+                    text-indent: 20px;
+                    font-size: #666;
+                    line-height: 180%;
+                    margin-bottom: 5px;
+                }
+                .article-interactive {
+                    text-align: right;
+                    a {
+                        color: #999;
+                        font-size: 13px;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+        .page-box {
+        clear: both;
+        text-align: center;
+        margin: 20px 0;
+    }
+    }
+
 }
 
 @media (max-width: 768px) {

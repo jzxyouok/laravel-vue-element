@@ -1,0 +1,136 @@
+<template>
+    <div class="content-container article-container">
+        <el-row :gutter="10">
+            <el-col :xs="24" :sm="24" :md="16" :lg="16">
+                <div class="breadcrumb">
+                    <el-breadcrumb separator="/">
+                        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                        <el-breadcrumb-item>技术篇</el-breadcrumb-item>
+                    </el-breadcrumb>
+                </div>
+                <div class="article-box">
+                    <div class="article-detail">
+                        <div class='article-picture'><img src="/images/focus_weixin.png"></div>
+                        <div class="article-word">
+                            <h2 class='article-title'><a href="javascript:;">1.laravel的基础配置常出现的错误</a></h2>
+                            <div class='article-right'>
+                                <p>
+                                    作者：<span>林联敏</span> 发表时间：
+                                    <span>2017-07-18</span> 类别：
+                                    <span>php后端</span>
+                                </p>
+                            </div>
+                            <div class='article-intro'>
+                                <p>目前可以通过 unpkg.com/element-ui 获取到最新版本的资源，在页面上引入 js 和 css 文件即可开始使用添加box-sizing:border-box，容器内子元素增加padding,border，容器宽度都不会被撑开。或者是在容器里边添加一个无用的div块标签，也是可以的...</p>
+                            </div>
+                            <div class='article-interactive'>
+                                <p>
+                                    <a href="javascript:;"><i class='fa fa-thumbs-o-up'></i><span>1</span></a>
+                                    <a href="javascript:;"><i class='fa fa-commenting-o'></i><span>12</span></a>
+                                    <a href="javascript:;"><i class='fa fa-eye'></i><span>3245</span></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-detail">
+                        <div class='article-picture'><img src="/images/focus_weixin.png"></div>
+                        <div class="article-word">
+                            <h2 class='article-title'><a href="javascript:;">1.laravel的基础配置常出现的错误</a></h2>
+                            <div class='article-right'>
+                                <p>
+                                    作者：<span>林联敏</span> 发表时间：
+                                    <span>2017-07-18</span> 类别：
+                                    <span>php后端</span>
+                                </p>
+                            </div>
+                            <div class='article-intro'>
+                                <p>目前可以通过 unpkg.com/element-ui 获取到最新版本的资源，在页面上引入 js 和 css 文件即可开始使用添加box-sizing:border-box，容器内子元素增加padding,border，容器宽度都不会被撑开。或者是在容器里边添加一个无用的div块标签，也是可以的...</p>
+                            </div>
+                            <div class='article-interactive'>
+                                <p>
+                                    <a href="javascript:;"><i class='fa fa-thumbs-o-up'></i><span>1</span></a>
+                                    <a href="javascript:;"><i class='fa fa-commenting-o'></i><span>12</span></a>
+                                    <a href="javascript:;"><i class='fa fa-eye'></i><span>3245</span></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-detail">
+                        <div class='article-picture'><img src="/images/focus_weixin.png"></div>
+                        <div class="article-word">
+                            <h2 class='article-title'><a href="javascript:;">1.laravel的基础配置常出现的错误</a></h2>
+                            <div class='article-right'>
+                                <p>
+                                    作者：<span>林联敏</span> 发表时间：
+                                    <span>2017-07-18</span> 类别：
+                                    <span>php后端</span>
+                                </p>
+                            </div>
+                            <div class='article-intro'>
+                                <p>目前可以通过 unpkg.com/element-ui 获取到最新版本的资源，在页面上引入 js 和 css 文件即可开始使用添加box-sizing:border-box，容器内子元素增加padding,border，容器宽度都不会被撑开。或者是在容器里边添加一个无用的div块标签，也是可以的...</p>
+                            </div>
+                            <div class='article-interactive'>
+                                <p>
+                                    <a href="javascript:;"><i class='fa fa-thumbs-o-up'></i><span>1</span></a>
+                                    <a href="javascript:;"><i class='fa fa-commenting-o'></i><span>12</span></a>
+                                    <a href="javascript:;"><i class='fa fa-eye'></i><span>3245</span></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-detail">
+                        <div class='article-picture'><img src="/images/focus_weixin.png"></div>
+                        <div class="article-word">
+                            <h2 class='article-title'><a href="javascript:;">1.laravel的基础配置常出现的错误</a></h2>
+                            <div class='article-right'>
+                                <p>
+                                    作者：<span>林联敏</span> 发表时间：
+                                    <span>2017-07-18</span> 类别：
+                                    <span>php后端</span>
+                                </p>
+                            </div>
+                            <div class='article-intro'>
+                                <p>目前可以通过 unpkg.com/element-ui 获取到最新版本的资源，在页面上引入 js 和 css 文件即可开始使用添加box-sizing:border-box，容器内子元素增加padding,border，容器宽度都不会被撑开。或者是在容器里边添加一个无用的div块标签，也是可以的...</p>
+                            </div>
+                            <div class='article-interactive'>
+                                <p>
+                                    <a href="javascript:;"><i class='fa fa-thumbs-o-up'></i> <span>1</span></a>
+                                    <a href="javascript:;"><i class='fa fa-commenting-o'></i> <span>12</span></a>
+                                    <a href="javascript:;"><i class='fa fa-eye'></i> <span>3245</span></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-box">
+                            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="currentPage1" :page-size="100" layout="total, prev, pager, next" :total="1000">
+                            </el-pagination>
+                    </div>
+                </div>
+
+            </el-col>
+            <el-col :xs="0" :sm="0" :md="8" :lg="8">
+                <div class='right-recomment'>推荐</div>
+            </el-col>
+        </el-row>
+    </div>
+</template>
+<script type="text/javascript">
+export default {
+    data() {
+        return {
+            currentPage1: 5,
+        };
+    },
+    mounted() {
+
+    },
+    methods: {
+        handleSizeChange(val) {
+            console.log(`每页 ${val} 条`);
+        },
+        handleCurrentChange(val) {
+            console.log(`当前页: ${val}`);
+        }
+    }
+}
+</script>

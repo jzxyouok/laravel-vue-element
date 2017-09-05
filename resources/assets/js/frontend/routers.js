@@ -1,9 +1,13 @@
 import Main from './components/common/main.vue';
 import Signup from './components/common/signup.vue';
+import Signin from './components/common/signin.vue';
 //首页
 import Index from './components/index/index.vue';
 //视频列表
 import Video from './components/video/video.vue';
+//技术篇
+import Article from './components/article/article.vue';
+import ArticleDetail from './components/article/articleDetail.vue';
 export default [{
     path: '/',
     component: Main,
@@ -12,7 +16,8 @@ export default [{
     noDropdown: true,
     children: [
         { path: 'index', component: Index, name: '首页', iconCls: 'el-icon-edit' },
-        { path: 'signup', component: Signup, name: '注册页面', iconCls: 'el-icon-edit' }
+        { path: 'signup', component: Signup, name: '注册页面', iconCls: 'el-icon-edit' },
+        { path: 'signin', component: Signin, name: '登录页面', iconCls: 'el-icon-edit' },
     ]
 }, {
     path: '/video',
@@ -21,6 +26,16 @@ export default [{
     iconCls: '', //图标样式class
     noDropdown: true,
     children: [
-        { path: 'index', component: Video, name: '视频列表', iconCls: 'el-icon-edit' }
+        { path: 'index', component: Video, name: '视频列表', iconCls: '' }
+    ]
+}, {
+    path: '/article',
+    component: Main,
+    name: '技术篇',
+    iconCls: '', //图标样式class
+    noDropdown: true,
+    children: [
+        { path: 'index', component: Article, name: '技术篇', iconCls: '' },
+        { path: 'detail', component: ArticleDetail, name: '技术篇详情', iconCls: '' }
     ]
 }]
