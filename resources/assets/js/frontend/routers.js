@@ -5,6 +5,7 @@ import Signin from './components/common/signin.vue';
 import Index from './components/index/index.vue';
 //视频列表
 import Video from './components/video/video.vue';
+import VideoDetail from './components/video/videoDetail.vue';
 //技术篇
 import Article from './components/article/article.vue';
 import ArticleDetail from './components/article/articleDetail.vue';
@@ -26,7 +27,8 @@ export default [{
     iconCls: '', //图标样式class
     noDropdown: true,
     children: [
-        { path: 'index', component: Video, name: '视频列表', iconCls: '' }
+        { path: 'index', component: Video, name: '视频列表', iconCls: '' },
+        { path: 'detail', component: VideoDetail, name: '视频详情', iconCls: '' },
     ]
 }, {
     path: '/article',
