@@ -55516,6 +55516,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -57519,8 +57574,158 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "lg": 8
     }
   }, [_c('div', {
-    staticClass: "right-recomment"
-  }, [_vm._v("推荐")])])], 1)], 1)
+    staticClass: "right-recommend"
+  }, [_c('div', {
+    staticClass: "recomment-box hot-article"
+  }, [_c('h3', [_vm._v("热门文章"), _c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("更多推荐 ++")])]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("1.Laravel 5.4 中文文档")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("2.一小时同步一次，更多信息请查阅 文档导读")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("3.每周推送 Laravel 最新资讯")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("4.每周推送 Laravel 最新资讯")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("5.一小时同步一次，更多信息请查阅 文档导读")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("6.一小时同步一次，更多信息请查阅 文档导读")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("7.每周推送 Laravel 最新资讯")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("8.每周推送 Laravel 最新资讯")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("9.一小时同步一次，更多信息请查阅 文档导读")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("10.每周推送 Laravel 最新资讯")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "recomment-box hot-video"
+  }, [_c('h3', [_vm._v("热门视频"), _c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("更多视频 ++")])]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("1.Laravel 5.4 中文文档")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("2.一小时同步一次，更多信息请查阅 文档导读")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("3.每周推送 Laravel 最新资讯")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("4.每周推送 Laravel 最新资讯")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("5.一小时同步一次，更多信息请查阅 文档导读")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "recomment-box hot-comment"
+  }, [_c('h3', [_vm._v("精彩评论"), _c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("更多评论 ++")])]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("1.Laravel 5.4 中文文档")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("2.一小时同步一次，更多信息请查阅 文档导读")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("3.每周推送 Laravel 最新资讯")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("4.每周推送 Laravel 最新资讯")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("5.一小时同步一次，更多信息请查阅 文档导读")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "recomment-box hot-leave"
+  }, [_c('h3', [_vm._v("精彩留言"), _c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("更多留言 ++")])]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("1.Laravel 5.4 中文文档")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("2.一小时同步一次，更多信息请查阅 文档导读")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("3.每周推送 Laravel 最新资讯")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("4.每周推送 Laravel 最新资讯")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("5.一小时同步一次，更多信息请查阅 文档导读")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "recomment-box hot-vote"
+  }, [_c('h3', [_vm._v("当前投票"), _c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("更多投票 ++")])]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("1.Laravel 5.4 中文文档")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("2.一小时同步一次，更多信息请查阅 文档导读")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("3.每周推送 Laravel 最新资讯")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("4.每周推送 Laravel 最新资讯")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("5.一小时同步一次，更多信息请查阅 文档导读")])])])])])])], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

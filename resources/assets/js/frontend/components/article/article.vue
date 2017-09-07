@@ -102,14 +102,69 @@
                         </div>
                     </div>
                     <div class="page-box">
-                            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="currentPage1" :page-size="100" layout="total, prev, pager, next" :total="1000">
-                            </el-pagination>
+                        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="currentPage1" :page-size="100" layout="total, prev, pager, next" :total="1000">
+                        </el-pagination>
                     </div>
                 </div>
-
             </el-col>
             <el-col :xs="0" :sm="0" :md="8" :lg="8">
-                <div class='right-recomment'>推荐</div>
+                <div class='right-recommend'>
+                    <div class="recomment-box hot-article">
+                        <h3>热门文章<a href="javascript:;">更多推荐 ++</a></h3>
+                        <ul>
+                            <li><a href="javascript:;">1.Laravel 5.4 中文文档</a></li>
+                            <li><a href="javascript:;">2.一小时同步一次，更多信息请查阅 文档导读</a></li>
+                            <li><a href="javascript:;">3.每周推送 Laravel 最新资讯</a></li>
+                            <li><a href="javascript:;">4.每周推送 Laravel 最新资讯</a></li>
+                            <li><a href="javascript:;">5.一小时同步一次，更多信息请查阅 文档导读</a></li>
+                            <li><a href="javascript:;">6.一小时同步一次，更多信息请查阅 文档导读</a></li>
+                            <li><a href="javascript:;">7.每周推送 Laravel 最新资讯</a></li>
+                            <li><a href="javascript:;">8.每周推送 Laravel 最新资讯</a></li>
+                            <li><a href="javascript:;">9.一小时同步一次，更多信息请查阅 文档导读</a></li>
+                            <li><a href="javascript:;">10.每周推送 Laravel 最新资讯</a></li>
+                        </ul>
+                    </div>
+                    <div class="recomment-box hot-video">
+                        <h3>热门视频<a href="javascript:;">更多视频 ++</a></h3>
+                        <ul>
+                            <li><a href="javascript:;">1.Laravel 5.4 中文文档</a></li>
+                            <li><a href="javascript:;">2.一小时同步一次，更多信息请查阅 文档导读</a></li>
+                            <li><a href="javascript:;">3.每周推送 Laravel 最新资讯</a></li>
+                            <li><a href="javascript:;">4.每周推送 Laravel 最新资讯</a></li>
+                            <li><a href="javascript:;">5.一小时同步一次，更多信息请查阅 文档导读</a></li>
+                        </ul>
+                    </div>
+                    <div class="recomment-box hot-comment">
+                        <h3>精彩评论<a href="javascript:;">更多评论 ++</a></h3>
+                        <ul>
+                            <li><a href="javascript:;">1.Laravel 5.4 中文文档</a></li>
+                            <li><a href="javascript:;">2.一小时同步一次，更多信息请查阅 文档导读</a></li>
+                            <li><a href="javascript:;">3.每周推送 Laravel 最新资讯</a></li>
+                            <li><a href="javascript:;">4.每周推送 Laravel 最新资讯</a></li>
+                            <li><a href="javascript:;">5.一小时同步一次，更多信息请查阅 文档导读</a></li>
+                        </ul>
+                    </div>
+                    <div class="recomment-box hot-leave">
+                        <h3>精彩留言<a href="javascript:;">更多留言 ++</a></h3>
+                        <ul>
+                            <li><a href="javascript:;">1.Laravel 5.4 中文文档</a></li>
+                            <li><a href="javascript:;">2.一小时同步一次，更多信息请查阅 文档导读</a></li>
+                            <li><a href="javascript:;">3.每周推送 Laravel 最新资讯</a></li>
+                            <li><a href="javascript:;">4.每周推送 Laravel 最新资讯</a></li>
+                            <li><a href="javascript:;">5.一小时同步一次，更多信息请查阅 文档导读</a></li>
+                        </ul>
+                    </div>
+                    <div class="recomment-box hot-vote">
+                        <h3>当前投票<a href="javascript:;">更多投票 ++</a></h3>
+                        <ul>
+                            <li><a href="javascript:;">1.Laravel 5.4 中文文档</a></li>
+                            <li><a href="javascript:;">2.一小时同步一次，更多信息请查阅 文档导读</a></li>
+                            <li><a href="javascript:;">3.每周推送 Laravel 最新资讯</a></li>
+                            <li><a href="javascript:;">4.每周推送 Laravel 最新资讯</a></li>
+                            <li><a href="javascript:;">5.一小时同步一次，更多信息请查阅 文档导读</a></li>
+                        </ul>
+                    </div>
+                </div>
             </el-col>
         </el-row>
     </div>
