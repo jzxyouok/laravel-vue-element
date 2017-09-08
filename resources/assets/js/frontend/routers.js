@@ -6,6 +6,7 @@ import Index from './components/index/index.vue';
 //视频列表
 import Video from './components/video/video.vue';
 import VideoDetail from './components/video/videoDetail.vue';
+import VideoPlay from './components/video/videoPlay.vue';
 //技术篇
 import Article from './components/article/article.vue';
 import ArticleDetail from './components/article/articleDetail.vue';
@@ -29,6 +30,7 @@ export default [{
     children: [
         { path: 'index', component: Video, name: '视频列表', iconCls: '' },
         { path: 'detail', component: VideoDetail, name: '视频详情', iconCls: '' },
+        { path: 'play/:id', component: VideoPlay, name: '在线观看', iconCls: '' },
     ]
 }, {
     path: '/article',

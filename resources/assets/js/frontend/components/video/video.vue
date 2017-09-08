@@ -6,7 +6,7 @@
                 <el-breadcrumb-item>视频列表</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
-        <div class="video-box">
+        <div class="content-box video-box">
             <el-row :gutter="20">
                 <el-col :span="6" v-for="(o, index) in 10" :key="o" class="video-detail">
                     <el-card :body-style="{ padding: '0px' }">

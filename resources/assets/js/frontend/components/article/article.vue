@@ -8,7 +8,7 @@
                         <el-breadcrumb-item>技术篇</el-breadcrumb-item>
                     </el-breadcrumb>
                 </div>
-                <div class="article-box">
+                <div class="content-box article-box">
                     <div class="article-detail">
                         <div class='article-picture'><img src="/images/focus_weixin.png"></div>
                         <div class="article-word">

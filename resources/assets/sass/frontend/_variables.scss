@@ -41,6 +41,14 @@ a {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
 }
 
+.content-box {
+    clear: both;
+    margin-top: 20px;
+}
+
+
+
+
 
 
 
@@ -99,6 +107,9 @@ a {
 .app-main {
     width: 100%;
 }
+
+
+
 
 
 
@@ -190,6 +201,9 @@ a {
         }
     }
 }
+
+
+
 
 
 
@@ -298,6 +312,9 @@ a {
 
 
 
+
+
+
 /* 登录 */
 
 .signin-container {
@@ -367,6 +384,9 @@ a {
 
 
 
+
+
+
 /* 首页 */
 
 .index-container {
@@ -416,7 +436,6 @@ a {
 //视频列表
 .video-container {
     .video-box {
-        margin-top: 30px;
         .video-detail {
             margin-bottom: 20px;
             .video-thumb {
@@ -474,7 +493,6 @@ a {
 //文章列表
 .article-container {
     .article-box {
-        margin-top: 30px;
         padding-right: 20px;
         margin-right: 10px;
         border-right: 1px solid #eee;
@@ -580,7 +598,7 @@ a {
         border: 2px solid #eee;
         border-radius: 5px;
         box-shadow: 3px 5px 1px #fafafa;
-        padding: 5px 15px 5px 5px;
+        padding: 0 15px 5px 5px;
         margin-bottom: 30px;
         .video-picture {
             float: left;
@@ -619,36 +637,79 @@ a {
             .video-other {
                 p {
                     line-height: 180%;
-                    color: 13px;
+                    font-size: 13px;
                     color: #999;
+                    a {}
                 }
             }
         }
     }
     .video-list {
         clear: both;
+        .title {
+            margin: 30px 0 15px 0;
+            border-left: 5px solid red;
+            font-size: 18px;
+            padding: 0 0 2px 8px;
+            border-bottom: 1px solid #ccc;
+        }
         ul {
             li {
-                padding: 0.5rem 1rem;
+                padding: 8px 15px;
                 background: #eee;
+                font-size: 14px;
                 a {
                     color: #777;
                 }
                 a:hover {
                     color: red;
-                    border-bottom: 0.1rem solid red;
+                    border-bottom: 1px solid red;
                 }
             }
             li:nth-child(2n) {
                 background: #fafafa;
             }
         }
-        .title {
-            margin: 2rem 0 1rem 0;
-            border-left: 0.3rem solid red;
-            font-size: 1.2rem;
-            padding: 0 0 0.2rem 0.5rem;
-            border-bottom: 0.1rem solid #ccc;
+    }
+}
+
+//视频播放页面
+.video-play-container {
+    .video-play-box {
+        .video-comment {
+            .title {
+                margin: 30px 0 15px 0;
+                border-left: 5px solid red;
+                font-size: 18px;
+                padding: 0 0 2px 8px;
+                border-bottom: 1px solid #ccc;
+            }
+            .comment-list {
+                padding: 0 20px 20px 10px;
+                .comment-detail {
+                    float: left;
+                    width: 100%;
+                    border-bottom: 1px solid #eee;
+                    margin-bottom: 20px;
+                    .user-face {
+                        float: left;
+                        width: 10%;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    .comment-word {
+                        float: left;
+                        width: 90%;
+                        box-sizing: border-box;
+                        padding-left: 5px;
+                        .comment-content {}
+                    }
+                }
+            }
+        }
+        .comment-now {
+            clear: both;
         }
     }
 }

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 203);
+/******/ 	return __webpack_require__(__webpack_require__.s = 205);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -56094,6 +56094,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -56268,16 +56279,19 @@ function formatByOptions(val, options, objKey, objValue) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_video_video_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_video_video_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_video_videoDetail_vue__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_video_videoDetail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_video_videoDetail_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_article_article_vue__ = __webpack_require__(162);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_article_article_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_article_article_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_article_articleDetail_vue__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_article_articleDetail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_article_articleDetail_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_video_videoPlay_vue__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_video_videoPlay_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_video_videoPlay_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_article_article_vue__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_article_article_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_article_article_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_article_articleDetail_vue__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_article_articleDetail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_article_articleDetail_vue__);
 
 
 
 //首页
 
 //视频列表
+
 
 
 //技术篇
@@ -56296,14 +56310,14 @@ function formatByOptions(val, options, objKey, objValue) {
     name: '视频列表',
     iconCls: '', //图标样式class
     noDropdown: true,
-    children: [{ path: 'index', component: __WEBPACK_IMPORTED_MODULE_4__components_video_video_vue___default.a, name: '视频列表', iconCls: '' }, { path: 'detail', component: __WEBPACK_IMPORTED_MODULE_5__components_video_videoDetail_vue___default.a, name: '视频详情', iconCls: '' }]
+    children: [{ path: 'index', component: __WEBPACK_IMPORTED_MODULE_4__components_video_video_vue___default.a, name: '视频列表', iconCls: '' }, { path: 'detail', component: __WEBPACK_IMPORTED_MODULE_5__components_video_videoDetail_vue___default.a, name: '视频详情', iconCls: '' }, { path: 'play/:id', component: __WEBPACK_IMPORTED_MODULE_6__components_video_videoPlay_vue___default.a, name: '在线观看', iconCls: '' }]
 }, {
     path: '/article',
     component: __WEBPACK_IMPORTED_MODULE_0__components_common_main_vue___default.a,
     name: '技术篇',
     iconCls: '', //图标样式class
     noDropdown: true,
-    children: [{ path: 'index', component: __WEBPACK_IMPORTED_MODULE_6__components_article_article_vue___default.a, name: '技术篇', iconCls: '' }, { path: 'detail', component: __WEBPACK_IMPORTED_MODULE_7__components_article_articleDetail_vue___default.a, name: '技术篇详情', iconCls: '' }]
+    children: [{ path: 'index', component: __WEBPACK_IMPORTED_MODULE_7__components_article_article_vue___default.a, name: '技术篇', iconCls: '' }, { path: 'detail', component: __WEBPACK_IMPORTED_MODULE_8__components_article_articleDetail_vue___default.a, name: '技术篇详情', iconCls: '' }]
 }]);
 
 /***/ }),
@@ -56357,7 +56371,7 @@ var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(130),
   /* template */
-  __webpack_require__(186),
+  __webpack_require__(188),
   /* scopeId */
   null,
   /* cssModules */
@@ -56409,14 +56423,14 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(192)
-__webpack_require__(193)
+__webpack_require__(194)
+__webpack_require__(195)
 
 var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(131),
   /* template */
-  __webpack_require__(175),
+  __webpack_require__(176),
   /* scopeId */
   "data-v-21d6f6fc",
   /* cssModules */
@@ -56450,7 +56464,7 @@ var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(132),
   /* template */
-  __webpack_require__(171),
+  __webpack_require__(172),
   /* scopeId */
   null,
   /* cssModules */
@@ -56484,7 +56498,7 @@ var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(133),
   /* template */
-  __webpack_require__(170),
+  __webpack_require__(171),
   /* scopeId */
   null,
   /* cssModules */
@@ -56516,13 +56530,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(197)
+__webpack_require__(199)
 
 var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(134),
   /* template */
-  __webpack_require__(181),
+  __webpack_require__(183),
   /* scopeId */
   "data-v-70bb44f4",
   /* cssModules */
@@ -56554,13 +56568,13 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(196)
+__webpack_require__(198)
 
 var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(135),
   /* template */
-  __webpack_require__(179),
+  __webpack_require__(181),
   /* scopeId */
   "data-v-49d53ef4",
   /* cssModules */
@@ -56594,7 +56608,7 @@ var Component = __webpack_require__(3)(
   /* script */
   __webpack_require__(136),
   /* template */
-  __webpack_require__(174),
+  __webpack_require__(175),
   /* scopeId */
   null,
   /* cssModules */
@@ -56622,6 +56636,40 @@ module.exports = Component.exports
 
 /***/ }),
 /* 170 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(3)(
+  /* script */
+  null,
+  /* template */
+  __webpack_require__(179),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "E:\\wamp64\\www\\github-blog\\resources\\assets\\js\\frontend\\components\\video\\videoPlay.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] videoPlay.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-32beeeda", Component.options)
+  } else {
+    hotAPI.reload("data-v-32beeeda", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -56802,7 +56850,7 @@ if (false) {
 }
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -56934,17 +56982,47 @@ if (false) {
 }
 
 /***/ }),
-/* 172 */,
 /* 173 */,
-/* 174 */
+/* 174 */,
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "content-container video-detail-container"
   }, [_c('div', {
+    staticClass: "breadcrumb"
+  }, [_c('el-breadcrumb', {
+    attrs: {
+      "separator": "/"
+    }
+  }, [_c('el-breadcrumb-item', {
+    attrs: {
+      "to": {
+        path: '/'
+      }
+    }
+  }, [_vm._v("首页")]), _vm._v(" "), _c('el-breadcrumb-item', {
+    attrs: {
+      "to": {
+        path: '/video/detail'
+      }
+    }
+  }, [_vm._v("视频列表")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("在线观看：1.Yii基础视频讲解")])], 1)], 1), _vm._v(" "), _c('div', {
+    staticClass: "content-box video-detail-box"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "video-list"
+  }, [_c('h2', {
+    staticClass: "title"
+  }, [_vm._v("课程内容")]), _vm._v(" "), _c('ul', [_c('li', [_c('router-link', {
+    attrs: {
+      "to": "/video/play/33dbcionlkh2g2j12vh2vgc21g3h2f1vhj3v"
+    }
+  }, [_vm._v("1、Yii2高级模板（45分钟）"), _c('span', {
+    staticClass: "pull-right"
+  }, [_vm._v("2017-05-13 22:10:49")])])], 1), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9), _vm._v(" "), _vm._m(10), _vm._v(" "), _vm._m(11), _vm._v(" "), _vm._m(12), _vm._v(" "), _vm._m(13), _vm._v(" "), _vm._m(14), _vm._v(" "), _vm._m(15), _vm._v(" "), _vm._m(16), _vm._v(" "), _vm._m(17)])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "video-intro"
   }, [_c('div', {
     staticClass: "video-picture"
@@ -56962,125 +57040,152 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "video-concise"
   }, [_c('p', [_vm._v("Font Awesome为您提供可缩放的矢量图标，您可以使用CSS所提供的所有特性对它们进行更改，包括：大小、颜色、阴影或者其它任何支持的效果。每周推送 Laravel 最新资讯、精华文章、开发技巧、推荐扩展包、最新 Laravel 职位信息以及 「Laravel China 社区」上的精华讨论。每周推送 Laravel 最新资讯、精华文章、开发技巧、推荐扩展包、最新 Laravel 职位信息以及 「Laravel China 社区」上的精华讨论。每周推送 Laravel 最新资讯、精华文章、开发技巧、推荐扩展包、最新 Laravel 职位信息以及 「Laravel China 社区」上的精华讨论。")])]), _vm._v(" "), _c('div', {
     staticClass: "video-other"
-  }, [_c('p', [_vm._v("百度云地址："), _c('span', [_vm._v("www.baidu.com")])]), _vm._v(" "), _c('p', [_vm._v("QQ交流群："), _c('span', [_vm._v("232994411")])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "video-list"
-  }, [_c('h2', {
-    staticClass: "title"
-  }, [_vm._v("课程内容")]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
+  }, [_c('p', [_vm._v("百度云地址："), _c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("www.baidu.com")])]), _vm._v(" "), _c('p', [_vm._v("QQ交流群："), _c('span', [_vm._v("232994411")])])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("2、Yii2使用gii生成代码(高级模板)（45分钟）"), _c('span', {
+    staticClass: "pull-right"
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_vm._v("3、Yii2面包屑及项目后台样式布置（45分钟）"), _c('span', {
+    staticClass: "pull-right"
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "/video/play/33dbcionlkh2g2j12vh2vgc21g3h2f1vhj3v",
       "target": "_blank"
     }
   }, [_vm._v("1、Yii2高级模板（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "javascript:;"
     }
   }, [_vm._v("2、Yii2使用gii生成代码(高级模板)（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "javascript:;"
     }
   }, [_vm._v("3、Yii2面包屑及项目后台样式布置（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "/video/play/33dbcionlkh2g2j12vh2vgc21g3h2f1vhj3v",
       "target": "_blank"
     }
   }, [_vm._v("1、Yii2高级模板（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "javascript:;"
     }
   }, [_vm._v("2、Yii2使用gii生成代码(高级模板)（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "javascript:;"
     }
   }, [_vm._v("3、Yii2面包屑及项目后台样式布置（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "/video/play/33dbcionlkh2g2j12vh2vgc21g3h2f1vhj3v",
       "target": "_blank"
     }
   }, [_vm._v("1、Yii2高级模板（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "javascript:;"
     }
   }, [_vm._v("2、Yii2使用gii生成代码(高级模板)（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "javascript:;"
     }
   }, [_vm._v("3、Yii2面包屑及项目后台样式布置（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "/video/play/33dbcionlkh2g2j12vh2vgc21g3h2f1vhj3v",
       "target": "_blank"
     }
   }, [_vm._v("1、Yii2高级模板（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "javascript:;"
     }
   }, [_vm._v("2、Yii2使用gii生成代码(高级模板)（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "javascript:;"
     }
   }, [_vm._v("3、Yii2面包屑及项目后台样式布置（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "/video/play/33dbcionlkh2g2j12vh2vgc21g3h2f1vhj3v",
       "target": "_blank"
     }
   }, [_vm._v("1、Yii2高级模板（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "javascript:;"
     }
   }, [_vm._v("2、Yii2使用gii生成代码(高级模板)（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("2017-05-13 22:10:49")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "javascript:;"
     }
   }, [_vm._v("3、Yii2面包屑及项目后台样式布置（45分钟）"), _c('span', {
     staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "/video/play/33dbcionlkh2g2j12vh2vgc21g3h2f1vhj3v",
-      "target": "_blank"
-    }
-  }, [_vm._v("1、Yii2高级模板（45分钟）"), _c('span', {
-    staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "javascript:;"
-    }
-  }, [_vm._v("2、Yii2使用gii生成代码(高级模板)（45分钟）"), _c('span', {
-    staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "javascript:;"
-    }
-  }, [_vm._v("3、Yii2面包屑及项目后台样式布置（45分钟）"), _c('span', {
-    staticClass: "pull-right"
-  }, [_vm._v("2017-05-13 22:10:49")])])])])])])
+  }, [_vm._v("2017-05-13 22:10:49")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -57091,7 +57196,7 @@ if (false) {
 }
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -57404,10 +57509,149 @@ if (false) {
 }
 
 /***/ }),
-/* 176 */,
 /* 177 */,
 /* 178 */,
 /* 179 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "content-container video-play-container"
+  }, [_c('div', {
+    staticClass: "breadcrumb"
+  }, [_c('el-breadcrumb', {
+    attrs: {
+      "separator": "/"
+    }
+  }, [_c('el-breadcrumb-item', {
+    attrs: {
+      "to": {
+        path: '/'
+      }
+    }
+  }, [_vm._v("首页")]), _vm._v(" "), _c('el-breadcrumb-item', {
+    attrs: {
+      "to": {
+        path: '/video/detail'
+      }
+    }
+  }, [_vm._v("视频列表")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("在线观看：1.Yii基础视频讲解")])], 1)], 1), _vm._v(" "), _vm._m(0)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "content-box video-play-box"
+  }, [_c('div', {
+    staticClass: "video-play"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "video-comment"
+  }, [_c('h2', {
+    staticClass: "title"
+  }, [_vm._v("视频评论")]), _vm._v(" "), _c('div', {
+    staticClass: "comment-list"
+  }, [_c('div', {
+    staticClass: "comment-detail"
+  }, [_c('div', {
+    staticClass: "user-face"
+  }, [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/focus_weixin.png"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "comment-word"
+  }, [_c('p', {
+    staticClass: "user-name"
+  }, [_vm._v("高山流水"), _c('span', [_vm._v("2017-07-12 16:12:31")])]), _vm._v(" "), _c('p', {
+    staticClass: "comment-content"
+  }, [_vm._v("老哥，稳！")])])]), _vm._v(" "), _c('div', {
+    staticClass: "comment-detail"
+  }, [_c('div', {
+    staticClass: "user-face"
+  }, [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/focus_weixin.png"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "comment-word"
+  }, [_c('p', {
+    staticClass: "user-name"
+  }, [_vm._v("高山流水"), _c('span', [_vm._v("2017-07-12 16:12:31")])]), _vm._v(" "), _c('p', {
+    staticClass: "comment-content"
+  }, [_vm._v("老哥，稳！")])])]), _vm._v(" "), _c('div', {
+    staticClass: "comment-detail"
+  }, [_c('div', {
+    staticClass: "user-face"
+  }, [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/focus_weixin.png"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "comment-word"
+  }, [_c('p', {
+    staticClass: "user-name"
+  }, [_vm._v("高山流水"), _c('span', [_vm._v("2017-07-12 16:12:31")])]), _vm._v(" "), _c('p', {
+    staticClass: "comment-content"
+  }, [_vm._v("老哥，稳！")])])]), _vm._v(" "), _c('div', {
+    staticClass: "comment-detail"
+  }, [_c('div', {
+    staticClass: "user-face"
+  }, [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/focus_weixin.png"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "comment-word"
+  }, [_c('p', {
+    staticClass: "user-name"
+  }, [_vm._v("高山流水"), _c('span', [_vm._v("2017-07-12 16:12:31")])]), _vm._v(" "), _c('p', {
+    staticClass: "comment-content"
+  }, [_vm._v("老哥，稳！")])])]), _vm._v(" "), _c('div', {
+    staticClass: "comment-detail"
+  }, [_c('div', {
+    staticClass: "user-face"
+  }, [_c('a', {
+    attrs: {
+      "href": "javascript:;"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/focus_weixin.png"
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "comment-word"
+  }, [_c('p', {
+    staticClass: "user-name"
+  }, [_vm._v("高山流水"), _c('span', [_vm._v("2017-07-12 16:12:31")])]), _vm._v(" "), _c('p', {
+    staticClass: "comment-content"
+  }, [_vm._v("老哥，稳！")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "comment-now"
+  }, [_vm._v("\n                我要评论\n            ")])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-32beeeda", module.exports)
+  }
+}
+
+/***/ }),
+/* 180 */,
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -57426,7 +57670,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v("首页")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("视频列表")])], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "video-box"
+    staticClass: "content-box video-box"
   }, [_c('el-row', {
     attrs: {
       "gutter": 20
@@ -57483,8 +57727,8 @@ if (false) {
 }
 
 /***/ }),
-/* 180 */,
-/* 181 */
+/* 182 */,
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -57608,11 +57852,11 @@ if (false) {
 }
 
 /***/ }),
-/* 182 */,
-/* 183 */,
 /* 184 */,
 /* 185 */,
-/* 186 */
+/* 186 */,
+/* 187 */,
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -57642,7 +57886,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v("首页")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("技术篇")])], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "article-box"
+    staticClass: "content-box article-box"
   }, [_c('div', {
     staticClass: "article-detail"
   }, [_c('div', {
@@ -57989,12 +58233,12 @@ if (false) {
 }
 
 /***/ }),
-/* 187 */,
-/* 188 */,
 /* 189 */,
 /* 190 */,
 /* 191 */,
-/* 192 */
+/* 192 */,
+/* 193 */,
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -58020,7 +58264,7 @@ if(false) {
 }
 
 /***/ }),
-/* 193 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -58046,9 +58290,9 @@ if(false) {
 }
 
 /***/ }),
-/* 194 */,
-/* 195 */,
-/* 196 */
+/* 196 */,
+/* 197 */,
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -58074,7 +58318,7 @@ if(false) {
 }
 
 /***/ }),
-/* 197 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -58100,12 +58344,12 @@ if(false) {
 }
 
 /***/ }),
-/* 198 */,
-/* 199 */,
 /* 200 */,
 /* 201 */,
 /* 202 */,
-/* 203 */
+/* 203 */,
+/* 204 */,
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(112);
