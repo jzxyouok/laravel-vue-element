@@ -12,7 +12,9 @@
                     <div class="article-detail">
                         <div class='article-picture'><img src="/images/focus_weixin.png"></div>
                         <div class="article-word">
-                            <h2 class='article-title'><a href="javascript:;">1.laravel的基础配置常出现的错误</a></h2>
+                            <h2 class='article-title'>
+                                <router-link to="/article/detail/33dbcionlkh2g2j12vh2vgc21g3h2f1vhj3v" target="_blank">1.laravel的基础配置常出现的错误</router-link>
+                            </h2>
                             <div class='article-right'>
                                 <p>
                                     作者：<span>林联敏</span> 发表时间：

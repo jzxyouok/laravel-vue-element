@@ -32,9 +32,11 @@
                 <h2 class="title">课程内容</h2>
                 <ul>
                     <li>
-                        <router-link to="/video/play/33dbcionlkh2g2j12vh2vgc21g3h2f1vhj3v">1、Yii2高级模板（45分钟）<span class="pull-right">2017-05-13 22:10:49</span></router-link>
+                        <router-link to="/video/play/33dbcionlkh2g2j12vh2vgc21g3h2f1vhj3v" target="_blank">1、Yii2高级模板（45分钟）<span class="pull-right">2017-05-13 22:10:49</span></router-link>
                     </li>
-                    <li><a href="javascript:;">2、Yii2使用gii生成代码(高级模板)（45分钟）<span class="pull-right">2017-05-13 22:10:49</span></a></li>
+                    <li>
+                        <router-link to="/video/play/33dbcionlkh2g2j12vh2vgc21g3h2f1vhj3v" target="_blank">2、Yii2高级模板（45分钟）<span class="pull-right">2017-05-13 22:10:49</span></router-link>
+                    </li>
                     <li><a href="javascript:;">3、Yii2面包屑及项目后台样式布置（45分钟）<span class="pull-right">2017-05-13 22:10:49</span></a></li>
                     <li><a href="/video/play/33dbcionlkh2g2j12vh2vgc21g3h2f1vhj3v" target="_blank">1、Yii2高级模板（45分钟）<span class="pull-right">2017-05-13 22:10:49</span></a></li>
                     <li><a href="javascript:;">2、Yii2使用gii生成代码(高级模板)（45分钟）<span class="pull-right">2017-05-13 22:10:49</span></a></li>

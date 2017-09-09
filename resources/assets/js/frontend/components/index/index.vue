@@ -23,16 +23,21 @@
                         <span slot="label"><i class="el-icon-date"></i> 我的行程</span>
                         <div class="detail-card">
                             <el-row :gutter="20">
-                                <el-col :span="6" v-for="(o, index) in 10" :key="o" style="margin-bottom:20px;">
+                                <el-col :span="6" v-for="(o, index) in 10" :key="o" class="video-detail">
                                     <el-card :body-style="{ padding: '0px' }">
-                                        <img src="/images/focus_weixin.png" class="image" style="width: 100%;">
-                                        <div style="padding: 14px;">
-                                            <p>laravel基础教程（<strong>53</strong>课时）</p>
-                                            <div class="bottom clearfix">
-                                                <time class="time">2017-07-21</time>
-                                                <el-button type="info" size="small" class="button" style="float: right;">免费观看</el-button>
+                                        <router-link to="/video/detail">
+                                            <div class="video-thumb">
+                                                <img src="/images/focus_weixin.png" class="image video-image">
+                                                <div class="video-mask"><span><i class="fa fa-play"></i></span></div>
                                             </div>
-                                        </div>
+                                            <div class="video-intro">
+                                                <h4>laravel基础教程（<strong>53</strong>课时）</h4>
+                                                <div class="bottom clearfix">
+                                                    <time class="time">2017-07-21</time>
+                                                    <el-button type="info" size="small" class="button">免费观看</el-button>
+                                                </div>
+                                            </div>
+                                        </router-link>
                                     </el-card>
                                 </el-col>
                             </el-row>

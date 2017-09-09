@@ -107,7 +107,7 @@
                     <div class="comment-detail">
                         <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
                         <div class="comment-word">
-                            <p class="user-name">高山流水 #amgogo先生<span>2017-07-12 16:12:31</span></p>
+                            <p class="user-name">高山流水<span>2017-07-12 16:12:31</span></p>
                             <p class="comment-content">老哥，稳！</p>
                         </div>
                         <div class="comment-response">
@@ -180,7 +180,15 @@ export default {
                         [{ 'list': 'ordered' }, { 'list': 'bullet' }],
                         [{ 'script': 'sub' }, { 'script': 'super' }],
                         [{ 'indent': '-1' }, { 'indent': '+1' }],
-                        [{ 'direction': 'rtl' }]
+                        [{ 'direction': 'rtl' }],
+                        //[{ 'size': ['small', false, 'large', 'huge'] }],
+                        //[{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                        [{ 'color': [] }, { 'background': [] }],
+                        //[{ 'font': [] }],
+                        //[{ 'align': [] }],
+                        ['clean'],
+                        ['link']
+                        //['link', 'image', 'video']
                     ]
                 }
             }

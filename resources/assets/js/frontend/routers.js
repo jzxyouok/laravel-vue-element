@@ -40,6 +40,6 @@ export default [{
     noDropdown: true,
     children: [
         { path: 'index', component: Article, name: '技术篇', iconCls: '' },
-        { path: 'detail', component: ArticleDetail, name: '技术篇详情', iconCls: '' }
+        { path: 'detail/:id', component: ArticleDetail, name: '技术篇详情', iconCls: '' }
     ]
 }]
