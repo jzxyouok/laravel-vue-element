@@ -54,13 +54,40 @@
                 </div>
             </div>
             <div class="video-comment">
-                <h2 class="sidebar-title">视频评论</h2>
+                <h2 class="sidebar-title">视频评论 （<span>56</span>条）</h2>
                 <div class="comment-list">
                     <div class="comment-detail">
                         <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
                         <div class="comment-word">
                             <p class="user-name">高山流水<span>2017-07-12 16:12:31</span></p>
-                            <p class="comment-content">老哥，稳！</p>
+                            <p class="comment-content">运用laravel+vue+elementui，从零搭建一个技术博客！</p>
+                        </div>
+                        <div class="comment-response">
+                            <div class="comment-detail">
+                                <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
+                                <div class="comment-word">
+                                    <p class="user-name">高山流水 #<span>amgogo先生</span><span>2017-07-12 16:12:31</span></p>
+                                    <p class="comment-content">老哥，稳！</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-response">
+                            <div class="comment-detail">
+                                <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
+                                <div class="comment-word">
+                                    <p class="user-name">amgogo先生 #<span>高山流水</span><span>2017-07-12 16:12:31</span></p>
+                                    <p class="comment-content">本人从事php开发工作，一直奋战在一线，处于水深火热之中，工作之余看看知乎、逛逛github、打打游戏！</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-response">
+                            <div class="comment-detail">
+                                <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
+                                <div class="comment-word">
+                                    <p class="user-name">高山流水 #<span>amgogo先生</span><span>2017-07-12 16:12:31</span></p>
+                                    <p class="comment-content">老哥，稳！</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="comment-detail">
@@ -80,8 +107,17 @@
                     <div class="comment-detail">
                         <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
                         <div class="comment-word">
-                            <p class="user-name">高山流水<span>2017-07-12 16:12:31</span></p>
+                            <p class="user-name">高山流水 #amgogo先生<span>2017-07-12 16:12:31</span></p>
                             <p class="comment-content">老哥，稳！</p>
+                        </div>
+                        <div class="comment-response">
+                            <div class="comment-detail">
+                                <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
+                                <div class="comment-word">
+                                    <p class="user-name">高山流水 #<span>amgogo先生</span><span>2017-07-12 16:12:31</span></p>
+                                    <p class="comment-content">老哥，稳！</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="comment-detail">
@@ -92,8 +128,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="comment-now">
-                    我要评论
+            </div>
+            <div class="comment-now">
+                <h2 class="sidebar-title">我要评论</h2>
+                <!-- <div class="comment-now-content" contenteditable="true"><span># 高山流水</span></div> -->
+                <quill-edit class="comment-now-content" v-model="comment.content" :options="editorOption"></quill-edit>
+                <div class="commnet-now-submit">
+                    <el-button type="primary" @click="commentSubmit">提　交</el-button>
                 </div>
             </div>
         </div>
@@ -103,6 +144,7 @@
     </div>
 </template>
 <script type="text/javascript">
+import { quillEditor } from 'vue-quill-editor';
 export default {
     components: {
         'remote-js': {
@@ -120,11 +162,28 @@ export default {
             props: {
                 href: { type: String, required: true },
             },
-        }
+        },
+        'quill-edit': quillEditor
     },
     data() {
         return {
             currentPage1: 5,
+            comment: {
+                content: ''
+            },
+            editorOption: {
+                modules: {
+                    toolbar: [
+                        ['bold', 'italic', 'underline', 'strike'],
+                        ['blockquote', 'code-block'],
+                        [{ 'header': 1 }, { 'header': 2 }],
+                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                        [{ 'script': 'sub' }, { 'script': 'super' }],
+                        [{ 'indent': '-1' }, { 'indent': '+1' }],
+                        [{ 'direction': 'rtl' }]
+                    ]
+                }
+            }
         };
     },
     mounted() {},
@@ -134,6 +193,9 @@ export default {
         },
         handleCurrentChange(val) {
             console.log(`当前页: ${val}`);
+        },
+        commentSubmit() {
+
         }
     }
 }

@@ -79,6 +79,8 @@ a {
 
 
 
+
+
 /* 头部导航 */
 
 .web-header {
@@ -121,6 +123,8 @@ a {
 .app-main {
     width: 100%;
 }
+
+
 
 
 
@@ -223,6 +227,8 @@ a {
         }
     }
 }
+
+
 
 
 
@@ -353,6 +359,8 @@ a {
 
 
 
+
+
 /* 登录 */
 
 .signin-container {
@@ -404,6 +412,8 @@ a {
         }
     }
 }
+
+
 
 
 
@@ -858,26 +868,67 @@ a {
                     float: left;
                     width: 100%;
                     border-bottom: 1px solid #eee;
-                    margin-bottom: 20px;
+                    margin-bottom: 10px;
                     .user-face {
                         float: left;
-                        width: 10%;
+                        width: 5%;
+                        border: 1px solid #eee;
+                        border-radius: 3px;
+                        overflow: hidden;
+                        padding: 1px;
+                        box-sizing: border-box;
+                        margin-bottom: 10px;
                         img {
                             width: 100%;
                         }
                     }
                     .comment-word {
                         float: left;
-                        width: 90%;
+                        width: 95%;
                         box-sizing: border-box;
-                        padding-left: 5px;
-                        .comment-content {}
+                        padding-left: 10px;
+                        .user-name {
+                            margin-bottom: 5px;
+                            span {
+                                color: #ccc;
+                                font-size: 12px;
+                                margin-left: 5px;
+                            }
+                        }
+                        .comment-content {
+                            line-height: 150%;
+                            color: #333;
+                        }
+                    }
+                    .comment-response {
+                        margin-left: 5%;
+                        width: 95%;
+                        clear: both;
+                        border-top: 1px solid #eee;
+                        padding-top: 10px;
+                        font-size: 12px;
+                        .comment-detail {
+                            border: none;
+                            .user-face {
+                                margin-bottom: 0;
+                            }
+                        }
                     }
                 }
             }
         }
         .comment-now {
             clear: both;
+            .comment-now-content {
+                margin-bottom: 10px;
+                .ql-editor {
+                    min-height: 200px;
+                }
+            }
+            .commnet-now-submit {
+                margin-bottom: 10px;
+                text-align: right;
+            }
         }
     }
 }

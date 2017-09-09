@@ -2,7 +2,8 @@
 /public/hot
 /public/storage
 /public/css/backend
-/public/js/backend
+/public/css/frontend
+/public/js
 /public/mix*
 /storage/*.key
 /vendor
