@@ -53,7 +53,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="video-comment">
+            <div class="commnet-box video-comment">
                 <h2 class="sidebar-title">视频评论 （<span>56</span>条）</h2>
                 <div class="comment-list">
                     <div class="comment-detail">
