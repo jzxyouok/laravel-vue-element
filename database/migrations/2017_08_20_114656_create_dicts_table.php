@@ -22,8 +22,8 @@ class CreateDictsTable extends Migration
             $table->string('text_en', 20)->default('')->comment('字典英文文字');
             $table->string('text', 20)->default('')->comment('字典中文文字');
             $table->tinyInteger('sort_no')->unsigned()->default(0)->comment('排序号');
-            $table->tinyInteger('is_active')->unsigned()->default(1)->comment('是否启用');
             $table->string('remarks', 50)->default('')->comment('备注');
+            $table->tinyInteger('status')->default(1)->comment('状态(0|1)');
             $table->softDeletes();
             $table->timestamps();
         });

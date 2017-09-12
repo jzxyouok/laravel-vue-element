@@ -17,8 +17,8 @@ class CreateAdminLoginRecordsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('admin_id')->comment('管理员id');
-            $table->tinyInteger('status')->comment('状态(成功|失败)');
             $table->string('text')->default('')->comment('说明');
+            $table->tinyInteger('status')->default(1)->comment('结果(0|1)');
             $table->timestamps();
         });
     }

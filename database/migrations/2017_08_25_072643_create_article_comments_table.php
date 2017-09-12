@@ -20,7 +20,8 @@ class CreateArticleCommentsTable extends Migration
             $table->integer('article_id')->comment('文章id');
             $table->integer('user_id')->comment('用户id');
             $table->string('content')->comment('评论内容');
-            $table->tinyInteger('status')->comment('状态');
+            $table->integer('is_audit')->default(0)->comment('审核(select)');
+            $table->tinyInteger('status')->default(1)->comment('状态(0|1)');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdminPermissionsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateAdminPermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin_permissions', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('text', 15);
-            $table->text('permission_include')->comment('权限节点');
+            $table->integer('category_type')->comment('菜单类型');
+            $table->string('category_name')->comment('菜单名称');
+            $table->string('instruction')->default('')->comment('说明');
+            $table->integer('sort')->default(0)->comment('菜单排序，正序');
             $table->tinyInteger('status')->default(1)->comment('状态(0|1)');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +31,6 @@ class CreateAdminPermissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin_permissions');
+        Schema::dropIfExists('categories');
     }
 }

@@ -20,7 +20,8 @@ class CreateVideosTable extends Migration
             $table->string('title', 100)->comment('标题');
             $table->string('auther', 20)->comment('作者');
             $table->string('url')->comment('视频路径');
-            $table->tinyInteger('status')->defalut(1)->comment('状态');
+            $table->integer('is_audit')->default(0)->comment('审核(select)');
+            $table->tinyInteger('status')->default(1)->comment('状态(0|1)');
             $table->timestamps();
             $table->softDeletes();
         });
