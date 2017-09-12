@@ -9,8 +9,8 @@
                     </el-breadcrumb>
                 </div>
                 <div class="content-box article-detail-box">
-                    <h2>每周推送 Laravel 最新资讯</h2>
-                    <p>
+                    <h2 class="article-title">每周推送 Laravel 最新资讯</h2>
+                    <p class="article-right">
                         <span>作者：<strong>林联敏</strong></span>
                         <span>发表时间：<strong>2017-08-21 15:26：11</strong></span>
                         <span>阅读量：<strong>329</strong></span>
@@ -22,13 +22,16 @@
                     <div class="article-interactive">
                         <div class="article-more">
                             <div class="article-prev">
-                                <p><i class="fa fa-chevron-left"></i>上一篇：Sobel算子边缘检测</p>
+                                <p><a href="javascript:;"><i class="fa fa-chevron-left"></i>上一篇：Sobel算子边缘检测</a></p>
                                 <p>@2017-08-31 阅读(301) 赞(19) 评论(25)</p>
                             </div>
                             <div class="article-next">
-                                <p><i class="fa fa-chevron-right"></i>下一篇：Laravel 5.4 中文文档</p>
+                                <p><a href="javascript:;">下一篇：Laravel 5.4 中文文档<i class="fa fa-chevron-right"></i></a></p>
                                 <p>@2017-08-31 阅读(301) 赞(19) 评论(25)</p>
                             </div>
+                        </div>
+                        <div class="article-advertise">
+                            
                         </div>
                     </div>
                     <div class="comment-box article-comment">
@@ -180,15 +183,69 @@
     </div>
 </template>
 <script type="text/javascript">
+import { quillEditor } from 'vue-quill-editor';
 export default {
+    components: {
+        'remote-js': {
+            render(createElement) {
+                return createElement('script', { attrs: { type: 'text/javascript', src: this.src } });
+            },
+            props: {
+                src: { type: String, required: true },
+            },
+        },
+        'remote-css': {
+            render(createElement) {
+                return createElement('link', { attrs: { type: 'text/css', rel: 'stylesheet', href: this.href } });
+            },
+            props: {
+                href: { type: String, required: true },
+            },
+        },
+        'quill-edit': quillEditor
+    },
     data() {
         return {
-
+            currentPage1: 5,
+            comment: {
+                content: ''
+            },
+            editorOption: {
+                modules: {
+                    toolbar: [
+                        ['bold', 'italic', 'underline', 'strike'],
+                        ['blockquote', 'code-block'],
+                        [{ 'header': 1 }, { 'header': 2 }],
+                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                        [{ 'script': 'sub' }, { 'script': 'super' }],
+                        [{ 'indent': '-1' }, { 'indent': '+1' }],
+                        [{ 'direction': 'rtl' }],
+                        //[{ 'size': ['small', false, 'large', 'huge'] }],
+                        //[{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                        [{ 'color': [] }, { 'background': [] }],
+                        //[{ 'font': [] }],
+                        //[{ 'align': [] }],
+                        ['clean'],
+                        ['link']
+                        //['link', 'image', 'video']
+                    ]
+                }
+            }
         };
     },
     mounted() {
 
     },
-    methods: {}
+    methods: {
+        handleSizeChange(val) {
+            console.log(`每页 ${val} 条`);
+        },
+        handleCurrentChange(val) {
+            console.log(`当前页: ${val}`);
+        },
+        commentSubmit() {
+
+        }
+    }
 }
 </script>
