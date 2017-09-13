@@ -24,8 +24,8 @@ class CreateDictsTable extends Migration
             $table->tinyInteger('sort_no')->unsigned()->default(0)->comment('排序号');
             $table->string('remarks', 50)->default('')->comment('备注');
             $table->tinyInteger('status')->default(1)->comment('状态(0|1)');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

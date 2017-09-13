@@ -21,7 +21,6 @@ class CreateEmailRecordsTable extends Migration
             $table->integer('email_title')->comment('邮件主题');
             $table->string('text')->default('')->comment('说明');
             $table->tinyInteger('status')->default(1)->comment('状态(0|1)');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

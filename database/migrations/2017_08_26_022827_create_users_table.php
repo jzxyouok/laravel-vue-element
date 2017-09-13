@@ -23,10 +23,10 @@ class CreateUsersTable extends Migration
             $table->char('last_login_ip', 15)->default(0);
             $table->timestamp('last_login_time')->nullable();
             $table->tinyInteger('active')->default(0)->comment('激活(0|1)');
-            $table->tinyInteger('status')->default(10)->comment('状态((0|1)');
+            $table->tinyInteger('status')->default(1)->comment('状态((0|1)');
             $table->rememberToken();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

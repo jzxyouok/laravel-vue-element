@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateVideosTable extends Migration
 {
@@ -19,7 +19,7 @@ class CreateVideosTable extends Migration
             $table->tinyInteger('category_id')->comment('类别id');
             $table->string('title', 100)->comment('标题');
             $table->string('auther', 20)->comment('作者');
-            $table->string('url')->comment('视频路径');
+            $table->text('simple_instrution')->default('')->comment('简介');
             $table->text('tag_include')->default('')->comment('标签');
             $table->string('source')->default('')->comment('来源');
             $table->integer('is_audit')->default(0)->comment('审核(select)');

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArticleReadsTable extends Migration
+class CreateVideoPlayHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateArticleReadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('article_reads', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('video_play_histories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->comment('用户id');
-            $table->integer('article_id')->comment('文章id');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateArticleReadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('article_reads');
+        Schema::dropIfExists('video_play_histories');
     }
 }

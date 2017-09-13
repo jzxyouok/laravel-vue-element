@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVideoCommentsTable extends Migration
+class CreateVideoListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,19 @@ class CreateVideoCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('video_comments', function (Blueprint $table) {
+        Schema::create('video_lists', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('parent_id')->default(0)->comment('父id');
-            $table->integer('video_list_id')->comment('视频id');
-            $table->integer('user_id')->comment('用户id');
-            $table->string('content')->comment('评论内容');
+            $table->tinyInteger('video_id')->comment('所属视频');
+            $table->string('title', 100)->comment('标题');
+            $table->string('auther', 20)->default('')->comment('作者');
+            $table->string('video_url')->commnet('视频路径');
+            $table->text('tag_include')->default('')->comment('标签');
+            $table->string('source')->default('')->comment('来源');
             $table->integer('is_audit')->default(0)->comment('审核(select)');
             $table->tinyInteger('status')->default(1)->comment('状态(0|1)');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -33,6 +36,6 @@ class CreateVideoCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('video_comments');
+        Schema::dropIfExists('video_lists');
     }
 }

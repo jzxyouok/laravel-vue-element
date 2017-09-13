@@ -21,7 +21,6 @@ class CreateArticleInteractsTable extends Migration
             $table->tinyInteger('like')->default(0)->comment('点赞');
             $table->tinyInteger('hate')->default(0)->comment('反对');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

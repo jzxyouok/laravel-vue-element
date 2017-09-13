@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateVideoInteractsTable extends Migration
 {
@@ -17,11 +17,10 @@ class CreateVideoInteractsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('user_id')->comment('用户id');
-            $table->integer('video_id')->comment('视频id');
+            $table->integer('video_list_id')->comment('视频id');
             $table->tinyInteger('like')->default(0)->comment('点赞');
             $table->tinyInteger('hate')->default(0)->comment('反对');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

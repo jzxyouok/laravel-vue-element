@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateTagsTable extends Migration
 {
@@ -16,7 +16,7 @@ class CreateTagsTable extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('tag_type')->comment('白哦前类型');
+            $table->integer('tag_type')->comment('菜单类型');
             $table->string('tag_name')->comment('标签名称');
             $table->string('instruction')->default('')->comment('说明');
             $table->integer('sort')->default(0)->comment('菜单排序，正序');

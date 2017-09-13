@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class CreateUserLoginRecordsTable extends Migration
+class CreateVotePeopleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateUserLoginRecordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_login_records', function (Blueprint $table) {
+        Schema::create('vote_people', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->integer('vote_id')->comment('投票id');
             $table->integer('user_id')->comment('用户id');
-            $table->string('text')->default('')->comment('说明');
-            $table->tinyInteger('status')->default(1)->comment('结果(0|1)');
+            $table->tinyInteger('vote_value')->comment('投票选项value');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateUserLoginRecordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_login_records');
+        Schema::dropIfExists('vote_people');
     }
 }

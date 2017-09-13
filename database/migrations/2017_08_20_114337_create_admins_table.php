@@ -25,8 +25,8 @@ class CreateAdminsTable extends Migration
             $table->timestamp('last_login_time')->nullable();
             $table->tinyInteger('status')->default(1)->comment('状态(0|1)');
             $table->rememberToken();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

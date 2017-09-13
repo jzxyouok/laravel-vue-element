@@ -19,7 +19,6 @@ class CreateVideoReadsTable extends Migration
             $table->integer('user_id')->comment('用户id');
             $table->integer('video_id')->comment('视频id');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

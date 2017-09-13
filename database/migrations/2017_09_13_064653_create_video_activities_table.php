@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLeavesTable extends Migration
+class CreateVideoActivitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateLeavesTable extends Migration
      */
     public function up()
     {
-        Schema::create('leaves', function (Blueprint $table) {
+        Schema::create('video_activities', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('parent_id')->default(0)->comment('父id');
-            $table->integer('user_id')->comment('用户id');
-            $table->string('content')->comment('内容');
-            $table->tinyInteger('status')->default->comment('状态(0|1)');
-            $table->timestamps();
+            $table->tinyInteger('video_id')->comment('所属视频');
             $table->softDeletes();
         });
     }
@@ -32,6 +28,6 @@ class CreateLeavesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leaves');
+        Schema::dropIfExists('video_activities');
     }
 }
