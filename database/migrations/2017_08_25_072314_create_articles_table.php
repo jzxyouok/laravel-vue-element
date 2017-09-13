@@ -20,7 +20,8 @@ class CreateArticlesTable extends Migration
             $table->string('title', 100);
             $table->string('auther', 20);
             $table->mediumText('content');
-            $table->string('source', 255)->default('')->comment('来源');
+            $table->text('tag_include')->default('')->comment('标签');
+            $table->string('source')->default('')->comment('来源');
             $table->integer('is_audit')->default(0)->comment('审核(select)');
             $table->tinyInteger('status')->default(1)->comment('状态(0|1)');
             $table->timestamps();
