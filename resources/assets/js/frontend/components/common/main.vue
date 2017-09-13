@@ -2,63 +2,54 @@
     <div class="container">
         <div class="web-header">
             <el-row :gutter="10" style="margin: 0;">
-                <el-col :xs="6" :sm="5" :md="4" :lg="4">
+                <el-col :xs="6" :sm="6" :md="6" :lg="6">
                     <div class="web-logo">
                         <router-link to="/">quickzz博客</router-link>
                     </div>
                 </el-col>
-                <el-col :xs="18" :sm="19" :md="20" :lg="20">
-                    <el-col :xs="0" :sm="11" :md="11" :lg="10">
-                        <div class="web-search">
-                            <el-input placeholder="请输入内容" v-model="searchContent">
-                                <el-select v-model="searchSelect" slot="prepend" placeholder="请选择">
-                                    <el-option label="餐厅名" value="1"></el-option>
-                                    <el-option label="订单号" value="2"></el-option>
-                                    <el-option label="用户电话" value="3"></el-option>
-                                </el-select>
-                                <el-button slot="append" icon="search"></el-button>
-                            </el-input>
-                        </div>
-                    </el-col>
-                    <el-col :xs="24" :sm="13" :md="13" :lg="14">
-                        <div class="web-menu">
-                            <el-menu theme="dark" :default-active="$store.state.menuActive" class="el-menu-demo" mode="horizontal" @select="menuSelect">
-                                <el-menu-item index="1">
-                                    <router-link to="/" class='menu-link'>首页</router-link>
+                <el-col :xs="18" :sm="18" :md="18" :lg="18">
+                    <div class="web-menu">
+                        <el-menu theme="dark" :default-active="$store.state.menuActive" class="el-menu-demo" mode="horizontal" @select="menuSelect">
+                            <el-menu-item index="1">
+                                <router-link to="/" class='menu-link'>首页</router-link>
+                            </el-menu-item>
+                            <el-menu-item index="2">
+                                <router-link to="/video/index" class='menu-link'>视频列表</router-link>
+                            </el-menu-item>
+                            <el-submenu index="3">
+                                <template slot="title">技术篇</template>
+                                <el-menu-item index="3-1">
+                                    <router-link to="/article/index">前端技术</router-link>
                                 </el-menu-item>
-                                <el-menu-item index="2">
-                                    <router-link to="/video/index" class='menu-link'>视频列表</router-link>
+                                <el-menu-item index="3-2">
+                                    <router-link to="/article/index">PHP后端</router-link>
                                 </el-menu-item>
-                                <el-submenu index="3">
-                                    <template slot="title">技术篇</template>
-                                    <el-menu-item index="3-1">
-                                        <router-link to="/article/index">前端技术</router-link>
-                                    </el-menu-item>
-                                    <el-menu-item index="3-2">
-                                        <router-link to="/article/index">PHP后端</router-link>
-                                    </el-menu-item>
-                                    <el-menu-item index="3-3">
-                                        <router-link to="/article/index">服务器层</router-link>
-                                    </el-menu-item>
-                                    <el-menu-item index="3-4">
-                                        <router-link to="/article/index">其它分享</router-link>
-                                    </el-menu-item>
-                                </el-submenu>
-                                <el-menu-item index="4">
-                                    <router-link to="/leave" class='menu-link'>投票</router-link>
+                                <el-menu-item index="3-3">
+                                    <router-link to="/article/index">服务器层</router-link>
                                 </el-menu-item>
-                                <el-menu-item index="5">
-                                    <router-link to="/leave" class='menu-link'>留言板</router-link>
+                                <el-menu-item index="3-4">
+                                    <router-link to="/article/index">其它分享</router-link>
                                 </el-menu-item>
-                                <el-menu-item index="6">
-                                    <router-link to="/signin" class='menu-link'>登录</router-link>
-                                </el-menu-item>
-                                <el-menu-item index="7">
-                                    <router-link to="/signup" class='menu-link'>注册</router-link>
-                                </el-menu-item>
-                            </el-menu>
-                        </div>
-                    </el-col>
+                            </el-submenu>
+                            <el-menu-item index="4">
+                                <router-link to="/vote/index" class='menu-link'>投票</router-link>
+                            </el-menu-item>
+                            <el-menu-item index="5">
+                                <router-link to="/leave/index" class='menu-link'>留言板</router-link>
+                            </el-menu-item>
+                            <el-menu-item index="6">
+                                <router-link to="/signin" class='menu-link'>登录</router-link>
+                            </el-menu-item>
+                            <el-menu-item index="7">
+                                <router-link to="/signup" class='menu-link'>注册</router-link>
+                            </el-menu-item>
+                        </el-menu>
+                    </div>
+                    <div class="web-search">
+                        <el-input placeholder="请输入内容" v-model="searchContent">
+                            <el-button slot="append" icon="search"></el-button>
+                        </el-input>
+                    </div>
                 </el-col>
             </el-row>
         </div>

@@ -1,15 +1,18 @@
+// 公共组件
 import Main from './components/common/main.vue';
 import Signup from './components/common/signup.vue';
 import Signin from './components/common/signin.vue';
-//首页
+// 首页
 import Index from './components/index/index.vue';
-//视频列表
+// 视频列表
 import Video from './components/video/video.vue';
 import VideoDetail from './components/video/videoDetail.vue';
 import VideoPlay from './components/video/videoPlay.vue';
-//技术篇
+// 技术篇
 import Article from './components/article/article.vue';
 import ArticleDetail from './components/article/articleDetail.vue';
+// 留言
+import Leave from './components/leave/leave.vue';
 export default [{
     path: '/',
     component: Main,
@@ -41,5 +44,14 @@ export default [{
     children: [
         { path: 'index', component: Article, name: '技术篇', iconCls: '' },
         { path: 'detail/:id', component: ArticleDetail, name: '技术篇详情', iconCls: '' }
+    ]
+}, {
+    path: '/leave',
+    component: Main,
+    name: '留言板',
+    iconCls: '', //图标样式class
+    noDropdown: true,
+    children: [
+        { path: 'index', component: Leave, name: '留言板', iconCls: '' },
     ]
 }]

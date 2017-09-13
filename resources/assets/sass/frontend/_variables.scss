@@ -54,39 +54,7 @@ a {
     border-bottom: 1px solid #ccc;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 头部导航 */
-
+// 头部导航
 .web-header {
     background-color: #324157;
     .el-menu-item {
@@ -128,41 +96,7 @@ a {
     width: 100%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 底部 */
-
+// 底部
 .web-footer {
     background-color: #222;
     border-color: #090909;
@@ -235,33 +169,6 @@ a {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -348,35 +255,6 @@ a {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* 登录 */
 
 .signin-container {
@@ -428,38 +306,6 @@ a {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -674,11 +520,6 @@ a {
                 }
             }
         }
-        .page-box {
-            clear: both;
-            text-align: center;
-            margin: 20px 0;
-        }
     }
 }
 
@@ -750,7 +591,7 @@ a {
 
 // 右边推荐栏
 .right-recommend {
-    .recomment-box {
+    .recommend-box {
         margin-bottom: 30px;
         h3 {
             border-bottom: 1px solid #eee;
@@ -1003,12 +844,12 @@ a {
     }
 }
 
-// 评论
-.comment-box {
+// 互动
+.interactive-box {
     clear: both;
-    .comment-list {
+    .interactive-list {
         padding: 0 20px 20px 10px;
-        .comment-detail {
+        .interactive-detail {
             float: left;
             width: 100%;
             border-bottom: 1px solid #eee;
@@ -1026,7 +867,7 @@ a {
                     width: 100%;
                 }
             }
-            .comment-word {
+            .interactive-word {
                 float: left;
                 width: 95%;
                 box-sizing: border-box;
@@ -1039,19 +880,19 @@ a {
                         margin-left: 5px;
                     }
                 }
-                .comment-content {
+                .interactive-content {
                     line-height: 150%;
                     color: #333;
                 }
             }
-            .comment-response {
+            .interactive-response {
                 margin-left: 5%;
                 width: 95%;
                 clear: both;
                 border-top: 1px solid #eee;
                 padding-top: 10px;
                 font-size: 12px;
-                .comment-detail {
+                .interactive-detail {
                     border: none;
                     .user-face {
                         margin-bottom: 0;
@@ -1062,19 +903,37 @@ a {
     }
 }
 
-.comment-now {
+// 互动markdown框
+.interactive-now {
     clear: both;
-    .comment-now-content {
+    .interactive-now-content {
         margin-bottom: 10px;
         .ql-editor {
             min-height: 200px;
         }
     }
-    .commnet-now-submit {
+    .interactive-now-submit {
         margin-bottom: 10px;
         text-align: right;
     }
 }
+
+// 分页
+.page-box {
+    clear: both;
+    text-align: center;
+    margin: 20px 0;
+}
+
+// 留言板
+.leave-container {
+    .leave-box {
+        padding-right: 20px;
+        margin-right: 10px;
+        border-right: 1px solid #eee;
+    }
+}
+
 
 @media (max-width: 768px) {
     .web-logo {

@@ -53,86 +53,55 @@
                     </ul>
                 </div>
             </div>
-            <div class="commnet-box video-comment">
+            <div class="interactive-box comment-list">
                 <h2 class="sidebar-title">视频评论 （<span>56</span>条）</h2>
-                <div class="comment-list">
-                    <div class="comment-detail">
+                <div class="interactive-list">
+                    <div class="interactive-detail">
                         <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
-                        <div class="comment-word">
+                        <div class="interactive-word">
                             <p class="user-name">高山流水<span>2017-07-12 16:12:31</span></p>
-                            <p class="comment-content">运用laravel+vue+elementui，从零搭建一个技术博客！</p>
+                            <p class="interactive-content">运用laravel+vue+elementui，从零搭建一个技术博客！</p>
                         </div>
-                        <div class="comment-response">
-                            <div class="comment-detail">
+                        <div class="interactive-response">
+                            <div class="interactive-detail">
                                 <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
-                                <div class="comment-word">
+                                <div class="interactive-word">
                                     <p class="user-name">高山流水 #<span>amgogo先生</span><span>2017-07-12 16:12:31</span></p>
-                                    <p class="comment-content">老哥，稳！</p>
+                                    <p class="interactive-content">老哥，稳！</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="comment-response">
-                            <div class="comment-detail">
+                        <div class="interactive-response">
+                            <div class="interactive-detail">
                                 <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
-                                <div class="comment-word">
+                                <div class="interactive-word">
                                     <p class="user-name">amgogo先生 #<span>高山流水</span><span>2017-07-12 16:12:31</span></p>
-                                    <p class="comment-content">本人从事php开发工作，一直奋战在一线，处于水深火热之中，工作之余看看知乎、逛逛github、打打游戏！</p>
+                                    <p class="interactive-content">本人从事php开发工作，一直奋战在一线，处于水深火热之中，工作之余看看知乎、逛逛github、打打游戏！</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="comment-response">
-                            <div class="comment-detail">
+                        <div class="interactive-response">
+                            <div class="interactive-detail">
                                 <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
-                                <div class="comment-word">
+                                <div class="interactive-word">
                                     <p class="user-name">高山流水 #<span>amgogo先生</span><span>2017-07-12 16:12:31</span></p>
-                                    <p class="comment-content">老哥，稳！</p>
+                                    <p class="interactive-content">老哥，稳！</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="comment-detail">
+                    <div class="interactive-detail">
                         <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
-                        <div class="comment-word">
+                        <div class="interactive-word">
                             <p class="user-name">高山流水<span>2017-07-12 16:12:31</span></p>
-                            <p class="comment-content">老哥，稳！</p>
-                        </div>
-                    </div>
-                    <div class="comment-detail">
-                        <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
-                        <div class="comment-word">
-                            <p class="user-name">高山流水<span>2017-07-12 16:12:31</span></p>
-                            <p class="comment-content">老哥，稳！</p>
-                        </div>
-                    </div>
-                    <div class="comment-detail">
-                        <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
-                        <div class="comment-word">
-                            <p class="user-name">高山流水<span>2017-07-12 16:12:31</span></p>
-                            <p class="comment-content">老哥，稳！</p>
-                        </div>
-                        <div class="comment-response">
-                            <div class="comment-detail">
-                                <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
-                                <div class="comment-word">
-                                    <p class="user-name">高山流水 #<span>amgogo先生</span><span>2017-07-12 16:12:31</span></p>
-                                    <p class="comment-content">老哥，稳！</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment-detail">
-                        <div class="user-face"><a href="javascript:;"><img src="/images/focus_weixin.png" /></a></div>
-                        <div class="comment-word">
-                            <p class="user-name">高山流水<span>2017-07-12 16:12:31</span></p>
-                            <p class="comment-content">老哥，稳！</p>
+                            <p class="interactive-content">老哥，稳！</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="comment-now">
+            <div class="interactive-now">
                 <h2 class="sidebar-title">我要评论</h2>
-                <!-- <div class="comment-now-content" contenteditable="true"><span># 高山流水</span></div> -->
-                <quill-edit class="comment-now-content" v-model="comment.content" :options="editorOption"></quill-edit>
+                <quill-edit class="interactive-now-content" v-model="comment.content" :options="editorOption"></quill-edit>
                 <div class="commnet-now-submit">
                     <el-button type="primary" @click="commentSubmit">提　交</el-button>
                 </div>

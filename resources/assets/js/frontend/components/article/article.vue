@@ -111,7 +111,7 @@
             </el-col>
             <el-col :xs="0" :sm="0" :md="8" :lg="8">
                 <div class='right-recommend'>
-                    <div class="recomment-box hot-article">
+                    <div class="recommend-box hot-article">
                         <h3>热门文章<a href="javascript:;">更多推荐 ++</a></h3>
                         <ul>
                             <li><a href="javascript:;">1.Laravel 5.4 中文文档</a></li>
@@ -126,7 +126,7 @@
                             <li><a href="javascript:;">10.每周推送 Laravel 最新资讯</a></li>
                         </ul>
                     </div>
-                    <div class="recomment-box hot-video">
+                    <div class="recommend-box hot-video">
                         <h3>热门视频<a href="javascript:;">更多视频 ++</a></h3>
                         <ul>
                             <li><a href="javascript:;">1.Laravel 5.4 中文文档</a></li>
@@ -136,7 +136,7 @@
                             <li><a href="javascript:;">5.一小时同步一次，更多信息请查阅 文档导读</a></li>
                         </ul>
                     </div>
-                    <div class="recomment-box hot-comment">
+                    <div class="recommend-box hot-comment">
                         <h3>精彩评论<a href="javascript:;">更多评论 ++</a></h3>
                         <ul>
                             <li><a href="javascript:;">1.Laravel 5.4 中文文档</a></li>
@@ -146,7 +146,7 @@
                             <li><a href="javascript:;">5.一小时同步一次，更多信息请查阅 文档导读</a></li>
                         </ul>
                     </div>
-                    <div class="recomment-box hot-leave">
+                    <div class="recommend-box hot-leave">
                         <h3>精彩留言<a href="javascript:;">更多留言 ++</a></h3>
                         <ul>
                             <li><a href="javascript:;">1.Laravel 5.4 中文文档</a></li>
@@ -156,7 +156,7 @@
                             <li><a href="javascript:;">5.一小时同步一次，更多信息请查阅 文档导读</a></li>
                         </ul>
                     </div>
-                    <div class="recomment-box hot-vote">
+                    <div class="recommend-box hot-vote">
                         <h3>当前投票<a href="javascript:;">更多投票 ++</a></h3>
                         <ul>
                             <li><a href="javascript:;">1.Laravel 5.4 中文文档</a></li>
