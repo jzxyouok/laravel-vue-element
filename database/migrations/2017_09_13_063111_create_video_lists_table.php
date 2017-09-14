@@ -16,7 +16,7 @@ class CreateVideoListsTable extends Migration
         Schema::create('video_lists', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->tinyInteger('video_id')->comment('所属视频');
+            $table->integer('video_id')->comment('所属视频');
             $table->string('title', 100)->comment('标题');
             $table->string('auther', 20)->default('')->comment('作者');
             $table->string('video_url')->commnet('视频路径');

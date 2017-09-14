@@ -17,6 +17,10 @@ class CreateVideoActivitiesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->tinyInteger('video_id')->comment('所属视频');
+            $table->date('start_at')->nullable()->comment('活动开始时间');
+            $table->date('end_at')->nullable()->comment('活动结束时间');
+            $table->decimal('amount', 6, 2)->default(0)->comment('活动价格');
+            $table->integer('max_number')->default(0)->commnet('活动总量，0表示不限制');
             $table->softDeletes();
         });
     }
