@@ -6,6 +6,8 @@ return [
      * 自定义
      */
     'pageSize' => env('APP_PAGE_SIZE', 20),
+    'pictureSize' => env('APP_PICTURE_SIZE', 500),
+    'passwordEncrypt' => env('APP_PASSWORD_ENCRYPT', 'linlm1994@gmail.com'),
 
     /*
     |--------------------------------------------------------------------------

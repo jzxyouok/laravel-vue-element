@@ -1,6 +1,7 @@
 // 公共组件
 import Main from './components/common/main.vue';
 import Signup from './components/common/signup.vue';
+import SignupActive from './components/common/signupActive.vue';
 import Signin from './components/common/signin.vue';
 // 首页
 import Index from './components/index/index.vue';
@@ -22,6 +23,7 @@ export default [{
     children: [
         { path: 'index', component: Index, name: '首页', iconCls: 'el-icon-edit' },
         { path: 'signup', component: Signup, name: '注册页面', iconCls: 'el-icon-edit' },
+        { path: 'signup-active', component: SignupActive, name: '邮箱激活页面', iconCls: 'el-icon-edit' },
         { path: 'signin', component: Signin, name: '登录页面', iconCls: 'el-icon-edit' },
     ]
 }, {

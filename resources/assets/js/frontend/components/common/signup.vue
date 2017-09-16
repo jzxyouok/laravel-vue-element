@@ -10,7 +10,7 @@
                     <div class="signup-body">
                         <el-form label-position="right" label-width="80px" :model="signupForm" :rules="signupRules" ref="signupForm">
                             <el-form-item label="头像" prop="face">
-                                <el-upload class="avatar-uploader" action="https://jsonplaceholder.typicode.com/posts/" :show-file-list="false" :on-success="uploadFaceSuccess" :before-upload="beforeUploadFace">
+                                <el-upload class="avatar-uploader" action="/frontend/signup/upload-face" :show-file-list="false" :on-success="uploadFaceSuccess" :before-upload="beforeUploadFace" :headers="uploadHeaders">
                                     <img v-if="signupForm.face" :src="signupForm.face" class="avatar">
                                     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                                 </el-upload>（不传默认使用系统头像）
@@ -28,7 +28,7 @@
                                 <el-input type="password" v-model="signupForm.repassword" placeholder="再次输入密码"></el-input>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" @click="signupSubmit('signupForm')">立即注册</el-button>
+                                <el-button type="primary" @click="signupSubmit('signupForm')" :loading="signupSubmitLoading">立即注册</el-button>
                                 <el-button @click="signupReset('signupForm')">重置</el-button>
                             </el-form-item>
                         </el-form>
@@ -39,8 +39,12 @@
                 <div class="signup-other-type">
                     <h3 class='type-header'><span>使用其它方式登录</span></h3>
                     <div class='type-detail'>
-                        <p><el-button type="info"><i class="fa fa-qq"></i>使用QQ登录</el-button></p>
-                        <p><el-button type="success"><i class="fa fa-weixin"></i>使用微信登录</el-button></p>
+                        <p>
+                            <el-button type="info"><i class="fa fa-qq"></i>使用QQ登录</el-button>
+                        </p>
+                        <p>
+                            <el-button type="success"><i class="fa fa-weixin"></i>使用微信登录</el-button>
+                        </p>
                     </div>
                 </div>
             </el-col>
@@ -58,12 +62,16 @@ export default {
             }
         };
         return {
+            signupSubmitLoading: false,
             signupForm: {
                 face: '',
                 username: '',
                 email: '',
                 password: '',
                 repassword: ''
+            },
+            uploadHeaders: {
+                'X-CSRF-TOKEN': window.laravelCsrfToken
             },
             signupRules: {
                 username: [
@@ -92,7 +100,19 @@ export default {
         signupSubmit(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    alert('submit!');
+                    window._this.signupSubmitLoading = true;
+                    axios.post('/frontend/signup/create-user', { 'data': window._this.signupForm }).then(response => {
+                        let data = response.data;
+                        if (!data.status) {
+                            window._this.$message.error(data.message);
+                            window._this.signupSubmitLoading = false;
+                            return false;
+                        }
+                        window._this.$message.success(data.message);
+                        window._this.$router.push({ path: '/signup-active' });
+                    }).catch(function(response) {
+                        window._this.signupSubmitLoading = false;
+                    });
                 } else {
                     console.log('error submit!!');
                     return false;
@@ -103,19 +123,21 @@ export default {
             window._this.$refs[formName].resetFields();
         },
         uploadFaceSuccess(res, file) {
-            window._this.signupForm.imageUrl = URL.createObjectURL(file.raw);
+            window._this.signupForm.face = URL.createObjectURL(file.raw);
         },
         beforeUploadFace(file) {
-            const isJPG = file.type === 'image/jpeg';
-            const isLt2M = file.size / 1024 / 1024 < 2;
-
-            if (!isJPG) {
-                window._this.$message.error('上传头像图片只能是 JPG 格式!');
+            let fileType = file.type;
+            let fileSize = file.size / 1024;
+            let truePictureType = ['image/jpeg', 'image/jpg', 'image/png', 'image/x-png'];
+            if (truePictureType.indexOf(fileType) == -1) {
+                window._this.$message.error('请上传正确的头像图片的格式（jpg/png）');
+                return false;
             }
-            if (!isLt2M) {
-                window._this.$message.error('上传头像图片大小不能超过 2MB!');
+            if (fileSize > 500) {
+                window._this.$message.error('上传头像图片大小不能超过 500KB');
+                return false;
             }
-            return isJPG && isLt2M;
+            return true;
         }
     }
 }

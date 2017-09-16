@@ -13,7 +13,8 @@
 /*前台*/
 Route::get('/', 'Frontend\IndexController@index');
 Route::group(['namespace' => 'Frontend', 'prefix' => 'frontend'], function () {
-
+    Route::post('signup/upload-face', 'SignupController@uploadFace');
+    Route::post('signup/create-user', 'SignupController@createUser');
 });
 
 
