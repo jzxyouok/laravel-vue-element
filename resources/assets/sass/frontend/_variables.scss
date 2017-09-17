@@ -172,6 +172,8 @@ a {
 
 
 
+
+
 /* 注册 */
 
 .signup-container {
@@ -255,6 +257,8 @@ a {
 
 
 
+
+
 /* 登录 */
 
 .signin-container {
@@ -306,6 +310,8 @@ a {
         }
     }
 }
+
+
 
 
 
@@ -896,6 +902,53 @@ a {
                     border: none;
                     .user-face {
                         margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 邮件激活页面
+.signup-active-container {
+    .signup-active-box {
+        .active-tip {
+            p {
+                line-height: 180%;
+            }
+        }
+        .other-recommend {
+            .active-recommend {
+                
+                h3 {
+                    border-bottom: 1px solid #eee;
+                    color: #58B7FF;
+                    padding-bottom: 5px;
+                    text-indent: 10px;
+                    margin-bottom: 15px;
+                    font-size: 16px;
+                    font-weight: normal;
+                    padding: 0 10px 5px 5px;
+                    a {
+                        color: #ccc;
+                        font-size: 12px;
+                        float: right;
+                    }
+                    a:hover {
+                        color: #333;
+                    }
+                }
+                ul {
+                    li {
+                        margin-bottom: 10px;
+                        font-size: 14px;
+                        a {
+                            color: #666;
+                        }
+                        a:hover {
+                            color: red;
+                            text-decoration: underline;
+                        }
                     }
                 }
             }

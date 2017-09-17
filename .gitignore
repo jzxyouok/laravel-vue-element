@@ -5,6 +5,7 @@
 /public/css/frontend
 /public/js
 /public/mix*
+/public/images
 /storage/*.key
 /vendor
 /.idea

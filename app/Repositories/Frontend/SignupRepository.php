@@ -65,10 +65,11 @@ class SignupRepository extends BaseRepository
         return [
             'status'  => $insertResult ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
             'data'    => [
+                'id' => base64_encode($insertResult->id),
                 'username' => $insertResult->username,
                 'email' => $insertResult->email,
             ],
-            'message' => $insertResult ? '注册成功' : '注册失败',
+            'message' => $insertResult ? '注册成功，请于一小时内激活账号' : '注册失败',
         ];
     }
 }

@@ -108,8 +108,16 @@ export default {
                             window._this.signupSubmitLoading = false;
                             return false;
                         }
-                        window._this.$message.success(data.message);
-                        window._this.$router.push({ path: '/signup-active' });
+                        window._this.$notify({
+                            title: '成功',
+                            message: data.message,
+                            type: 'success'
+                        });
+                        let params = {
+                            'id': data.data.id,
+                            'email': data.data.email
+                        };
+                        window._this.$router.push({ path: '/signup-active', query: params });
                     }).catch(function(response) {
                         window._this.signupSubmitLoading = false;
                     });
