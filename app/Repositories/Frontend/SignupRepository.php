@@ -2,6 +2,8 @@
 namespace App\Repositories\Frontend;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegisterOrder;
 class SignupRepository extends BaseRepository
 {
     public function uploadFace($input)
@@ -62,14 +64,26 @@ class SignupRepository extends BaseRepository
             'active'        => 0,
             'status'        => 1,
         ]);
+        if (!$insertResult) {
+            return [
+                'status'  => Parent::ERROR_STATUS,
+                'data'    => [],
+                'message' => '注册失败，未知错误',
+            ];
+        }
+        $mailData = [
+            'name' => $insertResult->username,
+            'url' => env('APP_URL') . '/active?mail_id=1&user_id=' . base64_encode($insertResult->id) . '&username=' . $insertResult->username . '&code=' . base64_encode(rand(1000, 9999) . time() . rand(1000, 9999))
+        ];
+        Mail::to($insertResult->email)->send(new RegisterOrder($mailData));
         return [
-            'status'  => $insertResult ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
+            'status'  => Parent::SUCCESS_STATUS,
             'data'    => [
                 'id' => base64_encode($insertResult->id),
                 'username' => $insertResult->username,
                 'email' => $insertResult->email,
             ],
-            'message' => $insertResult ? '注册成功，请于一小时内激活账号' : '注册失败',
+            'message' => '注册成功，请于一小时内激活账号',
         ];
     }
 }
