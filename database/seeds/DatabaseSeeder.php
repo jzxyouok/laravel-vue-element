@@ -81,6 +81,9 @@ class DictsTableSeeder extends Seeder
             ['code' => 'audit', 'code_name' => '审核结果', 'value' => 0, 'text_en' => 'audit_loading', 'text' => '审核中'],
             ['code' => 'audit', 'code_name' => '审核结果', 'value' => 10, 'text_en' => 'audit_refuse', 'text' => '拒绝'],
             ['code' => 'audit', 'code_name' => '审核结果', 'value' => 20, 'text_en' => 'audit_pass', 'text' => '通过'],
+            // 邮件类型
+            ['code' => 'email_type', 'code_name' => '邮件类型', 'value' => 10, 'text_en' => 'register_active', 'text' => '注册']
+            ['code' => 'email_type', 'code_name' => '邮件类型', 'value' => 20, 'text_en' => 'repassword_email', 'text' => '重置密码']
         ];
         \App\Models\Dict::insert($data);
     }

@@ -21,4 +21,11 @@ class SignupController extends Controller
         $result = SignupRepository::getInstance()->createUser($input);
         return response()->json($result);
     }
+
+    public function activeUser(Request $request)
+    {
+        $input  = $request->all();
+        $result = SignupRepository::getInstance()->activeUser($input);
+        return response()->json($result);
+    }
 }

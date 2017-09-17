@@ -23,7 +23,7 @@ abstract class BaseRepository
     /**
      * 获取字典
      */
-    public function getDicts($code_arr)
+    protected function getDicts($code_arr)
     {
         $result = [];
         if (!empty($code_arr) && is_array($code_arr)) {

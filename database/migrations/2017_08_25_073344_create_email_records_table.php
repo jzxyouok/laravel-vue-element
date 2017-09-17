@@ -16,6 +16,7 @@ class CreateEmailRecordsTable extends Migration
         Schema::create('email_records', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->integer('type_id')->comment('类型');
             $table->integer('admin_id')->comment('管理员id');
             $table->integer('user_id')->comment('用户id');
             $table->integer('email_title')->comment('邮件主题');

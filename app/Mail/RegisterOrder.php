@@ -31,6 +31,7 @@ class RegisterOrder extends Mailable
     public function build()
     {
         return $this->view('emails.register')->with([
+            'title' => $this->data['title'],
             'name' => $this->data['name'],
             'url' => $this->data['url'],
         ]);;
