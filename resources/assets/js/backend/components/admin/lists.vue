@@ -25,8 +25,8 @@
             <el-table-column prop="last_login_time" label="最后登录时间"></el-table-column>
             <el-table-column align="center" label="状态">
                 <template scope="scope">
-                    <el-tag type="gray" v-show="scope.row.status != 10" @click.native="changeFieldValue('status', scope.row.id, 10)">{{scope.row.status | formatByOptions(options.status, 'value', 'text')}}</el-tag>
-                    <el-tag type="primary" v-show="scope.row.status == 10" @click.native="changeFieldValue('status', scope.row.id, 0)">{{scope.row.status | formatByOptions(options.status, 'value', 'text')}}</el-tag>
+                    <el-tag type="gray" v-show="!scope.row.status" @click.native="changeFieldValue('status', scope.row.id, 1)">冻结</el-tag>
+                    <el-tag type="primary" v-show="scope.row.status" @click.native="changeFieldValue('status', scope.row.id, 0)">正常</el-tag>
                 </template>
             </el-table-column>
             <el-table-column align="center" label="操作" width="190">
