@@ -86,4 +86,5 @@
 </pre>
 
 ## 项目部分页面截图 ##
-- 暂时为空（后期补上）
+- 前台首页
+![前台首页](https://raw.githubusercontent.com/linlianmin/laravel-vue-element/master/public/github-images/)7VI2NPP9I717BEIF%5DTZ(MM.png)
