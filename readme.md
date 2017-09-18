@@ -87,4 +87,4 @@
 
 ## 项目部分页面截图 ##
 - 前台首页
-![前台首页](https://raw.githubusercontent.com/linlianmin/laravel-vue-element/master/public/github-images/)7VI2NPP9I717BEIF%5DTZ(MM.png)
+![前台首页](https://raw.githubusercontent.com/linlianmin/laravel-vue-element/master/public/github-images/4%7BZ786C_86D5XQ%60XD3_%5DO%60N.png)
