@@ -13,6 +13,9 @@
 /*前台*/
 Route::get('/', 'Frontend\IndexController@index');
 Route::group(['namespace' => 'Frontend', 'prefix' => 'frontend'], function () {
+    // 测试
+    Route::get('test', 'TestController@index');
+
     Route::post('signup/upload-face', 'SignupController@uploadFace');
     Route::post('signup/create-user', 'SignupController@createUser');
 });
