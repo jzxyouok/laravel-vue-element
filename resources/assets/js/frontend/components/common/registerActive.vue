@@ -1,6 +1,6 @@
 <template>
-    <div class="content-container signup-active-container">
-        <div class="signup-active-box">
+    <div class="content-container register-active-container">
+        <div class="register-active-box">
             <div class="active-tip">
                 <p>激活邮件已下发送至您的邮箱<a href="javascript:;">{{email}}</a>，请注意查收</p>
                 <p>未收到？<a href="javascript:;">重新发送</a></p>

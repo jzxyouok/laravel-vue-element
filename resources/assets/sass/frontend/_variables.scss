@@ -176,11 +176,11 @@ a {
 
 /* 注册 */
 
-.signup-container {
-    .signup-detail-box {
+.register-container {
+    .register-detail-box {
         border-right: 1px solid #ccc;
         padding-right: 30px;
-        .signup-header {
+        .register-header {
             margin: 20px auto;
             text-align: center;
             width: 80%;
@@ -200,7 +200,7 @@ a {
                 color: #1D8CE0;
             }
         }
-        .signup-body {
+        .register-body {
             clear: both;
             .avatar-uploader .el-upload {
                 border: 1px dashed #d9d9d9;
@@ -227,7 +227,7 @@ a {
             }
         }
     }
-    .signup-other-type {
+    .register-other-type {
         text-align: center;
         width: 70%;
         margin: 100px auto;
@@ -261,11 +261,11 @@ a {
 
 /* 登录 */
 
-.signin-container {
-    .signin-detail-box {
+.login-container {
+    .login-detail-box {
         border-right: 1px solid #ccc;
         padding-right: 30px;
-        .signin-header {
+        .login-header {
             margin: 20px auto;
             text-align: center;
             width: 80%;
@@ -279,11 +279,11 @@ a {
                 }
             }
         }
-        .signin-body {
+        .login-body {
             clear: both;
         }
     }
-    .signin-other-type {
+    .login-other-type {
         text-align: center;
         width: 70%;
         margin: 100px auto;
@@ -910,8 +910,8 @@ a {
 }
 
 // 邮件激活页面
-.signup-active-container {
-    .signup-active-box {
+.register-active-container {
+    .register-active-box {
         .active-tip {
             p {
                 line-height: 180%;

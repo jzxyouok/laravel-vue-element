@@ -38,10 +38,10 @@
                                 <router-link to="/leave/index" class='menu-link'>留言板</router-link>
                             </el-menu-item>
                             <el-menu-item index="6">
-                                <router-link to="/signin" class='menu-link'>登录</router-link>
+                                <router-link to="/login" class='menu-link'>登录</router-link>
                             </el-menu-item>
                             <el-menu-item index="7">
-                                <router-link to="/signup" class='menu-link'>注册</router-link>
+                                <router-link to="/register" class='menu-link'>注册</router-link>
                             </el-menu-item>
                         </el-menu>
                     </div>

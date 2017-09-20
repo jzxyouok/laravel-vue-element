@@ -39,34 +39,35 @@ class LoginController extends Controller
     public function __construct()
     {
         // $this->middleware('guest', ['except' => 'logout']);
-        $this->middleware('auth', ['only' => ['signout']]);
+        $this->middleware('auth', ['only' => ['adminLogout', 'userLogout']]);
         // $this->beforeFilter('csrf', array('on' => 'post'));
     }
 
-    // 登录界面
+    // 后台登录界面
     public function index()
     {
         return view('backend.index');
     }
 
-    // 登录
-    public function login(Request $request)
+    // 后台登录
+    public function adminLogin(Request $request)
     {
         $input  = $request->input('data');
         $result = LoginRepository::getInstance()->login($input, $request->getClientIp());
         return response()->json($result);
     }
 
-    // 注销
-    public function logout()
+    // 后台注销
+    public function adminLogout()
     {
-        if (Auth::check()) {
-            Auth::logout();
+        if (Auth('admin')::check()) {
+            Auth('admin')::logout();
         }
         return response()->json(['status' => 1, 'message' => '退出成功']);
     }
 
-    public function reset(Request $request)
+    //
+    public function adminReset(Request $request)
     {
         $result = LoginRepository::getInstance()->reset($request->input('data'));
         return response()->json($result);

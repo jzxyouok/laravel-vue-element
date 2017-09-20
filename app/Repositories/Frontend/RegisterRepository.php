@@ -6,7 +6,7 @@ use App\Models\EmailRecord;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
-class SignupRepository extends BaseRepository
+class RegisterRepository extends BaseRepository
 {
     public function uploadFace($input)
     {
