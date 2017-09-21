@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Repositories\CommonRepository;
+use App\Repositories\Frontend\CommonRepository;
 use Illuminate\Http\Request;
 
 class CommonController extends BaseController

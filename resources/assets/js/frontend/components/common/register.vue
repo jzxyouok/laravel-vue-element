@@ -211,7 +211,7 @@ export default {
             window._this.$refs[formName].resetFields();
         },
         uploadFaceSuccess(res, file) {
-            window._this.registerForm.face = URL.createObjectURL(file.raw);
+            this.registerForm.face = URL.createObjectURL(file.raw);
         },
         beforeUploadFace(file) {
             let fileType = file.type;

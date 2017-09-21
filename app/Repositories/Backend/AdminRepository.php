@@ -12,13 +12,11 @@ class AdminRepository extends BaseRepository
      */
     public function lists($input)
     {
-        $this->data['lists']      = Admin::lists($input['searchForm']);
-        $this->data['permission'] = AdminPermission::all();
-        $this->dicts     = Parent::getDicts(['status']);
+        $resultData['lists'] = Admin::lists($input['searchForm']);
         return [
             'status'  => Parent::SUCCESS_STATUS,
-            'data'    => $this->data,
-            'dicts' => $this->dicts,
+            'data'    => $resultData,
+            'dicts'   => [],
             'message' => '数据获取成功',
         ];
     }
@@ -33,15 +31,15 @@ class AdminRepository extends BaseRepository
             return [
                 'status'  => Parent::ERROR_STATUS,
                 'data'    => $this->data,
-                'message' => '管理员用户名已经存在'
+                'message' => '管理员用户名已经存在',
             ];
-        } 
+        }
         $emailUniqueData = Admin::where('email', $input['email'])->first();
         if (!empty($emailUniqueData)) {
             return [
                 'status'  => Parent::ERROR_STATUS,
                 'data'    => $this->data,
-                'message' => '管理员邮箱已经存在'
+                'message' => '管理员邮箱已经存在',
             ];
         }
         $insert = Admin::create([
@@ -49,12 +47,12 @@ class AdminRepository extends BaseRepository
             'email'         => $input['email'],
             'password'      => md5($input['password'] . env('APP_PASSWORD_ENCRYPT')),
             'permission_id' => $input['permission_id'],
-            'status'        => $input['status']
+            'status'        => $input['status'],
         ]);
         return [
             'status'  => $insert ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
-            'data'    => $this->data,
-            'message' => $insert ? '管理员新增成功' : '管理员新增失败'
+            'data'    => [],
+            'message' => $insert ? '管理员新增成功' : '管理员新增失败',
         ];
     }
 
@@ -99,7 +97,7 @@ class AdminRepository extends BaseRepository
         $update = Admin::where('id', $id)->update($updateData);
         return [
             'status'  => $update ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
-            'data'    => $this->data,
+            'data'    => [],
             'message' => $update ? '管理员更新成功' : '管理员更新失败',
         ];
     }
@@ -112,21 +110,21 @@ class AdminRepository extends BaseRepository
         $deleted = Admin::where('id', $id)->delete();
         return [
             'status'  => $deleted ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
-            'data'    => $this->data,
-            'message' => $deleted ? '管理员删除成功' : '管理员删除失败'
+            'data'    => [],
+            'message' => $deleted ? '管理员删除成功' : '管理员删除失败',
         ];
     }
 
     /**
      * 改变状态
      */
-    public function changeStatus($id, $data)
+    public function changeFieldValue($id, $data)
     {
-        $result = Admin::where('id', $id)->update(['status' => $data['status']]);
+        $result = Admin::where('id', $id)->update([$data['field'] => $data['value']]);
         return [
             'status'  => $result ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
-            'data'    => $this->data,
-            'message' => $result ? '更改状态成功' : '更改状态失败'
+            'data'    => [],
+            'message' => $result ? '更改状态成功' : '更改状态失败',
         ];
     }
 }

@@ -4,12 +4,13 @@
 Route::get('/', 'Frontend\IndexController@index');
 Route::post('/login', 'Auth\LoginController@userLogin');
 Route::post('/logout', 'Auth\LoginController@userLogout');
-Route::post('/upload-image', 'CommonController@uploadImage');
 Route::group(['namespace' => 'Frontend', 'prefix' => 'frontend'], function () {
     // 测试
     Route::get('test', 'TestController@index');
+    Route::post('/upload-image', 'CommonController@uploadImage');
     // 注册
     Route::post('register/create-user', 'RegisterController@createUser');
+
 });
 
 
@@ -22,7 +23,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'backend', 'middleware' => '
     Route::get('/index', 'IndexController@index');
     //管理员
     Route::resource('admins', 'AdminController');
-    Route::post('admin/change-status/{id}', 'AdminController@changeStatus');
+    Route::post('admin/change-field-value/{id}', 'AdminController@changeFieldValue');
     //用户
     Route::resource('users', 'UserController');
     Route::post('user/change-field-value/{id}', 'UserController@changeFieldValue');

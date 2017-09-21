@@ -1,15 +1,15 @@
 <template>
     <div class="app-container">
-        <am-table-header v-on:create="create" v-on:getList="getList">
+        <table-header-component v-on:create="create" v-on:getList="getList">
             <el-input v-model="searchForm.username" placeholder="请输入用户名" style="width: 200px;"></el-input>
             <el-input v-model="searchForm.email" placeholder="请输入电子邮箱" style="width: 200px;"></el-input>
             <el-select v-model="searchForm.status" placeholder="请选择状态">
                 <el-option label="全部状态" value=""></el-option>
                 <el-option v-for="item in options.status" :key="item.value" :label="item.text" :value="item.value"></el-option>
             </el-select>
-        </am-table-header>
+        </table-header-component>
         <!-- 用户快捷窗口 -->
-        <am-describe-box ref="describtion"></am-describe-box>
+        <shortcut-component ref="describtion"></shortcut-component>
         <el-table :data="tableData" border style="width: 100%">
             <el-table-column label="用户名">
                 <template scope="scope">
@@ -41,7 +41,7 @@
                 </template>
             </el-table-column>
         </el-table>
-        <am-pagination ref="pagination" v-on:getList="getList"></am-pagination>
+        <pagination-component ref="pagination" v-on:getList="getList"></pagination-component>
         <el-dialog :title="formTitle" :visible.sync="formVisible" :close-on-click-modal="false" :close-on-press-escape="false">
             <el-form class="small-space" :model="form" :rules="rules" ref="form" label-position="left" label-width="100px">
                 <input type="hidden" v-model="form.id">
@@ -68,21 +68,21 @@
                     </el-select>
                 </el-form-item>
             </el-form>
-            <am-dialog-footer v-on:submit="submit(formName = 'form')" v-on:close="close"></am-dialog-footer>
+            <dialog-footer-component v-on:submit="submit(formName = 'form')" v-on:close="close"></dialog-footer-component>
         </el-dialog>
     </div>
 </template>
 <script>
-import Pagination from '../common/pagination';
-import TableHeader from '../common/tableHeader';
-import DialogFooter from '../common/dialogFooter';
-import DescribeBox from '../common/describeBox';
+import PaginationComponent from '../common/pagination-component.vue';
+import TableHeaderComponent from '../common/table-header-component.vue';
+import DialogFooterComponent from '../common/dialog-footer-component.vue';
+import ShortcutComponent from '../common/shortcut-component.vue';
 export default {
     components: {
-        'am-pagination': Pagination,
-        'am-table-header': TableHeader,
-        'am-dialog-footer': DialogFooter,
-        'am-describe-box': DescribeBox
+        'pagination-component': PaginationComponent,
+        'table-header-component': TableHeaderComponent,
+        'dialog-footer-component': DialogFooterComponent,
+        'shortcut-component': ShortcutComponent
     },
     data() {
         var checkRepassword = (rule, value, callback) => {

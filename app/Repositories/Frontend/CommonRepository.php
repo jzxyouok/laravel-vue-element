@@ -34,8 +34,10 @@ class CommonRepository extends BaseRepository
         return [
             'status'  => !empty($uploadResult) ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
             'data'    => [
-                'pathName' => !empty($uploadResult) ? $filedir : '',
-                'fileName' => !empty($uploadResult) ? $newImagesName : '',
+                'data' => [
+                    'pathName' => !empty($uploadResult) ? $filedir : '',
+                    'fileName' => !empty($uploadResult) ? $newImagesName : '',
+                ],
             ],
             'message' => !empty($uploadResult) ? '头像上传成功' : '头像上传失败',
         ];

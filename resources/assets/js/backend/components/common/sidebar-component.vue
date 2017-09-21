@@ -1,41 +1,62 @@
 <template>
-    <el-menu :unique-opened='true' mode="vertical" theme="dark" :default-active="$route.path">
-        <template v-for="item in $router.options.routes" v-if="!item.hidden">
-            <el-submenu :index="item.name" v-if="!item.noDropdown">
-                <template slot="title">
-                    <i :class="item.iconCls"></i>&nbsp;&nbsp;&nbsp;{{item.name}}
-                </template>
-                <router-link v-for="child in item.children" :key="child.path" v-if="!child.hidden" class="title-link" :to="item.path+'/'+child.path">
-                    <el-menu-item :index="item.path+'/'+child.path">
-                        {{child.name}}
-                    </el-menu-item>
-                </router-link>
+    <el-row :gutter="20" style="margin: 0px; padding: 0px;">
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+            <div class="hamburger-container"><i class="fa fa-navicon"></i></div>
+            <el-menu-item index="1">处理中心</el-menu-item>
+            <el-submenu index="2">
+                <template slot="title">我的工作台</template>
+                <el-menu-item index="2-1">选项1</el-menu-item>
+                <el-menu-item index="2-2">选项2</el-menu-item>
+                <el-menu-item index="2-3">选项3</el-menu-item>
             </el-submenu>
-            <router-link v-if="item.noDropdown&&item.children.length>0" :to="item.path+'/'+item.children[0].path">
-                <el-menu-item :index="item.path+'/'+item.children[0].path">
-                    <i :class="item.iconCls"></i>&nbsp;&nbsp;&nbsp;{{item.children[0].name}}
-                </el-menu-item>
-            </router-link>
-        </template>
-    </el-menu>
+            <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+            <el-submenu index="5" style="float: right;margin-right: 5px;">
+                <template slot="title">{{adminData.username}}</template>
+                <el-menu-item index="5-1">个人中心</el-menu-item>
+                <el-menu-item index="5-2">设置</el-menu-item>
+                <el-menu-item index="5-3" @click="logout">退出</el-menu-item>
+            </el-submenu>
+            <div class="permission-text">{{adminData.permission_text}}</div>
+        </el-menu>
+    </el-row>
 </template>
 <script>
 export default {
     name: 'Sidebar',
     data() {
         return {
-            permission_routers: '',
+
+            activeIndex: '1',
+            activeIndex2: '1',
+            adminData: {
+                username: '',
+                permissionText: ''
+            }
         };
     },
     mounted() {
-        //this.getMenu();
+        let _this = this;
+        var adminData = sessionStorage.getItem('admin');
+        if (adminData) {
+            _this.adminData = JSON.parse(adminData);
+        }
     },
     methods: {
-        getMenu: function() {
-            axios.get('backend/menu-list').then(function(res) {
-                permission_routers = res.data.lists;
-            }).catch(function(res) {
-
+        handleSelect(key, keyPath) {
+            console.log(key, keyPath);
+        },
+        logout() {
+            let _this = this;
+            axios.post('/backend/logout').then(function(res) {
+                let { status, message } = res.data;
+                if (!status) {
+                    _this.$message.error('未知错误，管理员退出失败');
+                    return false;
+                }
+                _this.$message.success(message);
+                _this.$router.push({ path: '/login' });
+            }).catch(function(err) {
+                _this.$message.error('网络连接失败');
             });
         }
     }
@@ -43,21 +64,27 @@ export default {
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .el-menu {
-    min-height: 100%;
     border-radius: 0;
 }
 
-.el-submenu .el-menu-item:active,
-.el-submenu .el-menu-item:hover {
-    text-decoration: none;
+.hamburger-container {
+    padding: 0 20px;
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    color: #48576A;
+    cursor: pointer;
 }
 
-.wscn-icon {
-    margin-right: 10px;
+.hamburger-container:hover {
+    color: #59A7FC;
 }
 
-.hideSidebar .title-link {
-    display: inline-block;
-    padding-left: 10px;
+.permission-text {
+    float: right;
+    height: 60px;
+    line-height: 60px;
+    color: #48576A;
+    cursor: pointer;
 }
 </style>

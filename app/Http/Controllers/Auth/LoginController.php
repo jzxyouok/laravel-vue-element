@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\ClerkRepository;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,22 +51,22 @@ class LoginController extends Controller
     public function adminLogin(Request $request)
     {
         $input  = $request->input('data');
-        $result = App\Repositories\Backend\LoginRepository::getInstance()->login($input, $request);
+        $result = \App\Repositories\Backend\LoginRepository::getInstance()->login($input, $request);
         return response()->json($result);
     }
 
     // 后台注销
     public function adminLogout()
     {
-        $result = App\Repositories\Backend\LoginRepository::getInstance()->logout();
+        $result = \App\Repositories\Backend\LoginRepository::getInstance()->logout();
         return response()->json($result);
     }
 
     // 后台重置密码
     public function adminReset(Request $request)
     {
-        $input = $request->input('data');
-        $result = App\Repositories\Backend\LoginRepository::getInstance()->reset($input);
+        $input  = $request->input('data');
+        $result = \App\Repositories\Backend\LoginRepository::getInstance()->reset($input);
         return response()->json($result);
     }
 
@@ -75,7 +74,7 @@ class LoginController extends Controller
     public function userLogin(Request $request)
     {
         $input  = $request->input('data');
-        $result = App\Repositories\Frontend\LoginRepository::getInstance()->login($input, $request);
+        $result = \App\Repositories\Frontend\LoginRepository::getInstance()->login($input, $request);
         return response()->json($result);
     }
 
@@ -89,7 +88,7 @@ class LoginController extends Controller
     // 前台重置密码
     public function userReset(Request $request)
     {
-        $input = $request->input('data');
+        $input  = $request->input('data');
         $result = App\Repositories\Frontend\LoginRepository::getInstance()->reset($input);
         return response()->json($result);
     }

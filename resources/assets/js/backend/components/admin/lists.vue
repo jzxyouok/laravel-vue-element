@@ -115,7 +115,10 @@ export default {
             },
             options: {
                 permission: '',
-                status: ''
+                status: [
+                    {value: 0, text: '冻结'},
+                    {value: 1, text: '正常'}
+                ]
             },
             rules: {
                 username: [
@@ -154,7 +157,6 @@ export default {
                 let data = response.data;
                 window._this.tableData = data.data.lists.data;
                 window._this.options.permission = data.data.permission;
-                window._this.options.status = data.dicts.status;
                 window._this.$refs.pagination.pageData.per_page = parseInt(data.data.lists.per_page);
                 window._this.$refs.pagination.pageData.current_page = parseInt(data.data.lists.current_page);
                 window._this.$refs.pagination.pageData.total = parseInt(data.data.lists.total);
@@ -230,7 +232,7 @@ export default {
         },
         changeFieldValue(field, id, value) {
             let paramsData = { 'data': { 'field': field, 'value': value } };
-            axios.post('/backend/user/change-field-value/' + id, paramsData).then(response => {
+            axios.post('/backend/admin/change-field-value/' + id, paramsData).then(response => {
                 if (!response.data.status) {
                     window._this.$message.error(response.data.message);
                     return false;
