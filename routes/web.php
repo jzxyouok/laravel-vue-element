@@ -1,15 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
- */
 /*前台*/
 Route::get('/', 'Frontend\IndexController@index');
 Route::post('/login', 'Auth\LoginController@userLogin');
@@ -17,6 +7,7 @@ Route::post('/logout', 'Auth\LoginController@userLogout');
 Route::group(['namespace' => 'Frontend', 'prefix' => 'frontend'], function () {
     // 测试
     Route::get('test', 'TestController@index');
+    // 注册
     Route::post('register/upload-face', 'RegisterController@uploadFace');
     Route::post('register/create-user', 'RegisterController@createUser');
 });

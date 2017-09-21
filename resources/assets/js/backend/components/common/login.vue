@@ -110,7 +110,7 @@
                 return false;
               }
               _this.$message.success(message);
-              sessionStorage.setItem('admin', JSON.stringify(data.admin));
+              sessionStorage.setItem('admin', JSON.stringify(data.data));
               _this.$router.push({ path: '/index/index' });
             }).catch(function(err) {
               _this.loginSubmitLoading = false;

@@ -11,12 +11,12 @@ class UserRepository extends BaseRepository
      */
     public function lists($input)
     {
-        $this->data['lists'] = User::lists($input['searchForm']);
-        $this->dicts         = Parent::getDicts(['status', 'active']);
+        $resultData['lists'] = User::lists($input['searchForm']);
+        $dictLists           = Parent::getDicts(['status', 'active']);
         return [
             'status'  => Parent::SUCCESS_STATUS,
-            'data'    => $this->data,
-            'dicts'   => $this->dicts,
+            'data'    => $resultData,
+            'dicts'   => $dictLists,
             'message' => '数据获取成功',
         ];
     }
@@ -30,7 +30,7 @@ class UserRepository extends BaseRepository
         if (!empty($usernameUniqueData)) {
             return [
                 'status'  => Parent::ERROR_STATUS,
-                'data'    => $this->data,
+                'data'    => [],
                 'message' => '用户用户名已经存在',
             ];
         }
@@ -38,11 +38,11 @@ class UserRepository extends BaseRepository
         if (!empty($emailUniqueData)) {
             return [
                 'status'  => Parent::ERROR_STATUS,
-                'data'    => $this->data,
+                'data'    => [],
                 'message' => '用户邮箱已经存在',
             ];
         }
-        $insert = User::create([
+        $insertResult = User::create([
             'username'      => $input['username'],
             'email'         => $input['email'],
             'password'      => md5($input['password'] . env('APP_PASSWORD_ENCRYPT')),
@@ -50,9 +50,9 @@ class UserRepository extends BaseRepository
             'status'        => $input['status'],
         ]);
         return [
-            'status'  => $insert ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
-            'data'    => $this->data,
-            'message' => $insert ? '用户新增成功' : '用户新增失败',
+            'status'  => $insertResult ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
+            'data'    => [],
+            'message' => $insertResult ? '用户新增成功' : '用户新增失败',
         ];
     }
 
@@ -70,11 +70,11 @@ class UserRepository extends BaseRepository
      */
     public function delete($id)
     {
-        $deleted = User::where('id', $id)->delete();
+        $deleteResult = User::where('id', $id)->delete();
         return [
-            'status'  => $deleted ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
-            'data'    => $this->data,
-            'message' => $deleted ? '用户删除成功' : '用户删除失败',
+            'status'  => $deleteResult ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
+            'data'    => [],
+            'message' => $deleteResult ? '用户删除成功' : '用户删除失败',
         ];
     }
 
@@ -83,11 +83,11 @@ class UserRepository extends BaseRepository
      */
     public function changeFieldValue($id, $data)
     {
-        $result = User::where('id', $id)->update([$data['field'] => $data['value']]);
+        $updateResult = User::where('id', $id)->update([$data['field'] => $data['value']]);
         return [
-            'status'  => $result ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
-            'data'    => $this->data,
-            'message' => $result ? '操作成功' : '操作失败',
+            'status'  => $updateResult ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
+            'data'    => [],
+            'message' => $updateResult ? '操作成功' : '操作失败',
         ];
     }
 }

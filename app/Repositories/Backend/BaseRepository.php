@@ -6,8 +6,6 @@ use App\Models\Dict;
 abstract class BaseRepository
 {
     protected static $instance;
-    protected $data      = []; //返回值data
-    protected $dicts     = []; //字典
     const ERROR_STATUS   = 0; //失败状态
     const SUCCESS_STATUS = 1; //成功状态
 

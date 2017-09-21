@@ -1,7 +1,7 @@
 <?php
-namespace App\Repositories\Backend;
+namespace App\Repositories\Frontend;
 
-use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class LoginRepository extends BaseRepository
@@ -19,14 +19,14 @@ class LoginRepository extends BaseRepository
             'username' => $data['username'],
             'password' => $data['password'],
         ];
-        if (!Auth('admin')->attempt($loginData)) {
+        if (!Auth('user')->attempt($loginData)) {
             return [
                 'status'  => Parent::ERROR_STATUS,
                 'message' => '用户名或密码错误',
             ];
         }
-        $adminList = Auth('admin')->user();
-        if (!$adminList->status) {
+        $userList = Auth('admin')->user();
+        if (!$userList->status) {
             Auth::logout();
             return [
                 'status'  => Parent::ERROR_STATUS,
@@ -37,7 +37,7 @@ class LoginRepository extends BaseRepository
             'last_login_ip'   => $request->getClientIp(),
             'last_login_time' => date('Y-m-d H:i:s', time()),
         ];
-        $updateResult = Admin::where('id', $adminList->id)->update($updateData);
+        $updateResult       = User::where('id', $adminList->id)->update($updateData);
         if (!$updateResult) {
             return [
                 'status' => Parent::ERROR_STATUS,
@@ -46,8 +46,8 @@ class LoginRepository extends BaseRepository
             ];
         }
         $returnData['data'] = [
-            'username' => $adminList->username,
-            'email'    => $adminList->email,
+            'username' => $userList->username,
+            'email'    => $userList->email,
         ];
         return [
             'status'  => Parent::SUCCESS_STATUS,
@@ -63,11 +63,12 @@ class LoginRepository extends BaseRepository
 
     /**
      * 退出
+     * @return Array
      */
     public function logout()
     {
-        if (Auth('admin')::check()) {
-            Auth('admin')::logout();
+        if (Auth('user')::check()) {
+            Auth('user')::logout();
         }
         return [
             'status'  => Parent::SUCCESS_STATUS,

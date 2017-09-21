@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\ClerkRepository;
-use App\Repositories\Backend\LoginRepository;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,23 +52,45 @@ class LoginController extends Controller
     public function adminLogin(Request $request)
     {
         $input  = $request->input('data');
-        $result = LoginRepository::getInstance()->login($input, $request->getClientIp());
+        $result = App\Repositories\Backend\LoginRepository::getInstance()->login($input, $request);
         return response()->json($result);
     }
 
     // 后台注销
     public function adminLogout()
     {
-        if (Auth('admin')::check()) {
-            Auth('admin')::logout();
-        }
-        return response()->json(['status' => 1, 'message' => '退出成功']);
+        $result = App\Repositories\Backend\LoginRepository::getInstance()->logout();
+        return response()->json($result);
     }
 
-    //
+    // 后台重置密码
     public function adminReset(Request $request)
     {
-        $result = LoginRepository::getInstance()->reset($request->input('data'));
+        $input = $request->input('data');
+        $result = App\Repositories\Backend\LoginRepository::getInstance()->reset($input);
+        return response()->json($result);
+    }
+
+    // 前台登录
+    public function userLogin(Request $request)
+    {
+        $input  = $request->input('data');
+        $result = App\Repositories\Frontend\LoginRepository::getInstance()->login($input, $request);
+        return response()->json($result);
+    }
+
+    // 前台注销
+    public function userLogout()
+    {
+        $result = App\Repositories\Frontend\LoginRepository::getInstance()->logout();
+        return response()->json($result);
+    }
+
+    // 前台重置密码
+    public function userReset(Request $request)
+    {
+        $input = $request->input('data');
+        $result = App\Repositories\Frontend\LoginRepository::getInstance()->reset($input);
         return response()->json($result);
     }
 }
