@@ -14,19 +14,18 @@
     </div>
 </template>
 <script type="text/javascript">
-    import HeaderComponent from './header-component.vue';
-    import sidebarComponent from './sidebar-component.vue';
-    export default {
-        name: 'main',
-        components: {
-            'Herader-component':HeaderComponent,
-            'sidebar-component':sidebarComponent
-        },
-        computed: {
-            
-        }
+import HeaderComponent from './header-component.vue';
+import sidebarComponent from './sidebar-component.vue';
+export default {
+    name: 'main',
+    components: {
+        'Herader-component': HeaderComponent,
+        'sidebar-component': sidebarComponent
+    },
+    computed: {
+
     }
+}
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-    
 </style>
