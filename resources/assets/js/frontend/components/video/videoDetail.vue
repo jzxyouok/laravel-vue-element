@@ -58,6 +58,88 @@
         </div>
     </div>
 </template>
+<style rel="stylesheet/scss" lang="scss" scoped>
+.video-detail-container {
+    .video-intro {
+        float: left;
+        border: 2px solid #eee;
+        border-radius: 5px;
+        box-shadow: 3px 5px 1px #fafafa;
+        padding: 0 15px 5px 5px;
+        margin-bottom: 30px;
+        .video-picture {
+            float: left;
+            width: 25%;
+            img {
+                width: 100%;
+            }
+        }
+        .video-word {
+            float: left;
+            padding-left: 10px;
+            box-sizing: border-box;
+            width: 75%;
+            .video-title {
+                font-size: 22px;
+                color: #333;
+                margin-bottom: 10px;
+                padding-top: 10px;
+            }
+            .video-right {
+                font-size: 13px;
+                color: #888;
+                margin-bottom: 10px;
+                span {
+                    margin-right: 5px;
+                }
+            }
+            .video-concise {
+                font-size: 14px;
+                color: #555;
+                margin-bottom: 10px;
+                p {
+                    line-height: 180%;
+                }
+            }
+            .video-other {
+                p {
+                    line-height: 180%;
+                    font-size: 13px;
+                    color: #999;
+                    a {}
+                }
+            }
+        }
+    }
+    .video-list {
+        clear: both;
+        .title {
+            margin: 30px 0 15px 0;
+            border-left: 5px solid red;
+            font-size: 18px;
+            padding: 0 0 2px 8px;
+            border-bottom: 1px solid #ccc;
+        }
+        ul {
+            li {
+                padding: 8px 15px;
+                background: #eee;
+                font-size: 14px;
+                a {
+                    color: #777;
+                }
+                a:hover {
+                    color: red;
+                    border-bottom: 1px solid red;
+                }
+            }
+            li:nth-child(2n) {
+                background: #fafafa;
+            }
+        }
+    }
+}
+</style>
 <script type="text/javascript">
 export default {
 

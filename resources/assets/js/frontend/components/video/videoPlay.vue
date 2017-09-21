@@ -112,6 +112,141 @@
         <remote-js src="http://vjs.zencdn.net/5.19.2/video.js"></remote-js>
     </div>
 </template>
+<style rel="stylesheet/scss" lang="scss" scoped>
+.video-play-container {
+    .video-play-box {
+        .video-play {
+            background: #010001;
+            overflow: hidden;
+            position: relative;
+            min-height: 500px;
+            max-height: 1000px;
+            border: 1px solid #eee;
+            clear: both;
+            .video-tip {
+                background: rgba(0, 0, 0, 0.6);
+                padding: 0.6rem 2rem 0.6rem 1rem;
+                color: #C6CCC0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 99;
+                font-size: 1rem;
+                opacity: 0;
+                transition: opacity 1s;
+                strong {
+                    color: #2BB07D;
+                }
+                a {
+                    color: #fff;
+                    background-color: #13ce66;
+                    border: 1px solid #13ce66;
+                    padding: 5px 8px;
+                    margin-left: 10px;
+                    font-size: 13px;
+                    border-radius: 3px;
+                }
+            }
+            .vjs-paused .vjs-big-play-button,
+            .vjs-paused.vjs-has-started .vjs-big-play-button {
+                display: block;
+            }
+
+            .video-js.vjs-playing .vjs-tech {
+                pointer-events: auto;
+            }
+
+            .vjs-volume-menu-button {
+                float: right;
+            }
+
+            .video-js .vjs-current-time,
+            .vjs-no-flex .vjs-current-time {
+                display: block;
+            }
+
+            .vjs-time-divider {
+                display: block;
+            }
+
+            .video-js .vjs-duration,
+            .vjs-no-flex .vjs-duration {
+                display: block;
+            }
+
+            .vjs-remaining-time {
+                display: none;
+            }
+
+            .video-js .vjs-tech {
+                position: relative;
+            }
+
+            .my-video-dimensions {
+                width: 100%;
+                background: #000;
+            }
+
+            .video-js .vjs-current-time,
+            .vjs-no-flex .vjs-current-time,
+            .vjs-time-divider,
+            .video-js .vjs-duration,
+            .vjs-no-flex .vjs-duration {
+                display: block;
+            }
+
+            .vjs-time-divider {
+                text-align: center;
+            }
+
+            .video-js .vjs-time-control {
+                padding: 0;
+            }
+        }
+        .video-play:hover .video-tip {
+            opacity: 1;
+            transition-duration: 1s;
+        }
+        .video-intro {
+            .video-describe {
+                color: #999;
+                font-size: 12px;
+                text-indent: 20px;
+                padding: 10px;
+                line-height: 150%;
+            }
+            .video-page {
+                .video-menu {
+                    padding: 0 20px 20px 20px;
+                    float: left;
+                    li {
+                        float: left;
+                        margin: 0 5px 10px 5px;
+                        width: 10%;
+                        text-align: center;
+                        a {
+                            border: 1px solid #eee;
+                            border-radius: 3px;
+                            font-size: 12px;
+                            background: #fafafa;
+                            color: #888;
+                            display: block;
+                            padding: 3px 5px;
+                        }
+                        a:hover,
+                        a.active {
+                            background: #58B7FF;
+                            color: #fff;
+                            border: 1px solid #20A0FF;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+</style>
 <script type="text/javascript">
 import { quillEditor } from 'vue-quill-editor';
 export default {

@@ -32,7 +32,6 @@
                             </div>
                         </div>
                         <div class="article-advertise">
-                            
                         </div>
                     </div>
                     <div class="interactive-box comment-list">
@@ -153,6 +152,72 @@
         </el-row>
     </div>
 </template>
+<style rel="stylesheet/scss" lang="scss" scoped>
+.article-detail-container {
+    .article-detail-box {
+        padding-right: 20px;
+        margin-right: 10px;
+        border-right: 1px solid #eee;
+        .article-title {
+            font-size: 20px;
+            text-align: center;
+            margin: 10px 0;
+            color: #666;
+        }
+        .article-right {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 10px;
+            span {
+                margin: 0 5px;
+            }
+        }
+        .article-content {
+            line-height: 180%;
+            overflow: hidden;
+            img {
+                max-width: 100%;
+            }
+        }
+        .article-interactive {
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            margin-top: 10px;
+            .article-more {
+                font-size: 12px;
+                margin: 10px 0;
+                .article-prev {
+                    float: left;
+                    i {
+                        margin-right: 5px;
+                    }
+                }
+                .article-next {
+                    float: right;
+                    text-align: right;
+                    i {
+                        margin-left: 5px;
+                    }
+                }
+                .article-prev,
+                .article-next {
+                    p {
+                        margin: 5px;
+                        a {
+                            color: #20A0FF;
+                        }
+                    }
+                }
+            }
+            .article-advertise {
+                clear: both;
+                margin: 10px 0;
+            }
+        }
+    }
+}
+</style>
 <script type="text/javascript">
 import { quillEditor } from 'vue-quill-editor';
 export default {

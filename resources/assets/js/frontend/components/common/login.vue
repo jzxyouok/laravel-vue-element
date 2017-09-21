@@ -12,7 +12,7 @@
                                 <el-input v-model="loginForm.account" placeholder="登录用户名/电子邮箱"></el-input>
                             </el-form-item>
                             <el-form-item label="密码" prop="password">
-                                <el-input type="password" v-model="loginForm.password" @keyup.enter.native="loginSubmit"  placeholder="登录密码，6-30个字符"></el-input>
+                                <el-input type="password" v-model="loginForm.password" @keyup.enter.native="loginSubmit" placeholder="登录密码，6-30个字符"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-checkbox-group v-model="loginForm.remember">
@@ -43,6 +43,57 @@
         </el-row>
     </div>
 </template>
+<style rel="stylesheet/scss" lang="scss" scoped>
+.login-container {
+    .login-detail-box {
+        border-right: 1px solid #ccc;
+        padding-right: 30px;
+        .login-header {
+            margin: 20px auto;
+            text-align: center;
+            width: 80%;
+            border-bottom: 2px solid #666666;
+            a {
+                display: inline-block;
+                color: #666666;
+                padding: 10px 30px;
+                i {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .login-body {
+            clear: both;
+        }
+    }
+    .login-other-type {
+        text-align: center;
+        width: 70%;
+        margin: 100px auto;
+        .type-header {
+            border-bottom: 1px solid #D3DCE6;
+            height: 40px;
+            line-height: 40px;
+            margin-bottom: 20px;
+            span {
+                display: inline-block;
+                padding: 5px 10px;
+                line-height: 30px;
+                color: #8492A6;
+            }
+        }
+        .type-detail {
+            p {
+                margin: 10px auto;
+                width: 80%;
+                button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+</style>
 <script type="text/javascript">
 export default {
     data() {

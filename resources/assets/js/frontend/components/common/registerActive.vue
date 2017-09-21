@@ -54,6 +54,53 @@
         </div>
     </div>
 </template>
+<style rel="stylesheet/scss" lang="scss" scoped>
+.register-active-container {
+    .register-active-box {
+        .active-tip {
+            p {
+                line-height: 180%;
+            }
+        }
+        .other-recommend {
+            .active-recommend {
+
+                h3 {
+                    border-bottom: 1px solid #eee;
+                    color: #58B7FF;
+                    padding-bottom: 5px;
+                    text-indent: 10px;
+                    margin-bottom: 15px;
+                    font-size: 16px;
+                    font-weight: normal;
+                    padding: 0 10px 5px 5px;
+                    a {
+                        color: #ccc;
+                        font-size: 12px;
+                        float: right;
+                    }
+                    a:hover {
+                        color: #333;
+                    }
+                }
+                ul {
+                    li {
+                        margin-bottom: 10px;
+                        font-size: 14px;
+                        a {
+                            color: #666;
+                        }
+                        a:hover {
+                            color: red;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+</style>
 <script type="text/javascript">
 export default {
     data() {

@@ -51,6 +51,86 @@
         </el-row>
     </div>
 </template>
+<style rel="stylesheet/scss" lang="scss" scoped>
+.register-container {
+    .register-detail-box {
+        border-right: 1px solid #ccc;
+        padding-right: 30px;
+        .register-header {
+            margin: 20px auto;
+            text-align: center;
+            width: 80%;
+            border-bottom: 2px solid #666666;
+            a {
+                display: inline-block;
+                color: #666666;
+                padding: 10px 30px;
+                i {
+                    margin-right: 10px;
+                }
+            }
+            a.active,
+            a:active,
+            a:hover,
+            a:focus {
+                color: #1D8CE0;
+            }
+        }
+        .register-body {
+            clear: both;
+            .avatar-uploader .el-upload {
+                border: 1px dashed #d9d9d9;
+                border-radius: 3px;
+                cursor: pointer;
+                position: relative;
+                overflow: hidden;
+            }
+            .avatar-uploader .el-upload:hover {
+                border-color: #20a0ff;
+            }
+            .avatar-uploader-icon {
+                font-size: 18px;
+                color: #8c939d;
+                width: 100px;
+                height: 100px;
+                line-height: 100px;
+                text-align: center;
+            }
+            .avatar {
+                width: 100px;
+                height: 100px;
+                display: block;
+            }
+        }
+    }
+    .register-other-type {
+        text-align: center;
+        width: 70%;
+        margin: 100px auto;
+        .type-header {
+            border-bottom: 1px solid #D3DCE6;
+            height: 40px;
+            line-height: 40px;
+            margin-bottom: 20px;
+            span {
+                display: inline-block;
+                padding: 5px 10px;
+                line-height: 30px;
+                color: #8492A6;
+            }
+        }
+        .type-detail {
+            p {
+                margin: 10px auto;
+                width: 80%;
+                button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+</style>
 <script type="text/javascript">
 export default {
     data() {

@@ -51,8 +51,108 @@
         </div>
     </div>
 </template>
-<style type="text/scss" scoped="scope">
-    .el-row { margin-bottom: 20px; &:last-child { margin-bottom: 0; } }
+<style rel="stylesheet/scss" lang="scss" scoped>
+.el-row {
+    margin-bottom: 20px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.index-container {
+    .content-container {
+        border: none;
+    }
+    .banner {
+        background-color: #475669;
+        color: #fff;
+        font-weight: bold;
+        .introduce {
+            padding-top: 50px;
+        }
+        .large-title {
+            font-size: 40px;
+            margin-bottom: 30px;
+        }
+        .small-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .type-select {
+            button {
+                margin: 10px 20px;
+                padding-left: 20px;
+                padding-right: 20px;
+                i {
+                    -webkit-transition: -webkit-transform 0.4s ease-out;
+                    -moz-transition: -moz-transform 0.4s ease-out;
+                    transition: transform 0.4s ease-out;
+                    margin-right: 10px;
+                }
+            }
+            button:active,
+            button:focus {
+                outline: none !important;
+            }
+            button:hover i {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    }
+    .video-detail {
+        margin-bottom: 20px;
+        .video-thumb {
+            position: relative;
+            cursor: pointer;
+            .video-image {
+                width: 100%;
+            }
+            .video-mask {
+                position: absolute;
+                left: 0;
+                top: 0;
+                background: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: 100%;
+                display: none;
+                span {
+                    width: 100%;
+                    height: 100%;
+                    display: table;
+                    i {
+                        font-size: 4rem;
+                        display: table-cell;
+                        vertical-align: middle;
+                        text-align: center;
+                        color: #eee;
+                    }
+                }
+            }
+        }
+        .video-thumb:hover .video-mask {
+            display: block;
+        }
+        .video-intro {
+            padding: 14px;
+            color: #777;
+            h4 {
+                font-weight: normal;
+                padding-bottom: 3px;
+                span {
+                    color: #D9534F;
+                    font-size: 14px;
+                }
+            }
+            .bottom {
+                button {
+                    float: right;
+                }
+            }
+        }
+    }
+}
 </style>
 <script type="text/javascript">
 export default {

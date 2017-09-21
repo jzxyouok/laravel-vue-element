@@ -171,6 +171,66 @@
         </el-row>
     </div>
 </template>
+<style rel="stylesheet/scss" lang="scss" scoped>
+.article-container {
+    .article-box {
+        padding-right: 20px;
+        margin-right: 10px;
+        border-right: 1px solid #eee;
+        .article-detail {
+            padding: 5px 8px;
+            border: 1px solid #eee;
+            box-shadow: 3px 5px 3px #fafafa;
+            border-radius: 3px;
+            float: left;
+            margin-bottom: 20px;
+            .article-picture {
+                width: 20%;
+                float: left;
+                img {
+                    width: 100%;
+                    border-radius: 3px;
+                }
+            }
+            .article-word {
+                float: left;
+                width: 80%;
+                box-sizing: border-box;
+                padding-left: 5px;
+                .article-title {
+                    margin-bottom: 5px;
+                    a {
+                        font-size: 16px;
+                        color: #333;
+                    }
+                    a:hover {
+                        color: red;
+                        text-decoration: underline;
+                    }
+                }
+                .article-right {
+                    margin-bottom: 5px;
+                    font-size: 12px;
+                }
+                .article-intro {
+                    text-indent: 20px;
+                    font-size: #666;
+                    line-height: 180%;
+                    margin-bottom: 5px;
+                }
+                .article-interactive {
+                    text-align: right;
+                    a {
+                        color: #999;
+                        font-size: 13px;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+</style>
 <script type="text/javascript">
 export default {
     data() {
