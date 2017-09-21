@@ -2,10 +2,10 @@
     <div class="container">
         <el-row :gutter="20" style="margin: 0px; padding: 0px;">
             <div class="sidebar-wrapper">
-                <Sidebar class="sidebar-container"/>
+                <Herader-component class="sidebar-container"></Herader-component>
             </div>
             <div class="main-container">
-                <Navbar />
+                <sidebar-component></sidebar-component>
                 <div class="app-main">
                     <router-view></router-view>
                 </div>
@@ -14,13 +14,13 @@
     </div>
 </template>
 <script type="text/javascript">
-    import Sidebar from './sidebar.vue';
-    import Navbar from './navbar.vue';
+    import HeaderComponent from './header-component.vue';
+    import sidebarComponent from './sidebar-component.vue';
     export default {
         name: 'main',
         components: {
-            Sidebar,
-            Navbar
+            'Herader-component':HeaderComponent,
+            'sidebar-component':sidebarComponent
         },
         computed: {
             

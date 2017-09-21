@@ -12,7 +12,7 @@
                                 <el-input v-model="loginForm.account" placeholder="登录用户名/电子邮箱"></el-input>
                             </el-form-item>
                             <el-form-item label="密码" prop="password">
-                                <el-input type="password" v-model="loginForm.password" placeholder="登录密码，6-30个字符"></el-input>
+                                <el-input type="password" v-model="loginForm.password" @keyup.enter.native="loginSubmit"  placeholder="登录密码，6-30个字符"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-checkbox-group v-model="loginForm.remember">
@@ -20,7 +20,7 @@
                                 </el-checkbox-group>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" @click="loginSubmit('loginForm')">登录</el-button>
+                                <el-button type="primary" :loading="loginSubmitLoading" @click.native.prevent="loginSubmit">登录</el-button>
                                 <el-button @click="loginReset('loginForm')">重置</el-button>
                             </el-form-item>
                         </el-form>
@@ -61,7 +61,8 @@ export default {
                     { required: true, message: '请输入登录密码', trigger: 'blur' },
                     { min: 6, max: 30, message: '登录密码不正确', trigger: 'blur' }
                 ]
-            }
+            },
+            loginSubmitLoading: false
         };
     },
     mounted() {
@@ -71,7 +72,21 @@ export default {
         loginSubmit(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    alert('submit!');
+                    let params = { 'data': _this.loginForm };
+                    axios.post('/frontend/login', params).then(function(res) {
+                        _this.loginSubmitLoading = false;
+                        let { status, data, message } = res.data;
+                        if (!status) {
+                            _this.$message.error(message);
+                            return false;
+                        }
+                        _this.$message.success(message);
+                        sessionStorage.setItem('user', JSON.stringify(data.data));
+                        _this.$router.push({ path: '/index' });
+                    }).catch(function(err) {
+                        _this.loginSubmitLoading = false;
+                        _this.$message.error('网络连接失败');
+                    });
                 } else {
                     console.log('error submit!!');
                     return false;

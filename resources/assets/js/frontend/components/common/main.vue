@@ -1,117 +1,27 @@
 <template>
     <div class="container">
-        <div class="web-header">
-            <el-row :gutter="10" style="margin: 0;">
-                <el-col :xs="6" :sm="6" :md="6" :lg="6">
-                    <div class="web-logo">
-                        <router-link to="/">quickzz博客</router-link>
-                    </div>
-                </el-col>
-                <el-col :xs="18" :sm="18" :md="18" :lg="18">
-                    <div class="web-menu">
-                        <el-menu theme="dark" :default-active="$store.state.menuActive" class="el-menu-demo" mode="horizontal" @select="menuSelect">
-                            <el-menu-item index="1">
-                                <router-link to="/" class='menu-link'>首页</router-link>
-                            </el-menu-item>
-                            <el-menu-item index="2">
-                                <router-link to="/video/index" class='menu-link'>视频列表</router-link>
-                            </el-menu-item>
-                            <el-submenu index="3">
-                                <template slot="title">技术篇</template>
-                                <el-menu-item index="3-1">
-                                    <router-link to="/article/index">前端技术</router-link>
-                                </el-menu-item>
-                                <el-menu-item index="3-2">
-                                    <router-link to="/article/index">PHP后端</router-link>
-                                </el-menu-item>
-                                <el-menu-item index="3-3">
-                                    <router-link to="/article/index">服务器层</router-link>
-                                </el-menu-item>
-                                <el-menu-item index="3-4">
-                                    <router-link to="/article/index">其它分享</router-link>
-                                </el-menu-item>
-                            </el-submenu>
-                            <el-menu-item index="4">
-                                <router-link to="/vote/index" class='menu-link'>投票</router-link>
-                            </el-menu-item>
-                            <el-menu-item index="5">
-                                <router-link to="/leave/index" class='menu-link'>留言板</router-link>
-                            </el-menu-item>
-                            <el-menu-item index="6">
-                                <router-link to="/login" class='menu-link'>登录</router-link>
-                            </el-menu-item>
-                            <el-menu-item index="7">
-                                <router-link to="/register" class='menu-link'>注册</router-link>
-                            </el-menu-item>
-                        </el-menu>
-                    </div>
-                    <div class="web-search">
-                        <el-input placeholder="请输入内容" v-model="searchContent">
-                            <el-button slot="append" icon="search"></el-button>
-                        </el-input>
-                    </div>
-                </el-col>
-            </el-row>
-        </div>
+        <Herader-component></Herader-component>
         <div class="app-main" style="clear: both;">
             <router-view></router-view>
         </div>
-        <div class="web-footer">
-            <div class="footer-container">
-                <el-row :gutter="10" style="margin: 0;">
-                    <el-col :xs="10" :sm="10" :md="10" :lg="10">
-                        <div class="describe introduction">
-                            <h4 class="title">网站介绍</h4>
-                            <p>我们是 PHP 和 Laravel 开发者社区，致力于为 PHP 和 Laravel 开发者提供一个分享创造、结识伙伴、协同互助的平台。</p>
-                            <p class="add-friends">
-                                <a class='qq' href="javascript:;"><i class="fa fa-qq"></i></a>
-                                <a class='weixin' href="javascript:;"><i class="fa fa-weixin"></i></a>
-                                <a class='weibo' href="javascript:;"><i class="fa fa-weibo"></i></a>
-                            </p>
-                        </div>
-                    </el-col>
-                    <el-col :xs="8" :sm="8" :md="8" :lg="8">
-                        <div class="describe statistical">
-                            <h4 class="title">网站统计</h4>
-                            <div class="all-statistical">
-                                <ul>
-                                    <li><a href="javascript:;">视频总数：<span>113</span> 个</a></li>
-                                    <li><a href="javascript:;">文章总数：<span>98</span> 篇</a></li>
-                                    <li><a href="javascript:;">访客总数：<span>31133</span> 个</a></li>
-                                    <li><a href="javascript:;">会员总数：<span>3098</span> 个</a></li>
-                                    <li><a href="javascript:;">点赞总数：<span>5013</span> 个</a></li>
-                                    <li><a href="javascript:;">评论总数：<span>713</span> 个</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </el-col>
-                    <el-col :xs="6" :sm="6" :md="6" :lg="6">
-                        <div class="describe share">
-                            <h4 class="title">关注微信</h4>
-                            <p class="share-weixin"><img src="/images/focus_weixin.png"></p>
-                        </div>
-                    </el-col>
-                </el-row>
-            </div>
-        </div>
+        <Footer-component></Footer-component>
     </div>
 </template>
 <style type="text/scss" scope="scope">
-    .el-select .el-input { width: 80px; }
 </style>
 <script type="text/javascript">
+import HeaderComponent from './header-component.vue';
+import FooterComponent from './header-component.vue';
 export default {
+    components: {
+        'Herader-component': HeaderComponent,
+        'Footer-component': FooterComponent
+    },
     data() {
-        return {
-            menuDefaultActive: '1',
-            searchContent: '',
-            searchSelect: '',
-        };
+        return {};
     },
     methods: {
-        menuSelect(key, keyPath) {
 
-        }
     }
 }
 </script>

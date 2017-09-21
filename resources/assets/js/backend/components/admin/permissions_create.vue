@@ -35,7 +35,6 @@
     
 </style>
 <script type="text/javascript">
-    import {save, get} from '../../request.js';
     export default {
         data() {
             return {
