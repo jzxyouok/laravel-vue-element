@@ -8,12 +8,6 @@ use Illuminate\Http\Request;
 
 class SignupController extends Controller
 {
-    public function uploadFace(Request $request)
-    {
-        $input  = $request->file('file');
-        $result = SignupRepository::getInstance()->uploadFace($input);
-        return response()->json($result);
-    }
 
     public function createUser(Request $request)
     {

@@ -4,11 +4,11 @@
 Route::get('/', 'Frontend\IndexController@index');
 Route::post('/login', 'Auth\LoginController@userLogin');
 Route::post('/logout', 'Auth\LoginController@userLogout');
+Route::post('/upload-image', 'CommonController@uploadImage');
 Route::group(['namespace' => 'Frontend', 'prefix' => 'frontend'], function () {
     // 测试
     Route::get('test', 'TestController@index');
     // 注册
-    Route::post('register/upload-face', 'RegisterController@uploadFace');
     Route::post('register/create-user', 'RegisterController@createUser');
 });
 

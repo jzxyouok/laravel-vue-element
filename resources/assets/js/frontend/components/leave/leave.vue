@@ -10,7 +10,6 @@
                 </div>
                 <div class="content-box leave-box">
                     <div class="interactive-now">
-                        <!-- <div class="leave-now-content" contenteditable="true"><span># 高山流水</span></div> -->
                         <quill-edit class="interactive-now-content" v-model="leave.content" :options="editorOption"></quill-edit>
                         <div class="interactive-now-submit">
                             <el-button type="primary" @click="leaveSubmit">提　交</el-button>
