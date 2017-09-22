@@ -1,5 +1,5 @@
 <?php
-namespace Seeder;
+namespace Database\Seeder;
 
 use Illuminate\Database\Seeder;
 
@@ -18,10 +18,10 @@ class AdminPermissionSeeder extends Seeder
             'status'             => 1,
         ]);
 
-        foreach (range(1, 10) as $index) {
+        for ($i = 1; $i < 10; $i ++) {
             $data = [
-                'text'               => '管理员' . $index,
-                'permission_include' => $index,
+                'text'               => '管理员' . $i,
+                'permission_include' => $i,
                 'status'             => 1,
             ];
         }

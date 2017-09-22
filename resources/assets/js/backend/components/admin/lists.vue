@@ -156,7 +156,7 @@ export default {
             axios.get('/backend/admins?page=' + window.window._this.$refs.pagination.pageData.current_page, { params: paramsData }).then(response => {
                 let data = response.data;
                 window._this.tableData = data.data.lists.data;
-                window._this.options.permission = data.data.permission;
+                window._this.options.permission = data.data.permissionOptions;
                 window._this.$refs.pagination.pageData.per_page = parseInt(data.data.lists.per_page);
                 window._this.$refs.pagination.pageData.current_page = parseInt(data.data.lists.current_page);
                 window._this.$refs.pagination.pageData.total = parseInt(data.data.lists.total);

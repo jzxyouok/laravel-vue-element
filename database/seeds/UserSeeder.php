@@ -1,7 +1,8 @@
 <?php
-namespace Seeder;
+namespace Database\Seeder;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -12,16 +13,16 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        foreach (range(1, 500) as $index) {
+        for ($i = 1; $i < 100; $i ++) {
             $data[] = [
-                'username' => 'user' . $index,
-                'email'    => 'userEmail' . $index . '@qq.com',
+                'username' => 'user' . $i,
+                'email'    => 'userEmail' . $i . '@qq.com',
                 'face'     => 'http://owmb1f0qu.bkt.clouddn.com/test/beauty.jpg',
                 'password' => Hash::make('123456'),
                 'active'   => 1,
                 'status'   => 1,
             ];
         }
-        App\Models\User::insert($data);
+        \App\Models\User::insert($data);
     }
 }

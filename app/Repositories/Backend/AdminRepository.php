@@ -13,10 +13,10 @@ class AdminRepository extends BaseRepository
     public function lists($input)
     {
         $resultData['lists'] = Admin::lists($input['searchForm']);
+        $resultData['permissionOptions'] = AdminPermission::where('status', 1)->get();
         return [
             'status'  => Parent::SUCCESS_STATUS,
             'data'    => $resultData,
-            'dicts'   => [],
             'message' => '数据获取成功',
         ];
     }

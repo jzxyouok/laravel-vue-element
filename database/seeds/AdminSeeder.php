@@ -1,7 +1,8 @@
 <?php
-namespace Seeder;
+namespace Database\Seeder;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
@@ -12,16 +13,16 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        foreach (range(1, 100) as $index) {
+        for ($i = 1; $i < 100; $i++) {
             $data[] = [
-                'username'           => 'admin' . $index,
-                'email'              => 'admin' . $index . '@qq.com',
+                'username'           => 'admin' . $i,
+                'email'              => 'admin' . $i . '@qq.com',
                 'password'           => Hash::make('123456'),
-                'permission_id'      => $index,
-                'permission_include' => $index,
+                'permission_id'      => $i,
+                'permission_include' => $i,
                 'status'             => 1,
             ];
         }
-        App\Models\Admin::insert($data);
+        \App\Models\Admin::insert($data);
     }
 }
