@@ -1,19 +1,20 @@
 <?php
 
 /*前台*/
-Route::get('/', 'Frontend\IndexController@index');
 Route::post('/login', 'Auth\LoginController@userLogin');
 Route::post('/logout', 'Auth\LoginController@userLogout');
-Route::get('/test', 'Frontend\TestController@index');
-Route::post('/sendEmail', 'Frontend\CommonController@sendEmail');
-Route::group(['namespace' => 'Frontend', 'prefix' => 'frontend'], function () {
+Route::get('/login-status', 'Auth\LoginController@loginStatus');
+Route::group(['namespace' => 'Frontend'], function () {
     // 测试
+    Route::get('/test', 'TestController@index');
+    Route::get('/', 'IndexController@index');
+
     Route::post('/upload-image', 'CommonController@uploadImage');
+    Route::post('/sendEmail', 'CommonController@sendEmail');
     // 注册
-    Route::post('register/create-user', 'RegisterController@createUser');
+    Route::post('/register/create-user', 'RegisterController@createUser');
 
 });
-
 
 /*后台*/
 Route::get('/backend', 'Auth\LoginController@index');

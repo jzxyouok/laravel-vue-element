@@ -74,6 +74,17 @@ axios.interceptors.response.use(function(response) {
 });
 window.laravelCsrfToken = document.querySelector('meta[name=csrf-token]').getAttribute('content');
 const app = new Vue({
+    beforeCreate() {
+        let _this = this;
+        axios.get('/login-status').then(response => {
+            let {status, data, message} = response.data;
+            if (status) {
+                _this.$store.commit('setUserData', data.data);
+            }
+        }).catch(response => {
+            console.log('未知错误');
+        });
+    },
     router,
     store
 }).$mount('#app');

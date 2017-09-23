@@ -21,10 +21,6 @@ export default {
         return {};
     },
     mounted() {
-        var userData = sessionStorage.getItem('user');
-        if (userData) {
-            this.$store.commit('setUserData', JSON.parse(userData));
-        }
     },
     methods: {
 

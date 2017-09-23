@@ -13,7 +13,6 @@
     <div id="app">
       <router-view></router-view>
     </div>
-    
     <script src="{{ mix('js/frontend/app.js') }}"></script>
   </body>
 </html>
