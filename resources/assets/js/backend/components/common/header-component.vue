@@ -50,7 +50,6 @@ export default {
 
     },
     methods: {
-
         getMenu: function() {
             axios.get('backend/menu-list').then(function(res) {
                 permission_routers = res.data.lists;

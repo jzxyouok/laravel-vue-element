@@ -115,7 +115,7 @@
 <script type="text/javascript">
 export default {
     data() {
-        return [];
+        return {};
     },
     mounted() {},
     methods: {

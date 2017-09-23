@@ -6,6 +6,8 @@ use App\Models\EmailRecord;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Dict;
+use App\Repositories\Frontend\CommonRepository;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterRepository extends BaseRepository
 {
@@ -44,7 +46,7 @@ class RegisterRepository extends BaseRepository
             'username' => $input['username'],
             'email'    => $input['email'],
             'face'     => $input['face'],
-            'password' => md5($input['password'] . config('app.passwordEncrypt')),
+            'password' => Hash::make($input['password']),
             'active'   => 0,
             'status'   => 1,
         ]);
@@ -63,10 +65,12 @@ class RegisterRepository extends BaseRepository
             'status'      => 1,
         ]);
         $mailData = [
+            'view' => 'register',
             'title' => '账户激活邮件',
             'name'  => $insertResult->username,
             'url'   => env('APP_URL') . '/active?mail_id=' . $insertEmailResult->id . '&user_id=' . base64_encode($insertResult->id),
         ];
+        CommonRepository::getInstance()->sendEmail($mailData);
         Mail::to($insertResult->email)->send(new RegisterOrder($mailData));
         return [
             'status'  => Parent::SUCCESS_STATUS,

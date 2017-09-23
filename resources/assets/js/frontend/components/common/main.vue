@@ -11,7 +11,7 @@
 </style>
 <script type="text/javascript">
 import HeaderComponent from './header-component.vue';
-import FooterComponent from './header-component.vue';
+import FooterComponent from './footer-component.vue';
 export default {
     components: {
         'Herader-component': HeaderComponent,
@@ -19,6 +19,12 @@ export default {
     },
     data() {
         return {};
+    },
+    mounted() {
+        var userData = sessionStorage.getItem('user');
+        if (userData) {
+            this.$store.commit('setUserData', JSON.parse(userData));
+        }
     },
     methods: {
 

@@ -20,7 +20,7 @@
                                 </el-checkbox-group>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" :loading="loginSubmitLoading" @click.native.prevent="loginSubmit">登录</el-button>
+                                <el-button type="primary" :loading="loginSubmitLoading" @click.native.prevent="loginSubmit('loginForm')">登录</el-button>
                                 <el-button @click="loginReset('loginForm')">重置</el-button>
                             </el-form-item>
                         </el-form>
@@ -117,26 +117,27 @@ export default {
         };
     },
     mounted() {
-        window._this = this;
     },
     methods: {
         loginSubmit(formName) {
+            let _this = this;
             this.$refs[formName].validate((valid) => {
                 if (valid) {
                     let params = { 'data': _this.loginForm };
-                    axios.post('/frontend/login', params).then(function(res) {
+                    axios.post('/login', params).then(response => {
                         _this.loginSubmitLoading = false;
-                        let { status, data, message } = res.data;
+                        let { status, data, message } = response.data;
                         if (!status) {
                             _this.$message.error(message);
                             return false;
                         }
-                        _this.$message.success(message);
                         sessionStorage.setItem('user', JSON.stringify(data.data));
+                        _this.$message.success(message);
+                        _this.$store.state.userData = data.data;
                         _this.$router.push({ path: '/index' });
-                    }).catch(function(err) {
+                    }).catch(response => {
                         _this.loginSubmitLoading = false;
-                        _this.$message.error('网络连接失败');
+                        _this.$message.error('网络连111接失败');
                     });
                 } else {
                     console.log('error submit!!');
@@ -145,7 +146,7 @@ export default {
             });
         },
         loginReset(formName) {
-            window._this.$refs[formName].resetFields();
+            this.$refs[formName].resetFields();
         }
     }
 }

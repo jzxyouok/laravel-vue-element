@@ -36,9 +36,9 @@
                         <el-menu-item index="5">
                             <router-link to="/leave/index" class='menu-link'>留言板</router-link>
                         </el-menu-item>
-                        <template v-if="userData.username">
+                        <template v-if="this.$store.state.userData.username">
                             <el-submenu index="6">
-                                <template slot="title">{{userData.username}}</template>
+                                <template slot="title"><img :src="this.$store.state.userData.face" class="user-face">{{this.$store.state.userData.username}}</template>
                                 <el-menu-item index="6-1">
                                     <router-link to="/user/index">个人中心</router-link>
                                 </el-menu-item>
@@ -48,9 +48,7 @@
                                 <el-menu-item index="6-3">
                                     <router-link to="/user/vip">VIP服务</router-link>
                                 </el-menu-item>
-                                <el-menu-item index="6-4">
-                                    <router-link to="javascript:;" @click="logout">退出</router-link>
-                                </el-menu-item>
+                                <el-menu-item index="6-4" @click="logout" class="link-logout">退出</el-menu-item>
                             </el-submenu>
                         </template>
                         <template v-else>
@@ -86,6 +84,18 @@
                 padding: 0 20px;
             }
         }
+        .user-face {
+            width: 40px;
+            height: 40px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            padding: 1px;
+            margin-right: 5px;
+            overflow: hidden;
+        }
+        .link-logout {
+            text-indent: 20px;
+        }
     }
     .web-logo {
         margin-left: 30px;
@@ -114,24 +124,30 @@ export default {
             menuDefaultActive: '1',
             searchContent: '',
             searchSelect: '',
-            userData: {
-                username: ''
-            }
         };
     },
     mounted() {
-        window._this = this;
-        var userData = sessionStorage.getItem('user');
-        if (userData) {
-            window._this.userData = JSON.parse(userData);
-        }
+
     },
     methods: {
         menuSelect(key, keyPath) {
 
         },
         logout() {
-
+            let _this = this;
+            axios.post('/logout').then(function(res) {
+                let { status, message } = res.data;
+                if (!status) {
+                    _this.$message.error('未知错误，用户退出失败');
+                    return false;
+                }
+                sessionStorage.removeItem('user');
+                _this.$store.commit('setUserData', { username: '', email: '', face: '' });
+                _this.$message.success(message);
+                _this.$router.push({ path: '/index' });
+            }).catch(function(err) {
+                _this.$message.error('网络连接失败');
+            });
         }
     }
 }

@@ -49,11 +49,6 @@ class CommonRepository extends BaseRepository
     public function sendEmail($input)
     {
         return true;
-        $mailData = [
-            'title' => '账户激活邮件',
-            'name'  => '你好啊',
-            'url'   => env('APP_URL') . '/active?mail_id=' . 1111 . '&user_id=' . base64_encode(123),
-        ];
         $mailMessage = (new RegisterOrder($mailData));
         Mail::to("292304400@qq.com")->queue($mailMessage);
     }

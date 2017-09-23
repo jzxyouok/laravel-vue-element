@@ -37,7 +37,7 @@ class LoginController extends Controller
     public function __construct()
     {
         // $this->middleware('guest', ['except' => 'logout']);
-        $this->middleware('auth', ['only' => ['adminLogout', 'userLogout']]);
+        // $this->middleware('auth', ['only' => ['adminLogout']]);
         // $this->beforeFilter('csrf', array('on' => 'post'));
     }
 
@@ -81,7 +81,7 @@ class LoginController extends Controller
     // 前台注销
     public function userLogout()
     {
-        $result = App\Repositories\Frontend\LoginRepository::getInstance()->logout();
+        $result = \App\Repositories\Frontend\LoginRepository::getInstance()->logout();
         return response()->json($result);
     }
 
