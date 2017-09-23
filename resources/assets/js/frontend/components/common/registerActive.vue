@@ -2,8 +2,19 @@
     <div class="content-container register-active-container">
         <div class="register-active-box">
             <div class="active-tip">
-                <p>激活邮件已下发送至您的邮箱<a href="javascript:;">{{email}}</a>，请注意查收</p>
-                <p>未收到？<a href="javascript:;">重新发送</a></p>
+                <p>激活邮件已下发送至您的邮箱　<el-tag type="primary">{{email}}</el-tag>，请注意查收</p>
+                <p>未收到？
+                    <a href="javascript:;" @click="sendEmail" v-if="sendEmailing == 'not'">重新发送</a>
+                    <el-tag type="gray" v-if="sendEmailing == 'doing'">发送中</el-tag>
+                    <template v-if="sendEmailing == 'yes'">
+                        <el-tag type="success">发送成功</el-tag>
+                        <span><strong>{{loadingSecond}}</strong>秒后重新操作</span>
+                    </template>
+                    <template v-if="sendEmailing == 'fail'">
+                        <el-tag type="danger">发送失败</el-tag>
+                        <span>请刷新网页重试</span>
+                    </template>
+                </p>
             </div>
             <div class="other-recommend">
                 <h2 class="sidebar-title">其它推荐</h2>
@@ -59,7 +70,17 @@
     .register-active-box {
         .active-tip {
             p {
-                line-height: 180%;
+                line-height: 200%;
+                a {
+                    color: #999;
+                    font-size: 12px;
+                }
+                span {
+                    font-size: 12px;
+                    strong {
+                        font-weight: normal;
+                    }
+                }
             }
         }
         .other-recommend {
@@ -107,13 +128,31 @@ export default {
         return {
             id: this.$route.query.id,
             email: this.$route.query.email,
+            sendEmailing: 'not',
+            loadingSecond: 60
         };
     },
     mounted() {
-        window._this = this;
+
     },
     methods: {
-
+        sendEmail() {
+            let _this = this;
+            _this.sendEmailing = 'doing';
+            axios.post('/sendEmail', { 'data': { email: _this.email } }).then(response => {
+                _this.sendEmailing = 'yes';
+                let mailTimeEvent = setInterval(() => {
+                    _this.loadingSecond--;
+                    if (_this.loadingSecond == 0) {
+                        _this.sendEmailing = 'not';
+                        _this.loadingSecond = 60;
+                        clearInterval(mailTimeEvent);
+                    }
+                }, 1000);
+            }).catch(response => {
+                _this.sendEmailing = 'fail';
+            });
+        }
     }
 }
 </script>

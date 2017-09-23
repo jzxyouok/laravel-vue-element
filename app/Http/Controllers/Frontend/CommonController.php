@@ -16,4 +16,12 @@ class CommonController extends BaseController
         $result = CommonRepository::getInstance()->uploadImage($input);
         return response()->json($result);
     }
+
+    public function sendEmail(Request $request)
+    {
+        $input  = $request->file('data');
+        $result = CommonRepository::getInstance()->sendEmail($input);
+        return response()->json($result);
+
+    }
 }

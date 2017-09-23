@@ -75,18 +75,15 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
 .web-header {
     background-color: #324157;
-    .el-menu-item {
-        padding: 0;
-        .menu-link {
-            display: block;
-            padding: 0 20px;
-        }
-    }
     .el-menu {
         .el-menu-item {
             padding: 0;
+            .menu-link {
+                display: block;
+            }
             a {
                 display: block;
+                padding: 0 20px;
             }
         }
     }

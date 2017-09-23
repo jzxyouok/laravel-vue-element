@@ -1,6 +1,9 @@
 <?php
 namespace App\Repositories\Frontend;
 
+use App\Mail\RegisterOrder;
+use Illuminate\Support\Facades\Mail;
+
 class CommonRepository extends BaseRepository
 {
 
@@ -29,7 +32,7 @@ class CommonRepository extends BaseRepository
             ];
         }
         $newImagesName = md5(time()) . random_int(5, 5) . "." . $imageExtensionName;
-        $filedir       = "images/"; // 图片上传路径
+        $filedir       = "face/"; // 图片上传路径
         $uploadResult  = $input->move($filedir, $newImagesName);
         return [
             'status'  => !empty($uploadResult) ? Parent::SUCCESS_STATUS : Parent::ERROR_STATUS,
@@ -41,5 +44,17 @@ class CommonRepository extends BaseRepository
             ],
             'message' => !empty($uploadResult) ? '头像上传成功' : '头像上传失败',
         ];
+    }
+
+    public function sendEmail($input)
+    {
+        return true;
+        $mailData = [
+            'title' => '账户激活邮件',
+            'name'  => '你好啊',
+            'url'   => env('APP_URL') . '/active?mail_id=' . 1111 . '&user_id=' . base64_encode(123),
+        ];
+        $mailMessage = (new RegisterOrder($mailData));
+        Mail::to("292304400@qq.com")->queue($mailMessage);
     }
 }

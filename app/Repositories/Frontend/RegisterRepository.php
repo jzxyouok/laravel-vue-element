@@ -5,6 +5,7 @@ use App\Mail\RegisterOrder;
 use App\Models\EmailRecord;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Dict;
 
 class RegisterRepository extends BaseRepository
 {
@@ -16,6 +17,13 @@ class RegisterRepository extends BaseRepository
      */
     public function createUser($input)
     {
+        if (empty($input) || empty($input['username']) || empty($input['password']) || empty($input['email'])) {
+            return [
+                'status'  => Parent::ERROR_STATUS,
+                'data'    => [],
+                'message' => '必填信息不得为空',
+            ];
+        }
         $usernameUniqueData = User::where('username', $input['username'])->first();
         if (!empty($usernameUniqueData)) {
             return [
@@ -48,7 +56,7 @@ class RegisterRepository extends BaseRepository
             ];
         }
         $insertEmailResult = EmailRecord::create([
-            'type_id'     => Parent::getDicts(['email_type'])['email_type']['register_active'],
+            'type_id'     => Dict::getDictByTextEn('register_active')->value,
             'user_id'     => $insertResult->id,
             'email_title' => '账户激活邮件',
             'text'        => '用户首次注册',

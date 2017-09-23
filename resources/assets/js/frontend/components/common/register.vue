@@ -174,21 +174,22 @@ export default {
         };
     },
     mounted() {
-        window._this = this;
+
     },
     methods: {
         registerSubmit(formName) {
+            let _this = this;
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    window._this.registerSubmitLoading = true;
-                    axios.post('/frontend/register/create-user', { 'data': window._this.registerForm }).then(response => {
+                    _this.registerSubmitLoading = true;
+                    axios.post('/frontend/register/create-user', { 'data': _this.registerForm }).then(response => {
                         let data = response.data;
                         if (!data.status) {
-                            window._this.$message.error(data.message);
-                            window._this.registerSubmitLoading = false;
+                            _this.$message.error(data.message);
+                            _this.registerSubmitLoading = false;
                             return false;
                         }
-                        window._this.$notify({
+                        _this.$notify({
                             title: '成功',
                             message: data.message,
                             type: 'success'
@@ -197,9 +198,9 @@ export default {
                             'id': data.data.id,
                             'email': data.data.email
                         };
-                        window._this.$router.push({ path: '/register-active', query: params });
+                        _this.$router.push({ path: '/register-active', query: params });
                     }).catch(function(response) {
-                        window._this.registerSubmitLoading = false;
+                        _this.registerSubmitLoading = false;
                     });
                 } else {
                     console.log('error submit!!');
@@ -208,21 +209,22 @@ export default {
             });
         },
         registerReset(formName) {
-            window._this.$refs[formName].resetFields();
+            this.$refs[formName].resetFields();
         },
         uploadFaceSuccess(res, file) {
             this.registerForm.face = URL.createObjectURL(file.raw);
         },
         beforeUploadFace(file) {
-            let fileType = file.type;
-            let fileSize = file.size / 1024;
-            let truePictureType = ['image/jpeg', 'image/jpg', 'image/png', 'image/x-png'];
+            let _this = this,
+                fileType = file.type,
+                fileSize = file.size / 1024,
+                truePictureType = ['image/jpeg', 'image/jpg', 'image/png', 'image/x-png'];
             if (truePictureType.indexOf(fileType) == -1) {
-                window._this.$message.error('请上传正确的头像图片的格式（jpg/png）');
+                _this.$message.error('请上传正确的头像图片的格式（jpg/png）');
                 return false;
             }
             if (fileSize > 500) {
-                window._this.$message.error('上传头像图片大小不能超过 500KB');
+                _this.$message.error('上传头像图片大小不能超过 500KB');
                 return false;
             }
             return true;

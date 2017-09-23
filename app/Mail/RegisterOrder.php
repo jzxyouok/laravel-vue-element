@@ -5,7 +5,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class RegisterOrder extends Mailable
 {
@@ -32,8 +31,8 @@ class RegisterOrder extends Mailable
     {
         return $this->view('emails.register')->with([
             'title' => $this->data['title'],
-            'name' => $this->data['name'],
-            'url' => $this->data['url'],
-        ]);;
+            'name'  => $this->data['name'],
+            'url'   => $this->data['url'],
+        ])->subject($this->data['title']);
     }
 }

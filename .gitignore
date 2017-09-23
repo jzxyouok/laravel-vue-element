@@ -6,6 +6,7 @@
 /public/js
 /public/mix*
 /public/videos
+/public/face
 /storage/*.key
 /vendor
 /.idea

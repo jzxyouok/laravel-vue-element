@@ -4,9 +4,10 @@
 Route::get('/', 'Frontend\IndexController@index');
 Route::post('/login', 'Auth\LoginController@userLogin');
 Route::post('/logout', 'Auth\LoginController@userLogout');
+Route::get('/test', 'Frontend\TestController@index');
+Route::post('/sendEmail', 'Frontend\CommonController@sendEmail');
 Route::group(['namespace' => 'Frontend', 'prefix' => 'frontend'], function () {
     // 测试
-    Route::get('test', 'TestController@index');
     Route::post('/upload-image', 'CommonController@uploadImage');
     // 注册
     Route::post('register/create-user', 'RegisterController@createUser');
